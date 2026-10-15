@@ -4,8 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pierre Elias NODON — Développeur Full Stack</title>
-    <meta name="description" content="Portfolio de Pierre Elias NODON — Développeur Full Stack, étudiant en Master Expert à Ynov Campus et alternant chez SEAC GF à Toulouse." />
-    <link rel="icon" href="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg" />
+    <meta
+      name="description"
+      content="Portfolio de Pierre Elias NODON — Développeur Full Stack, étudiant en Master Expert à Ynov Campus et alternant chez SEAC GF à Toulouse."
+    />
+    <link
+      rel="icon"
+      href="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg"
+    />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -115,15 +121,18 @@
           color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      /* Curseur magnétique sur desktop */
+      /* Curseur magnétique sur desktop (préserve le curseur de saisie dans les champs de formulaire) */
       @media (pointer: fine) {
         body.custom-cursor-active,
         body.custom-cursor-active a,
         body.custom-cursor-active button,
-        body.custom-cursor-active input,
-        body.custom-cursor-active textarea,
         body.custom-cursor-active [data-cursor] {
           cursor: none !important;
+        }
+        body.custom-cursor-active input,
+        body.custom-cursor-active textarea,
+        body.custom-cursor-active select {
+          cursor: text !important;
         }
       }
 
@@ -132,6 +141,12 @@
         #cursor-dot,
         #cursor-ring {
           display: none !important;
+        }
+        body,
+        body *,
+        body.custom-cursor-active,
+        body.custom-cursor-active * {
+          cursor: auto !important;
         }
       }
 
@@ -183,30 +198,35 @@
         z-index: 1;
       }
 
-      /* Révélation cinétique mot par mot au scroll */
+      /* Révélation cinétique mot par mot au scroll (toujours nette sans flou pour éviter tout lag GPU) */
       .scrub-word {
-        opacity: 0.16;
-        filter: blur(1.2px);
-        transform: translateY(3px);
+        opacity: 0.22;
+        transform: translateY(2px);
         transition:
           opacity 0.25s ease-out,
-          filter 0.25s ease-out,
           transform 0.25s ease-out,
           color 0.3s ease;
         display: inline-block;
-        will-change: opacity, filter, transform;
+        will-change: opacity, transform;
       }
       .scrub-word.is-lit {
         opacity: 1;
-        filter: blur(0px);
         transform: translateY(0px);
       }
 
-      /* Cartes Sticky Empilées */
-      .sticky-card-wrapper {
-        position: sticky;
-        will-change: transform, filter;
-        transition: box-shadow 0.4s ease;
+      /* Cartes Sticky Empilées (Uniquement sur écrans larges pour éviter tout chevauchement sur smartphone) */
+      @media (min-width: 640px) {
+        .sticky-card-wrapper {
+          position: sticky;
+          will-change: transform, filter;
+          transition: box-shadow 0.4s ease;
+        }
+      }
+      @media (max-width: 639px) {
+        .sticky-card-wrapper {
+          position: relative !important;
+          top: auto !important;
+        }
       }
 
       /* Galerie Horizontale avec Velocity Skew */
@@ -286,6 +306,26 @@
 
       .footer-monument-wrapper:hover .footer-monument-text {
         -webkit-text-stroke: 1px rgba(212, 185, 150, 0.48);
+      }
+
+      /* Rendu net et contrasté sur smartphone (sans nécessiter de curseur souris) */
+      @media (hover: none) or (pointer: coarse) {
+        .footer-monument-text {
+          background-image: linear-gradient(
+            180deg,
+            rgba(212, 185, 150, 0.75) 0%,
+            rgba(245, 243, 239, 0.3) 100%
+          ) !important;
+          -webkit-text-stroke: 1px rgba(212, 185, 150, 0.35) !important;
+        }
+        html.theme-light .footer-monument-text {
+          background-image: linear-gradient(
+            180deg,
+            rgba(154, 123, 86, 0.8) 0%,
+            rgba(20, 20, 19, 0.3) 100%
+          ) !important;
+          -webkit-text-stroke: 1px rgba(154, 123, 86, 0.4) !important;
+        }
       }
 
       /* Scrollbar minimaliste */
@@ -523,7 +563,9 @@
     <!-- ==========================================================================
          3. NAVIGATION ÉPURÉE & BASCULE DE THÈME
          ========================================================================== -->
-    <header class="fixed top-3 sm:top-5 inset-x-0 z-50 mx-auto max-w-6xl px-3 sm:px-6">
+    <header
+      class="fixed top-3 sm:top-5 inset-x-0 z-50 mx-auto max-w-6xl px-3 sm:px-6"
+    >
       <nav
         class="flex items-center justify-between px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-full bg-studio-glass border border-studio backdrop-blur-xl shadow-sm"
       >
@@ -539,7 +581,8 @@
           ></span>
           <span
             class="font-display font-bold text-xs sm:text-sm tracking-[0.1em] sm:tracking-[0.16em] uppercase text-studio-main whitespace-nowrap"
-            ><span class="hidden sm:inline">Pierre Elias NODON</span><span class="sm:hidden">Pierre Elias N.</span></span
+            ><span class="hidden sm:inline">Pierre Elias NODON</span
+            ><span class="sm:hidden">Pierre Elias N.</span></span
           >
         </a>
 
@@ -632,7 +675,9 @@
         </div>
 
         <!-- Titre Principal avec Parallaxe Multi-Axes & Photo de Profil -->
-        <div class="mt-8 sm:mt-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
+        <div
+          class="mt-8 sm:mt-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8"
+        >
           <div class="max-w-3xl space-y-2">
             <h1
               id="hero-title-1"
@@ -649,8 +694,13 @@
           </div>
 
           <!-- Photo Portrait / Squircle Éditorial -->
-          <div class="shrink-0 relative group self-start md:self-end pb-1" data-parallax="-0.04">
-            <div class="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl p-1 bg-studio-surface border-2 border-studio shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-studio-accent">
+          <div
+            class="shrink-0 relative group self-start md:self-end pb-1"
+            data-parallax="-0.04"
+          >
+            <div
+              class="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl p-1 bg-studio-surface border-2 border-studio shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-studio-accent"
+            >
               <img
                 src="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg"
                 alt="Pierre Elias NODON"
@@ -663,8 +713,12 @@
               class="absolute -bottom-1 -right-1 flex h-4 w-4"
               title="Disponible pour projets & opportunités"
             >
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-studio-surface"></span>
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-studio-surface"
+              ></span>
             </span>
           </div>
         </div>
@@ -677,9 +731,13 @@
           <p
             class="max-w-xl text-studio-muted text-sm sm:text-lg font-light leading-relaxed"
           >
-            Étudiant en Master Expert Full Stack à Toulouse et alternant chez SEAC GF. Passionné d'informatique, je conçois des applications web et mobiles modernes, réactives et performantes.
+            Étudiant en Master Expert Full Stack à Toulouse et alternant chez
+            SEAC GF. Passionné d'informatique, je conçois des applications web
+            et mobiles modernes, réactives et performantes.
           </p>
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
+          <div
+            class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto"
+          >
             <a
               href="#realisations"
               data-cursor="Projets"
@@ -734,7 +792,9 @@
                   class="preview-tab-btn px-3 py-1.5 rounded-full text-[11px] font-medium transition-all whitespace-nowrap shrink-0"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
-                  01. Front-End<span class="hidden sm:inline"> & Vue/React</span>
+                  01. Front-End<span class="hidden sm:inline">
+                    & Vue/React</span
+                  >
                 </button>
                 <button
                   type="button"
@@ -783,7 +843,8 @@
                   id="preview-desc"
                   class="text-xs sm:text-base text-studio-muted font-light max-w-md mx-auto line-clamp-3 sm:line-clamp-none"
                 >
-                  Conception d'architectures web modernes avec Vue.js, Node.js, React et Next.js, axées sur la réactivité et la robustesse.
+                  Conception d'architectures web modernes avec Vue.js, Node.js,
+                  React et Next.js, axées sur la réactivité et la robustesse.
                 </p>
               </div>
 
@@ -911,7 +972,9 @@
         id="kinetic-manifesto"
         class="font-normal text-2xl sm:text-5xl lg:text-[3.35rem] leading-snug sm:leading-[1.22] tracking-tight text-studio-main"
       >
-        Passionné par l'informatique depuis mon plus jeune âge, je conçois des solutions web modernes et durables, alliant rigueur technique Full-Stack et ergonomie soignée.
+        Passionné par l'informatique depuis mon plus jeune âge, je conçois des
+        solutions web modernes et durables, alliant rigueur technique Full-Stack
+        et ergonomie soignée.
       </p>
 
       <!-- 3 Indicateurs Clés Sobres -->
@@ -928,7 +991,8 @@
             Étudiant & Alternant
           </div>
           <p class="text-sm text-studio-muted font-light mt-1">
-            En Master Expert Full Stack à Ynov Campus Toulouse et alternant au sein du groupe SEAC GF (BTP) sur Vue.js & Node.js.
+            En Master Expert Full Stack à Ynov Campus Toulouse et alternant au
+            sein du groupe SEAC GF (BTP) sur Vue.js & Node.js.
           </p>
         </div>
         <div>
@@ -941,7 +1005,8 @@
             Diplômes & Parcours
           </div>
           <p class="text-sm text-studio-muted font-light mt-1">
-            BTS SIO option SLAM au lycée Ozenne (15.06 de moyenne) et 3ᵉ année BUT MMI à l'IUT Paul Sabatier de Castres.
+            BTS SIO option SLAM au lycée Ozenne (15.06 de moyenne) et 3ᵉ année
+            BUT MMI à l'IUT Paul Sabatier de Castres.
           </p>
         </div>
         <div>
@@ -954,24 +1019,36 @@
             Technologies Maîtrisées
           </div>
           <p class="text-sm text-studio-muted font-light mt-1">
-            Vue.js, Node.js, React, Next.js, PHP, Python, Java, PostgreSQL, MySQL, MongoDB, NoSQL, React Native, Expo, Kotlin, GitLab CI/CD, Git & N8N.
+            Vue.js, Node.js, React, Next.js, PHP, Python, Java, PostgreSQL,
+            MySQL, MongoDB, NoSQL, React Native, Expo, Kotlin, GitLab CI/CD, Git
+            & N8N.
           </p>
         </div>
       </div>
 
       <!-- Avis motivé & Recommandation académique -->
-      <div class="mt-10 sm:mt-14 p-5 sm:p-8 rounded-2xl bg-studio-surface border border-studio flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
+      <div
+        class="mt-10 sm:mt-14 p-5 sm:p-8 rounded-2xl bg-studio-surface border border-studio flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6"
+      >
         <div class="space-y-2">
           <p class="font-serif italic text-base sm:text-xl text-studio-main">
-            « Pierre-Elias est un étudiant qui a montré beaucoup de sérieux et d'implication, félicité au conseil de classe. Il possède les qualités requises pour réussir ses études et projets professionnels. »
+            « Pierre-Elias est un étudiant qui a montré beaucoup de sérieux et
+            d'implication, félicité au conseil de classe. Il possède les
+            qualités requises pour réussir ses études et projets professionnels.
+            »
           </p>
           <p class="font-mono text-xs text-studio-muted">
             Christine BALARD • Professeur au lycée Ozenne (Toulouse)
           </p>
         </div>
         <div class="shrink-0 flex items-center gap-3">
-          <span class="w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
-          <span class="font-mono text-xs text-studio-accent">Avis académique</span>
+          <span
+            class="w-2 h-2 rounded-full"
+            style="background-color: var(--accent)"
+          ></span>
+          <span class="font-mono text-xs text-studio-accent"
+            >Avis académique</span
+          >
         </div>
       </div>
     </section>
@@ -1002,7 +1079,8 @@
           </h2>
         </div>
         <p class="text-sm text-studio-muted max-w-xs font-light">
-          Mon parcours académique, mes missions en entreprise et l'ensemble de mes compétences techniques clés.
+          Mon parcours académique, mes missions en entreprise et l'ensemble de
+          mes compétences techniques clés.
         </p>
       </div>
 
@@ -1031,19 +1109,26 @@
                   01. Alternant Développeur Full Stack — SEAC GF
                 </h3>
                 <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Alternance au sein du groupe SEAC GF (spécialisé dans l'industrie du BTP, Boulevard de Suisse à Toulouse) dans le cadre de mon Master Expert. Chargé du développement d'applications web d'entreprise et d'outils métiers performants.
+                  Alternance au sein du groupe SEAC GF (spécialisé dans
+                  l'industrie du BTP, Boulevard de Suisse à Toulouse) dans le
+                  cadre de mon Master Expert. Chargé du développement
+                  d'applications web d'entreprise et d'outils métiers
+                  performants.
                 </p>
                 <ul
                   class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
                 >
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Développement d'applications web en Vue.js et Node.js
+                    <span class="text-studio-accent">•</span> Développement
+                    d'applications web en Vue.js et Node.js
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Digitalisation et automatisation de flux métiers BTP
+                    <span class="text-studio-accent">•</span> Digitalisation et
+                    automatisation de flux métiers BTP
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Architecture logicielle, API et sécurité des données
+                    <span class="text-studio-accent">•</span> Architecture
+                    logicielle, API et sécurité des données
                   </li>
                 </ul>
               </div>
@@ -1097,19 +1182,25 @@
                   02. Stagiaire Développeur Web & CMS — LCDE
                 </h3>
                 <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Stage professionnel axé sur la maintenance et la refonte intégrale d'un écosystème WordPress et la création audiovisuelle, consolidé par une expérience de vendeur chez Wizzle (Fenouillet).
+                  Stage professionnel axé sur la maintenance et la refonte
+                  intégrale d'un écosystème WordPress et la création
+                  audiovisuelle, consolidé par une expérience de vendeur chez
+                  Wizzle (Fenouillet).
                 </p>
                 <ul
                   class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
                 >
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Refonte et maintenance avancée WordPress & CMS
+                    <span class="text-studio-accent">•</span> Refonte et
+                    maintenance avancée WordPress & CMS
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Tâches techniques dans le domaine de l'audiovisuel
+                    <span class="text-studio-accent">•</span> Tâches techniques
+                    dans le domaine de l'audiovisuel
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Expérience vendeur et relation client (Wizzle)
+                    <span class="text-studio-accent">•</span> Expérience vendeur
+                    et relation client (Wizzle)
                   </li>
                 </ul>
               </div>
@@ -1163,19 +1254,24 @@
                   03. Parcours Académique & Diplômes
                 </h3>
                 <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Un cursus spécialisé dans l'ingénierie logicielle et le web, combinant théorie rigoureuse et pratique intensive en projets universitaires et entreprises.
+                  Un cursus spécialisé dans l'ingénierie logicielle et le web,
+                  combinant théorie rigoureuse et pratique intensive en projets
+                  universitaires et entreprises.
                 </p>
                 <ul
                   class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
                 >
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Master Expert Full Stack (2025-2027) — Ynov Campus Toulouse
+                    <span class="text-studio-accent">•</span> Master Expert Full
+                    Stack (2025-2027) — Ynov Campus Toulouse
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> BUT Métiers du Multimédia & Internet (2024-2025) — IUT Castres
+                    <span class="text-studio-accent">•</span> BUT Métiers du
+                    Multimédia & Internet (2024-2025) — IUT Castres
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> BTS SIO option SLAM (2022-2024) — Lycée Ozenne (15.06/20)
+                    <span class="text-studio-accent">•</span> BTS SIO option
+                    SLAM (2022-2024) — Lycée Ozenne (15.06/20)
                   </li>
                 </ul>
               </div>
@@ -1230,54 +1326,138 @@
                   04. Stack Technique & Hard Skills
                 </h3>
                 <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Stack technique complète mobilisée pour concevoir des applications web et mobiles performantes, des architectures back-end scalables et des pipelines automatisés.
+                  Stack technique complète mobilisée pour concevoir des
+                  applications web et mobiles performantes, des architectures
+                  back-end scalables et des pipelines automatisés.
                 </p>
-                <div class="pt-2 space-y-3 sm:space-y-2.5 text-xs sm:text-sm text-studio-main">
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Front-End</span>
+                <div
+                  class="pt-2 space-y-3 sm:space-y-2.5 text-xs sm:text-sm text-studio-main"
+                >
+                  <div
+                    class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2"
+                  >
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0"
+                      >Front-End</span
+                    >
                     <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Vue.js</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Next.js</span>
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Vue.js</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >React</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Next.js</span
+                      >
                     </div>
                   </div>
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Back-End</span>
+                  <div
+                    class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2"
+                  >
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0"
+                      >Back-End</span
+                    >
                     <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Node.js</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PHP</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Python</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Java</span>
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Node.js</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >PHP</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Python</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Java</span
+                      >
                     </div>
                   </div>
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Bases de données</span>
+                  <div
+                    class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2"
+                  >
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0"
+                      >Bases de données</span
+                    >
                     <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PostgreSQL</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MySQL</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MongoDB</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">NoSQL</span>
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >PostgreSQL</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >MySQL</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >MongoDB</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >NoSQL</span
+                      >
                     </div>
                   </div>
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Mobile</span>
+                  <div
+                    class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2"
+                  >
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0"
+                      >Mobile</span
+                    >
                     <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React Native</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Expo</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Kotlin</span>
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >React Native</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Expo</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Kotlin</span
+                      >
                     </div>
                   </div>
-                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">DevOps & Outils</span>
+                  <div
+                    class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2"
+                  >
+                    <span
+                      class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0"
+                      >DevOps & Outils</span
+                    >
                     <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">GitLab CI/CD</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Git</span>
-                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">N8N</span>
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >GitLab CI/CD</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >Git</span
+                      >
+                      <span
+                        class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono"
+                        >N8N</span
+                      >
                     </div>
                   </div>
                 </div>
-                <div class="pt-2 flex items-center gap-2 text-xs text-studio-muted font-mono">
-                  <span class="text-studio-accent">✦</span> Et bien d'autres technologies, bibliothèques & outils mobilisés selon les besoins du projet.
+                <div
+                  class="pt-2 flex items-center gap-2 text-xs text-studio-muted font-mono"
+                >
+                  <span class="text-studio-accent">✦</span> Et bien d'autres
+                  technologies, bibliothèques & outils mobilisés selon les
+                  besoins du projet.
                 </div>
               </div>
 
@@ -1536,7 +1716,9 @@
           >
         </h2>
         <p class="text-studio-muted text-sm sm:text-base font-light mt-3">
-          Pour une opportunité d'alternance, un poste, une collaboration technique ou une question, transmettez-moi votre message via le formulaire ci-dessous.
+          Pour une opportunité d'alternance, un poste, une collaboration
+          technique ou une question, transmettez-moi votre message via le
+          formulaire ci-dessous.
         </p>
       </div>
 
@@ -1551,7 +1733,9 @@
           class="lg:col-span-7 rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 space-y-6 sm:space-y-8 flex flex-col justify-between"
         >
           <div class="space-y-6">
-            <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
+            <div
+              class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+            >
               <span>01</span>
               <span>—</span>
               <span>Coordonnées & Contexte</span>
@@ -1641,62 +1825,114 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
                   type="button"
-                  onclick="selectContactSubject('Opportunité d\'alternance / Emploi', this)"
+                  onclick="
+                    selectContactSubject(
+                      'Opportunité d\'alternance / Emploi',
+                      this,
+                    )
+                  "
                   class="contact-subject-btn active text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border transition-all"
-                  style="border-color: var(--accent); background-color: var(--accent-soft)"
+                  style="
+                    border-color: var(--accent);
+                    background-color: var(--accent-soft);
+                  "
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">💼 Alternance / Emploi</span>
-                    <span class="subject-dot w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-sm text-studio-main"
+                      >💼 Alternance / Emploi</span
+                    >
+                    <span
+                      class="subject-dot w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Master Expert ou CDI</p>
+                  <p class="font-mono text-xs text-studio-muted mt-1">
+                    Master Expert ou CDI
+                  </p>
                 </button>
 
                 <button
                   type="button"
-                  onclick="selectContactSubject('Projet & Collaboration Tech', this)"
+                  onclick="
+                    selectContactSubject('Projet & Collaboration Tech', this)
+                  "
                   class="contact-subject-btn text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">🤝 Projet & Collaboration</span>
-                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-sm text-studio-main"
+                      >🤝 Projet & Collaboration</span
+                    >
+                    <span
+                      class="subject-dot hidden w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Web, mobile ou API</p>
+                  <p class="font-mono text-xs text-studio-muted mt-1">
+                    Web, mobile ou API
+                  </p>
                 </button>
 
                 <button
                   type="button"
-                  onclick="selectContactSubject('Échange technique & Full-Stack', this)"
+                  onclick="
+                    selectContactSubject('Échange technique & Full-Stack', this)
+                  "
                   class="contact-subject-btn text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">💡 Échange technique</span>
-                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-sm text-studio-main"
+                      >💡 Échange technique</span
+                    >
+                    <span
+                      class="subject-dot hidden w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Stack Vue / React / Node</p>
+                  <p class="font-mono text-xs text-studio-muted mt-1">
+                    Stack Vue / React / Node
+                  </p>
                 </button>
 
                 <button
                   type="button"
-                  onclick="selectContactSubject('Autre demande / Prise de contact', this)"
+                  onclick="
+                    selectContactSubject(
+                      'Autre demande / Prise de contact',
+                      this,
+                    )
+                  "
                   class="contact-subject-btn text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">💬 Autre démarche</span>
-                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-sm text-studio-main"
+                      >💬 Autre démarche</span
+                    >
+                    <span
+                      class="subject-dot hidden w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Question ou mise en relation</p>
+                  <p class="font-mono text-xs text-studio-muted mt-1">
+                    Question ou mise en relation
+                  </p>
                 </button>
               </div>
             </div>
           </div>
 
-          <div class="pt-4 border-t border-studio flex items-center justify-between text-xs text-studio-muted">
+          <div
+            class="pt-4 border-t border-studio flex items-center justify-between text-xs text-studio-muted"
+          >
             <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+              <span
+                class="w-2 h-2 rounded-full"
+                style="background-color: var(--accent)"
+              ></span>
               Réponse garantie sous 24h ouvrées
             </span>
-            <span class="font-mono text-[11px] text-studio-accent">Formulaire direct</span>
+            <span class="font-mono text-[11px] text-studio-accent"
+              >Formulaire direct</span
+            >
           </div>
         </div>
 
@@ -1705,7 +1941,9 @@
           class="lg:col-span-5 rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 flex flex-col justify-between space-y-6"
         >
           <div class="space-y-4">
-            <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
+            <div
+              class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+            >
               <span>02</span>
               <span>—</span>
               <span>Message & Envoi</span>
@@ -1715,10 +1953,19 @@
             </h3>
 
             <!-- Aperçu dynamique du sujet sélectionné -->
-            <div class="p-3.5 rounded-2xl bg-studio-main border border-studio flex items-center justify-between">
+            <div
+              class="p-3.5 rounded-2xl bg-studio-main border border-studio flex items-center justify-between"
+            >
               <div class="text-xs">
-                <span class="text-studio-muted font-mono uppercase text-[10px] block">Sujet sélectionné</span>
-                <span id="selected-subject-preview" class="font-medium text-studio-accent">Opportunité d'alternance / Emploi</span>
+                <span
+                  class="text-studio-muted font-mono uppercase text-[10px] block"
+                  >Sujet sélectionné</span
+                >
+                <span
+                  id="selected-subject-preview"
+                  class="font-medium text-studio-accent"
+                  >Opportunité d'alternance / Emploi</span
+                >
               </div>
               <span class="font-mono text-xs text-studio-muted">01/01</span>
             </div>
@@ -1754,21 +2001,47 @@
               id="contact-toast"
               class="hidden mt-4 p-4 rounded-2xl border border-studio-accent bg-studio-main text-xs text-studio-main"
             >
-              ✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.
+              ✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je
+              te réponds sous 24h.
             </div>
           </div>
 
           <!-- Coordonnées directes récapitulatives -->
-          <div class="pt-6 border-t border-studio space-y-2 text-xs text-studio-muted font-light">
+          <div
+            class="pt-6 border-t border-studio space-y-2 text-xs text-studio-muted font-light"
+          >
             <div class="flex items-center gap-2 text-studio-main font-medium">
-              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--accent)"></span>
+              <span
+                class="w-1.5 h-1.5 rounded-full"
+                style="background-color: var(--accent)"
+              ></span>
               Pierre Elias NODON
             </div>
-            <div>Toulouse, France • elias.nodon@gmail.com • +33 6 86 96 99 94</div>
+            <div>
+              Toulouse, France • elias.nodon@gmail.com • +33 6 86 96 99 94
+            </div>
             <div class="flex items-center gap-4 font-mono text-[11px] pt-1">
-              <a href="https://www.linkedin.com/in/eliasnodon/" target="_blank" data-cursor="LinkedIn" class="hover:text-studio-main transition-colors">LinkedIn ↗</a>
-              <a href="https://github.com/ndn-elias" target="_blank" data-cursor="GitHub" class="hover:text-studio-main transition-colors">GitHub ↗</a>
-              <a href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf" target="_blank" data-cursor="CV" class="hover:text-studio-main transition-colors">CV (PDF) ↗</a>
+              <a
+                href="https://www.linkedin.com/in/eliasnodon/"
+                target="_blank"
+                data-cursor="LinkedIn"
+                class="hover:text-studio-main transition-colors"
+                >LinkedIn ↗</a
+              >
+              <a
+                href="https://github.com/ndn-elias"
+                target="_blank"
+                data-cursor="GitHub"
+                class="hover:text-studio-main transition-colors"
+                >GitHub ↗</a
+              >
+              <a
+                href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
+                target="_blank"
+                data-cursor="CV"
+                class="hover:text-studio-main transition-colors"
+                >CV (PDF) ↗</a
+              >
             </div>
           </div>
         </div>
@@ -1794,7 +2067,8 @@
             >
           </div>
           <p class="text-xs text-studio-muted mt-1.5 font-light">
-            Pierre Elias NODON — Développeur Web Full Stack • Étudiant Master Expert à Ynov & Alternant SEAC GF • Toulouse, France
+            Pierre Elias NODON — Développeur Web Full Stack • Étudiant Master
+            Expert à Ynov & Alternant SEAC GF • Toulouse, France
           </p>
         </div>
         <div
@@ -2015,11 +2289,17 @@
         "footer-monument-title",
       );
       const monumentLineFirst = document.getElementById("monument-line-first");
-      const monumentLineSecond = document.getElementById("monument-line-second");
+      const monumentLineSecond = document.getElementById(
+        "monument-line-second",
+      );
 
       // Calibrage automatique pour garantir que le texte monumental ne dépasse jamais de l'écran
       function fitFooterMonument() {
-        if (!footerMonumentContainer || !monumentLineFirst || !monumentLineSecond)
+        if (
+          !footerMonumentContainer ||
+          !monumentLineFirst ||
+          !monumentLineSecond
+        )
           return;
         const availableWidth = footerMonumentContainer.clientWidth * 0.92;
         if (availableWidth <= 0) return;
@@ -2300,27 +2580,34 @@
 
         // 3. Parallaxe du Hero & expansion de la fenêtre macOS
         if (scrollY < vh * 1.6) {
-          if (heroTitle1) {
-            heroTitle1.style.transform = `translate3d(${-scrollY * 0.06}px, ${scrollY * 0.12}px, 0)`;
-          }
-          if (heroTitle2) {
-            heroTitle2.style.transform = `translate3d(${scrollY * 0.08}px, ${scrollY * 0.09}px, 0)`;
-          }
-          parallaxElements.forEach((el) => {
-            const speed = parseFloat(el.getAttribute("data-parallax") || "0");
-            el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
-          });
+          if (window.innerWidth >= 768) {
+            if (heroTitle1) {
+              heroTitle1.style.transform = `translate3d(${-scrollY * 0.06}px, ${scrollY * 0.12}px, 0)`;
+            }
+            if (heroTitle2) {
+              heroTitle2.style.transform = `translate3d(${scrollY * 0.08}px, ${scrollY * 0.09}px, 0)`;
+            }
+            parallaxElements.forEach((el) => {
+              const speed = parseFloat(el.getAttribute("data-parallax") || "0");
+              el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+            });
 
-          if (heroExpandFrame) {
-            const expandProg = Math.min(1, Math.max(0, scrollY / (vh * 0.55)));
-            if (window.innerWidth >= 768) {
+            if (heroExpandFrame) {
+              const expandProg = Math.min(1, Math.max(0, scrollY / (vh * 0.55)));
               const widthPct = 76 + expandProg * 24;
               const scaleVal = 0.95 + expandProg * 0.05;
               heroExpandFrame.style.width = `${widthPct.toFixed(2)}%`;
               heroExpandFrame.style.transform = `scale(${scaleVal.toFixed(3)})`;
-            } else {
+            }
+          } else {
+            if (heroTitle1) heroTitle1.style.transform = "none";
+            if (heroTitle2) heroTitle2.style.transform = "none";
+            parallaxElements.forEach((el) => {
+              el.style.transform = "none";
+            });
+            if (heroExpandFrame) {
               heroExpandFrame.style.width = "100%";
-              heroExpandFrame.style.transform = "scale(1)";
+              heroExpandFrame.style.transform = "none";
             }
           }
         }
@@ -2351,24 +2638,34 @@
           });
         }
 
-        // 6. Cartes d'offres empilées (Sticky Stacking Cards) avec effet de profondeur
-        stickyWrappers.forEach((wrapper, idx) => {
-          const innerCard = wrapper.firstElementChild;
-          const nextWrapper = stickyWrappers[idx + 1];
-          if (!innerCard || !nextWrapper) return;
+        // 6. Cartes d'offres empilées (Sticky Stacking Cards) avec effet de profondeur (sur desktop)
+        if (window.innerWidth >= 640) {
+          stickyWrappers.forEach((wrapper, idx) => {
+            const innerCard = wrapper.firstElementChild;
+            const nextWrapper = stickyWrappers[idx + 1];
+            if (!innerCard || !nextWrapper) return;
 
-          const nextRect = nextWrapper.getBoundingClientRect();
-          const wrapperRect = wrapper.getBoundingClientRect();
-          const overlap = Math.max(
-            0,
-            Math.min(1, (wrapperRect.bottom - nextRect.top) / 360),
-          );
+            const nextRect = nextWrapper.getBoundingClientRect();
+            const wrapperRect = wrapper.getBoundingClientRect();
+            const overlap = Math.max(
+              0,
+              Math.min(1, (wrapperRect.bottom - nextRect.top) / 360),
+            );
 
-          const scale = 1 - overlap * 0.045;
-          const brightness = 1 - overlap * 0.25;
-          innerCard.style.transform = `scale(${scale.toFixed(3)})`;
-          innerCard.style.filter = `brightness(${brightness.toFixed(2)})`;
-        });
+            const scale = 1 - overlap * 0.045;
+            const brightness = 1 - overlap * 0.25;
+            innerCard.style.transform = `scale(${scale.toFixed(3)})`;
+            innerCard.style.filter = `brightness(${brightness.toFixed(2)})`;
+          });
+        } else {
+          stickyWrappers.forEach((wrapper) => {
+            const innerCard = wrapper.firstElementChild;
+            if (innerCard) {
+              innerCard.style.transform = "none";
+              innerCard.style.filter = "none";
+            }
+          });
+        }
 
         // 7. Galerie horizontale au scroll + Velocity Skew
         const rawVelocity = scrollY - lastScrollY;
@@ -2526,18 +2823,25 @@
             .then((response) => {
               if (toast) {
                 toast.classList.remove("hidden");
-                toast.textContent = "✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.";
+                toast.textContent =
+                  "✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.";
               }
               form.reset();
-              const firstSubjectBtn = document.querySelector(".contact-subject-btn");
+              const firstSubjectBtn = document.querySelector(
+                ".contact-subject-btn",
+              );
               if (firstSubjectBtn) {
-                window.selectContactSubject("Opportunité d'alternance / Emploi", firstSubjectBtn);
+                window.selectContactSubject(
+                  "Opportunité d'alternance / Emploi",
+                  firstSubjectBtn,
+                );
               }
             })
             .catch(() => {
               if (toast) {
                 toast.classList.remove("hidden");
-                toast.textContent = "✓ Ton message a bien été enregistré. Je te réponds au plus vite !";
+                toast.textContent =
+                  "✓ Ton message a bien été enregistré. Je te réponds au plus vite !";
               }
             })
             .finally(() => {
