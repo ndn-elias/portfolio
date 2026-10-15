@@ -1,1198 +1,2538 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
   <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Elias NODON</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pierre Elias NODON — Développeur Full Stack</title>
+    <meta name="description" content="Portfolio de Pierre Elias NODON — Développeur Full Stack, étudiant en Master Expert à Ynov Campus et alternant chez SEAC GF à Toulouse." />
+    <link rel="icon" href="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg" />
 
-    <!-- Favicons -->
-    <link href="assets/img/profile-img.jpg" rel="icon" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <!-- Google Fonts : Syne (Titres & Monument), Instrument Serif (Accents éditoriaux), Plus Jakarta Sans (Corps), JetBrains Mono (Numérotation) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              display: ["Syne", "sans-serif"],
+              serif: ["Instrument Serif", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
+    <style>
+      /* ==========================================================================
+           VARIABLES DE THÈME : MODE SOMBRE CHARBON (DÉFAUT) & MODE CLAIR ÉDITORIAL
+           ========================================================================== */
+      :root {
+        --bg-main: #0c0c0e;
+        --bg-surface: #141417;
+        --bg-elevated: #1a1a1e;
+        --bg-glass: rgba(20, 20, 23, 0.8);
+        --text-main: #f5f3ef;
+        --text-muted: #9e9c96;
+        --accent: #d4b996;
+        --accent-soft: rgba(212, 185, 150, 0.12);
+        --border-subtle: rgba(245, 243, 239, 0.08);
+        --border-hover: rgba(212, 185, 150, 0.45);
+        --card-shadow: 0 -24px 60px rgba(0, 0, 0, 0.65);
+        /* Touches Marbre Nero Marquina (Mode Sombre) */
+        --marble-vein-primary: rgba(245, 243, 239, 0.075);
+        --marble-vein-gold: rgba(212, 185, 150, 0.11);
+        --marble-vein-soft: rgba(245, 243, 239, 0.03);
+        --marble-card-sheen: linear-gradient(
+          125deg,
+          rgba(245, 243, 239, 0.025) 0%,
+          transparent 38%,
+          rgba(212, 185, 150, 0.035) 52%,
+          transparent 70%
+        );
+      }
+
+      html.theme-light {
+        --bg-main: #f7f5f0;
+        --bg-surface: #efece6;
+        --bg-elevated: #e5e0d5;
+        --bg-glass: rgba(247, 245, 240, 0.85);
+        --text-main: #141413;
+        --text-muted: #66645e;
+        --accent: #9a7b56;
+        --accent-soft: rgba(154, 123, 86, 0.12);
+        --border-subtle: rgba(20, 20, 19, 0.09);
+        --border-hover: rgba(154, 123, 86, 0.5);
+        --card-shadow: 0 -20px 50px rgba(20, 20, 19, 0.08);
+        /* Touches Marbre Calacatta & Carrare (Mode Clair) */
+        --marble-vein-primary: rgba(20, 20, 19, 0.075);
+        --marble-vein-gold: rgba(154, 123, 86, 0.14);
+        --marble-vein-soft: rgba(20, 20, 19, 0.035);
+        --marble-card-sheen: linear-gradient(
+          125deg,
+          rgba(255, 255, 255, 0.45) 0%,
+          transparent 38%,
+          rgba(154, 123, 86, 0.05) 52%,
+          transparent 70%
+        );
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: #0c0c0e;
+      }
+
+      body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        overflow-x: hidden;
+        transition:
+          background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Curseur magnétique sur desktop */
+      @media (pointer: fine) {
+        body.custom-cursor-active,
+        body.custom-cursor-active a,
+        body.custom-cursor-active button,
+        body.custom-cursor-active input,
+        body.custom-cursor-active textarea,
+        body.custom-cursor-active [data-cursor] {
+          cursor: none !important;
+        }
+      }
+
+      /* Classes utilitaires liées au design system avec finition marbre subtile */
+      .bg-studio-main {
+        background-color: var(--bg-main);
+      }
+      .bg-studio-surface {
+        background-color: var(--bg-surface);
+        background-image: var(--marble-card-sheen);
+      }
+      .bg-studio-elevated {
+        background-color: var(--bg-elevated);
+        background-image: var(--marble-card-sheen);
+      }
+      .bg-studio-glass {
+        background-color: var(--bg-glass);
+      }
+      .text-studio-main {
+        color: var(--text-main);
+      }
+      .text-studio-muted {
+        color: var(--text-muted);
+      }
+      .text-studio-accent {
+        color: var(--accent);
+      }
+      .border-studio {
+        border-color: var(--border-subtle);
+      }
+      .border-studio-accent {
+        border-color: var(--accent);
+      }
+
+      /* Calque de texture Marbre Architectural en arrière-plan */
+      .marble-backdrop {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      /* Sections principales positionnées au-dessus du marbre de fond */
+      header,
+      section,
+      footer {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Révélation cinétique mot par mot au scroll */
+      .scrub-word {
+        opacity: 0.16;
+        filter: blur(1.2px);
+        transform: translateY(3px);
+        transition:
+          opacity 0.25s ease-out,
+          filter 0.25s ease-out,
+          transform 0.25s ease-out,
+          color 0.3s ease;
+        display: inline-block;
+        will-change: opacity, filter, transform;
+      }
+      .scrub-word.is-lit {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0px);
+      }
+
+      /* Cartes Sticky Empilées */
+      .sticky-card-wrapper {
+        position: sticky;
+        will-change: transform, filter;
+        transition: box-shadow 0.4s ease;
+      }
+
+      /* Galerie Horizontale avec Velocity Skew */
+      .project-card-skew {
+        will-change: transform;
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      /* ==========================================================================
+           SIGNATURE MONUMENTALE « PIERRE ELIAS / NODON » DANS LE FOOTER (2 LIGNES ADAPTATIVES)
+           ========================================================================== */
+      .footer-monument-wrapper {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: visible;
+        padding: 1.5rem 4vw 2.25rem 4vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer-monument-text {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        line-height: 0.9;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+        max-width: 100%;
+        display: block;
+        user-select: none;
+        will-change: transform;
+        /* Contraste subtil mais immédiatement lisible sur tous les écrans */
+        background-image: radial-gradient(
+          420px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+          rgba(212, 185, 150, 0.58) 0%,
+          rgba(245, 243, 239, 0.18) 48%,
+          rgba(212, 185, 150, 0.05) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(212, 185, 150, 0.24);
+        transition: -webkit-text-stroke 0.4s ease;
+      }
+
+      .footer-monument-line {
+        display: inline;
+        white-space: nowrap;
+      }
+
+      .footer-monument-line.line-first {
+        font-size: clamp(3rem, 15.5vw, 13.5rem);
+        letter-spacing: -0.03em;
+        line-height: 0.9;
+      }
+
+      .footer-monument-line.line-second {
+        font-size: clamp(2.1rem, 11.2vw, 10rem);
+        letter-spacing: -0.02em;
+        line-height: 0.92;
+      }
+
+      html.theme-light .footer-monument-text {
+        background-image: radial-gradient(
+          420px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+          rgba(154, 123, 86, 0.54) 0%,
+          rgba(20, 20, 19, 0.16) 48%,
+          rgba(154, 123, 86, 0.05) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(154, 123, 86, 0.28);
+      }
+
+      .footer-monument-wrapper:hover .footer-monument-text {
+        -webkit-text-stroke: 1px rgba(212, 185, 150, 0.48);
+      }
+
+      /* Scrollbar minimaliste */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg-main);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 9999px;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
   </head>
+  <body class="custom-cursor-active antialiased">
+    <!-- ==========================================================================
+         0. FOND MARBRE ARCHITECTURAL (NERO MARQUINA EN SOMBRE / CALACATTA EN CLAIR)
+         ========================================================================== -->
+    <div class="marble-backdrop" aria-hidden="true">
+      <svg
+        class="w-full h-[135vh] -mt-[15vh] will-change-transform"
+        id="marble-veins-svg"
+        viewBox="0 0 1600 1200"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <!-- Filtre de distorsion minérale organique pour créer de vraies veines de marbre -->
+          <filter
+            id="marble-organic-warp"
+            x="-15%"
+            y="-15%"
+            width="130%"
+            height="130%"
+          >
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.0045 0.006"
+              numOctaves="4"
+              seed="14"
+              result="noise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="noise"
+              scale="95"
+              xChannelSelector="R"
+              yChannelSelector="G"
+              result="warped"
+            />
+            <feGaussianBlur in="warped" stdDeviation="0.6" />
+          </filter>
 
-  <body class="index-page">
-    <header
-      id="header"
-      class="header d-flex flex-column justify-content-center"
+          <!-- Filtre de brume minérale douce -->
+          <filter
+            id="marble-soft-cloud"
+            x="-20%"
+            y="-20%"
+            width="140%"
+            height="140%"
+          >
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.003"
+              numOctaves="3"
+              seed="8"
+              result="cloudNoise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="cloudNoise"
+              scale="140"
+            />
+            <feGaussianBlur stdDeviation="24" />
+          </filter>
+
+          <!-- Dégradés des veines de marbre -->
+          <linearGradient
+            id="vein-grad-main"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stop-color="transparent" />
+            <stop offset="22%" stop-color="var(--marble-vein-primary)" />
+            <stop offset="55%" stop-color="var(--marble-vein-gold)" />
+            <stop offset="82%" stop-color="var(--marble-vein-primary)" />
+            <stop offset="100%" stop-color="transparent" />
+          </linearGradient>
+
+          <linearGradient
+            id="vein-grad-gold"
+            x1="100%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
+            <stop offset="0%" stop-color="transparent" />
+            <stop offset="30%" stop-color="var(--marble-vein-gold)" />
+            <stop offset="65%" stop-color="var(--marble-vein-primary)" />
+            <stop offset="100%" stop-color="transparent" />
+          </linearGradient>
+        </defs>
+
+        <!-- Nuances minérales diffuses en arrière-plan -->
+        <g filter="url(#marble-soft-cloud)">
+          <path
+            d="M-100,180 C420,310 780,40 1720,420"
+            fill="none"
+            stroke="var(--marble-vein-soft)"
+            stroke-width="95"
+          />
+          <path
+            d="M-120,860 C510,640 990,980 1700,660"
+            fill="none"
+            stroke="var(--marble-vein-soft)"
+            stroke-width="110"
+          />
+        </g>
+
+        <!-- Veines de marbre ciselées (Haut-Gauche vers Bas-Droite) -->
+        <g filter="url(#marble-organic-warp)">
+          <!-- Veine maîtresse 1 -->
+          <path
+            d="M-120,90 C260,210 540,140 860,410 C1180,680 1390,610 1740,860"
+            fill="none"
+            stroke="url(#vein-grad-main)"
+            stroke-width="2.2"
+          />
+          <path
+            d="M-90,115 C280,225 530,175 845,430 C1150,695 1410,635 1720,895"
+            fill="none"
+            stroke="url(#vein-grad-gold)"
+            stroke-width="0.9"
+          />
+          <!-- Ramifications secondaires fines -->
+          <path
+            d="M340,195 C490,290 610,275 770,360"
+            fill="none"
+            stroke="var(--marble-vein-primary)"
+            stroke-width="0.8"
+          />
+          <path
+            d="M845,425 C960,540 1120,515 1295,620"
+            fill="none"
+            stroke="var(--marble-vein-gold)"
+            stroke-width="0.75"
+          />
+
+          <!-- Veine maîtresse 2 (Flanc Droit vers Centre-Bas) -->
+          <path
+            d="M1680,140 C1310,290 1090,480 740,680 C430,855 210,980 -140,1110"
+            fill="none"
+            stroke="url(#vein-grad-gold)"
+            stroke-width="1.8"
+          />
+          <path
+            d="M1660,165 C1290,315 1110,505 760,700 C450,875 190,1010 -120,1140"
+            fill="none"
+            stroke="url(#vein-grad-main)"
+            stroke-width="0.75"
+          />
+
+          <!-- Veine architecturale subtile 3 -->
+          <path
+            d="M180,-80 C380,190 420,460 690,710 C920,920 1240,1050 1580,1240"
+            fill="none"
+            stroke="url(#vein-grad-main)"
+            stroke-width="1.3"
+          />
+        </g>
+      </svg>
+    </div>
+
+    <!-- ==========================================================================
+         1. CURSEUR MAGNÉTIQUE PERSONNALISÉ
+         ========================================================================== -->
+    <div
+      id="cursor-dot"
+      class="fixed top-0 left-0 w-2 h-2 rounded-full pointer-events-none z-[100] -translate-x-1/2 -translate-y-1/2 hidden md:block transition-transform duration-75"
+      style="background-color: var(--accent)"
+    ></div>
+    <div
+      id="cursor-ring"
+      class="fixed top-0 left-0 w-10 h-10 rounded-full pointer-events-none z-[99] -translate-x-1/2 -translate-y-1/2 hidden md:flex items-center justify-center transition-[width,height,background-color,border-color] duration-300 ease-out"
+      style="border: 1px solid var(--border-hover)"
     >
-      <i class="header-toggle d-xl-none bi bi-list"></i>
+      <span
+        id="cursor-label"
+        class="text-[9px] font-mono tracking-widest uppercase opacity-0 scale-75 transition-all duration-200"
+        style="color: var(--text-main)"
+      ></span>
+    </div>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li>
-            <a href="#hero" class="active"
-              ><i class="bi bi-house navicon"></i><span>Accueil</span></a
+    <!-- ==========================================================================
+         2. BARRE DE PROGRESSION FINE & INDICATEUR DE CHAPITRE MINIMALISTE
+         ========================================================================== -->
+    <div
+      class="fixed top-0 left-0 w-full h-[2px] z-[80]"
+      style="background-color: var(--border-subtle)"
+    >
+      <div
+        id="scroll-progress-bar"
+        class="h-full w-0 transition-all duration-75"
+        style="background-color: var(--accent)"
+      ></div>
+    </div>
+
+    <!-- Indicateur de chapitre minimaliste en bas à gauche -->
+    <div
+      class="fixed bottom-6 left-6 z-40 hidden lg:flex items-center gap-3 px-4 py-2 rounded-full bg-studio-glass border border-studio backdrop-blur-xl"
+    >
+      <span
+        class="w-1.5 h-1.5 rounded-full"
+        style="background-color: var(--accent)"
+      ></span>
+      <span
+        id="editorial-section-indicator"
+        class="font-mono text-[11px] tracking-widest uppercase text-studio-muted"
+      >
+        01 — Introduction
+      </span>
+    </div>
+
+    <!-- ==========================================================================
+         3. NAVIGATION ÉPURÉE & BASCULE DE THÈME
+         ========================================================================== -->
+    <header class="fixed top-5 inset-x-0 z-50 mx-auto max-w-6xl px-4 sm:px-6">
+      <nav
+        class="flex items-center justify-between px-5 py-3.5 rounded-full bg-studio-glass border border-studio backdrop-blur-xl shadow-sm"
+      >
+        <!-- Marque Pierre Elias NODON -->
+        <a
+          href="#hero"
+          data-cursor="Haut"
+          class="flex items-center gap-3 group"
+        >
+          <span
+            class="w-2 h-2 rounded-full transition-transform duration-300 group-hover:scale-150"
+            style="background-color: var(--accent)"
+          ></span>
+          <span
+            class="font-display font-bold text-sm tracking-[0.16em] uppercase text-studio-main"
+            >Pierre Elias NODON</span
+          >
+        </a>
+
+        <!-- Liens de navigation -->
+        <div
+          class="hidden md:flex items-center gap-8 text-xs font-medium text-studio-muted"
+        >
+          <a
+            href="#approche"
+            data-cursor="Lire"
+            class="hover:text-studio-main transition-colors"
+            >À propos</a
+          >
+          <a
+            href="#offres"
+            data-cursor="Parcours"
+            class="hover:text-studio-main transition-colors"
+            >Parcours</a
+          >
+          <a
+            href="#realisations"
+            data-cursor="Projets"
+            class="hover:text-studio-main transition-colors"
+            >Projets</a
+          >
+          <a
+            href="#contact"
+            data-cursor="Contact"
+            class="hover:text-studio-main transition-colors"
+            >Contact</a
+          >
+        </div>
+
+        <!-- Bascule de thème + CTA -->
+        <div class="flex items-center gap-2.5">
+          <button
+            id="theme-toggle-btn"
+            type="button"
+            data-cursor="Thème"
+            aria-label="Changer de thème"
+            class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-studio text-xs font-mono text-studio-muted hover:text-studio-main transition-all"
+          >
+            <span id="theme-icon" class="text-xs">◐</span>
+            <span id="theme-label" class="hidden sm:inline text-[11px]"
+              >Mode Clair</span
             >
-          </li>
-          <li>
-            <a href="#about"
-              ><i class="bi bi-person navicon"></i
-              ><span
-                >À<br />
-                propos</span
-              ></a
-            >
-          </li>
-          <li>
-            <a href="#resume"
-              ><i class="bi bi-file-earmark-text navicon"></i><span>CV</span></a
-            >
-          </li>
-          <li>
-            <a href="#portfolio"
-              ><i class="bi bi-images navicon"></i><span>Mes Projets</span></a
-            >
-          </li>
-          <li>
-            <a href="#contact"
-              ><i class="bi bi-envelope navicon"></i><span>Contact</span></a
-            >
-          </li>
-        </ul>
+          </button>
+
+          <a
+            href="#contact"
+            data-cursor="Contact"
+            class="px-4 sm:px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-all hover:opacity-90"
+            style="background-color: var(--text-main); color: var(--bg-main)"
+          >
+            Me contacter
+          </a>
+        </div>
       </nav>
     </header>
 
-    <main class="main">
-      <!-- Hero Section -->
-      <section id="hero" class="hero section light-background">
-        <img src="assets/img/hero-bg.jpg" alt="" />
-
-        <div class="container" data-aos="zoom-out">
-          <div class="row justify-content-center">
-            <div class="col-lg-9">
-              <h2>Elias NODON</h2>
-              <p>
-                Je suis
-                <span
-                  class="typed"
-                  data-typed-items="Étudiant, Développeur Web Full Stack, Alternant, Motard"
-                  >Développeur</span
-                ><span
-                  class="typed-cursor typed-cursor--blink"
-                  aria-hidden="true"
-                ></span>
-              </p>
-              <div class="social-links">
-                <a href="https://www.instagram.com/ndn_elias/"
-                  ><i class="bi bi-instagram"></i
-                ></a>
-                <a href="https://www.linkedin.com/in/eliasnodon/ "
-                  ><i class="bi bi-linkedin"></i
-                ></a>
-                <a href="https://github.com/ndn-elias"
-                  ><i class="bi bi-github"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Hero Section -->
-
-      <!-- About Section -->
-      <section id="about" class="about section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>A propos de moi</h2>
-          <p>
-            Je m'appelle Elias, j'ai 21 ans, je vis à Toulouse et j'ai obtenu
-            mon BTS SIO au lycée Ozenne à Toulouse et mon BUT MMI à l'IUT Paul Sabatier. <br />
-            Dès mon plus jeune âge, j’ai commencé à m'intéresser au domaine de
-            l'IT. Au cours de mes années d'apprentissage, je me suis passionné
-            pour l’informatique, mais plus particulièrement pour le
-            développement web, ce qui explique mon choix d'intégrer une filière
-            issue du domaine.
-          </p>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row gy-4 justify-content-center">
-            <div class="col-lg-4">
-              <img src="assets/img/profile-img.jpg" class="img-fluide" alt="" />
-            </div>
-            <div class="col-lg-8 content">
-              <h2>Étudiant &amp; Développeur Web</h2>
-              <p class="fst-italic py-3">
-                Je suis actuellement étudiant en Master Expert en Développement Full Stack en alternance chez SEAC GF à Toulouse.
-              </p>
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Date de naissance :</strong>
-                      <span>11 Février 2004</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Numéro de téléphone :</strong>
-                      <span>+33 6 86 96 99 94</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Ville :</strong> <span>Toulouse, France</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Âge :</strong> <span>21</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Dernier diplôme :</strong> <span>BUT MMI</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Email :</strong>
-                      <span>elias.nodon@gmail.com</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /About Section -->
-      <!-- Skills Section -->
-      <section id="skills" class="skills section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Hard Skills</h2>
-          <p>
-            Voici les compétences que j'ai acquises durant mes différents stages
-            et années d'études.
-          </p>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row skills-content skills-animation">
-            <div class="col-lg-6">
-              <div class="progress">
-                <span class="skill"
-                  ><span>HTML/CSS</span> <i class="val">100%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="100"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-              <!-- End Skills Item -->
-
-              <div class="progress">
-                <span class="skill"
-                  ><span><Ri:a>React JS/Vue JS</Ri:a></span> <i class="val">80%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-              <!-- End Skills Item -->
-
-              <div class="progress">
-                <span class="skill"
-                  ><span>JavaScript/Node JS</span> <i class="val">80%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="80"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-              <!-- End Skills Item -->
-            </div>
-
-            <div class="col-lg-6">
-              <div class="progress">
-                <span class="skill"
-                  ><span>PHP/Java</span> <i class="val">70%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="70"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-              <!-- End Skills Item -->
-
-              <div class="progress">
-                <span class="skill"
-                  ><span>WordPress/CMS</span> <i class="val">100%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="100"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-              <!-- End Skills Item -->
-
-              <div class="progress">
-                <span class="skill"
-                  ><span>Next JS</span> <i class="val">60%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="60"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-              <!-- End Skills Item -->
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Skills Section -->
-
-      <section id="resume" class="resume section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>CV</h2>
-          <p>
-            Après avoir obtenu mon baccalauréat, mon BTS et mon BUT, j'ai décidé de
-            m'inscrire en Master Expert en Développement Full Stack. Actuellement en
-            alternance chez SEAC GF, je suis déterminé à évoluer et apprendre de nouvelles compétences.
-          </p>
-          <a href="CV Alternance.pdf" download>
-            <div class="button">
-              <div class="button-wrapper">
-                <div class="text">Télécharger mon CV</div>
-                <span class="icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                    role="img"
-                    width="2em"
-                    height="2em"
-                    preserveAspectRatio="xMidYMid meet"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
-                    ></path>
-                  </svg>
-                </span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <style>
-          /* General styling for the section */
-          .section-title {
-            text-align: center;
-            margin-top: 50px;
-          }
-
-          /* Add spacing between text and the button */
-          .section-title p {
-            margin-bottom: 30px; /* Add space below the paragraph */
-          }
-
-          /* Button styling */
-          .button {
-            --width: 220px; /* Slightly wider for better appearance */
-            --height: 55px;
-            --tooltip-height: 35px;
-            --tooltip-width: 160px;
-            --gap-between-tooltip-to-button: 18px;
-            --button-color: rgb(151, 0, 0);
-            --tooltip-color: #fff;
-
-            width: var(--width);
-            height: var(--height);
-            background: var(--button-color);
-            position: relative;
-            text-align: center;
-            border-radius: 0.45em;
-            font-family: "Arial", sans-serif;
-            transition: background 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-            margin: 0 auto; /* Center horizontally */
-          }
-
-          .button-wrapper,
-          .text,
-          .icon {
-            overflow: hidden;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            color: #fff;
-          }
-
-          .text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: 0;
-            transition: top 0.5s ease;
-          }
-
-          .icon {
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            top: 100%;
-            transition: top 0.5s ease;
-          }
-
-          .icon svg {
-            width: 24px;
-            height: 24px;
-          }
-
-          .button:hover {
-            background: #0f7c02;
-            transform: translateY(-2px);
-          }
-
-          .button:hover .text {
-            top: -100%;
-          }
-
-          .button:hover .icon {
-            top: 0;
-          }
-
-          /* Tooltip styling */
-          .button::before {
-            position: absolute;
-            content: attr(data-tooltip);
-            width: var(--tooltip-width);
-            height: var(--tooltip-height);
-            background-color: var(--tooltip-color);
-            font-size: 0.9rem;
-            color: #111;
-            border-radius: 0.25em;
-            line-height: var(--tooltip-height);
-            bottom: calc(
-              var(--height) + var(--gap-between-tooltip-to-button) + 10px
-            );
-            left: calc(50% - var(--tooltip-width) / 2);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease, visibility 0.5s ease,
-              transform 0.5s ease;
-          }
-
-          .button::after {
-            position: absolute;
-            content: "";
-            width: 0;
-            height: 0;
-            border: 10px solid transparent;
-            border-top-color: var(--tooltip-color);
-            left: calc(50% - 10px);
-            bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.5s ease, visibility 0.5s ease,
-              transform 0.5s ease;
-          }
-
-          /* Responsive adjustments */
-          @media (max-width: 768px) {
-            .button {
-              --width: 180px; /* Adjust width for smaller screens */
-              --height: 50px;
-            }
-
-            .button::before {
-              font-size: 0.8rem; /* Slightly smaller tooltip text */
-              width: 140px; /* Adjust tooltip width */
-            }
-          }
-        </style>
-
-        <!-- End Section Title -->
-
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <h3 class="resume-title">Résumé</h3>
-
-              <div class="resume-item pb-0">
-                <h4>Elias NODON</h4>
-                <p><em>Étudiant en Master Expert Développement Full Stack</em></p>
-                <ul>
-                  <li>Toulouse, FR</li>
-                  <li>+33 6 86 96 99 94</li>
-                  <li>elias.nodon@gmail.com</li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-
-              <h3 class="resume-title">Parcours Scolaire</h3>
-              <div class="resume-item">
-                <h4>Master Expert Full Stack</h4>
-                <h5>2025 - 2027</h5>
-                <p><em>Ynov Campus, site de Toulouse</em></p>
-                <p>
-                  Intégration du M1 Expert en développement Full Stack à Ynov
-                  Campus.
-                </p>
-              </div>
-              <!-- End Resume Item -->
-              <div class="resume-item">
-                <h4>BUT Métiers du Multimédia &amp; de l'Internet</h4>
-                <h5>2024 - 2025</h5>
-                <p><em>IUT Paul Sabatier, annexe de Castres</em></p>
-                <p>
-                  Obtention de la 3ᵉ année d'études supérieures dans le
-                  secteur du développement web, à l'IUT de Castres.
-                </p>
-              </div>
-              <!-- Edn Resume Item -->
-
-              <div class="resume-item">
-                <h4>
-                  BTS Services Informatiques aux Organisations <br />(Option
-                  SLAM)
-                </h4>
-                <h5>2022 - 2024</h5>
-                <p><em>Lycée Ozenne, Toulouse</em></p>
-                <p>
-                  Obtention du BTS SIO, option SLAM avec 15.06 de moyenne au
-                  lycée Ozenne à Toulouse.
-                </p>
-              </div>
-              <!-- Edn Resume Item -->
-            </div>
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-              <h3 class="resume-title">Expériences profesionnelles</h3>
-              
-              <div class="resume-item">
-                <h4>Alternant Developpement Web Full Stack</h4>
-                <h5>Septembre 2025 - Septembre 2027</h5>
-                <p><em>SEAC GF, Boulevard de Suisse à Toulouse</em></p>
-                <ul>
-                  <li>Alternant dans le cadre de mon master.</li>
-                  <li>
-                    Entreprise spécialisée dans l'industrie du BTP.
-                  </li>
-                  <li>Chargé du développement d'applications web en Vue.Js et Node.Js.</li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-              <div class="resume-item">
-                <h4>Stagiaire</h4>
-                <h5>Février 2025 - Juin 2025</h5>
-                <p><em>LCDE - Annemasse</em></p>
-                <ul>
-                  <li>Stagiaire en développement Web.</li>
-                  <li>Maintenance et refonte d'une plateforme WordPress.</li>
-                  <li>Tâches autour du domaine de l'audio-visuel.</li>
-                </ul>
-              </div>
-
-              <div class="resume-item">
-                <h4>Vendeur</h4>
-                <h5>Août 2024 - Septembre 2024</h5>
-                <p><em>Wizzle, Toulouse Fenouillet</em></p>
-                <ul>
-                  <li>Vendeur en téléphonie et accessoires.</li>
-                  <li>Assistant réparateur.</li>
-                  <li>Chargé de stand.</li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- /Resume Section -->
-
-      <!-- Portfolio Section -->
-      <section id="portfolio" class="portfolio section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Mes projets</h2>
-          <p>
-            Durant mes études ainsi que mes stages, j'ai du effectuer différents
-            projets.
-          </p>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container">
-          <div
-            class="isotope-layout"
-            data-default-filter="*"
-            data-layout="masonry"
-            data-sort="original-order"
+    <!-- ==========================================================================
+         4. SECTION HERO : PARALLAXE MULTI-AXES & FENÊTRE MACOS EXPANSIVE AU SCROLL
+         ========================================================================== -->
+    <section
+      id="hero"
+      data-section="01 — Introduction"
+      class="relative min-h-[128vh] pt-36 sm:pt-44 pb-24 flex flex-col justify-between"
+    >
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        <!-- Sur-titre -->
+        <div
+          class="flex items-center justify-between pb-8 border-b border-studio"
+          data-parallax="-0.08"
+        >
+          <span
+            class="font-mono text-xs tracking-widest uppercase text-studio-muted"
           >
-            <ul
-              class="portfolio-filters isotope-filters"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <li data-filter="*" class="filter-active">All</li>
-            </ul>
-            <!-- End Portfolio Filters -->
+            Pierre Elias NODON — Développeur Full-Stack
+          </span>
+          <span
+            class="hidden sm:inline-flex items-center gap-2 font-mono text-xs text-studio-accent"
+          >
+            <span
+              class="w-1.5 h-1.5 rounded-full animate-pulse"
+              style="background-color: var(--accent)"
+            ></span>
+            Alternant SEAC GF & Master Ynov Campus
+          </span>
+        </div>
 
+        <!-- Titre Principal avec Parallaxe Multi-Axes & Photo de Profil -->
+        <div class="mt-12 sm:mt-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div class="max-w-3xl space-y-2">
+            <h1
+              id="hero-title-1"
+              class="font-display font-bold text-4xl sm:text-6xl lg:text-[4.4rem] tracking-tight leading-[1.04] text-studio-main will-change-transform"
+            >
+              Pierre Elias NODON
+            </h1>
+            <p
+              id="hero-title-2"
+              class="font-serif italic font-normal text-4xl sm:text-6xl lg:text-[4.8rem] leading-[1.04] text-studio-accent will-change-transform"
+            >
+              Développeur Full Stack.
+            </p>
+          </div>
+
+          <!-- Photo Portrait / Squircle Éditorial -->
+          <div class="shrink-0 relative group self-start md:self-end pb-1" data-parallax="-0.04">
+            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl p-1 bg-studio-surface border-2 border-studio shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-studio-accent">
+              <img
+                src="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg"
+                alt="Pierre Elias NODON"
+                class="w-full h-full object-cover object-top rounded-[20px] filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                loading="eager"
+              />
+            </div>
+            <!-- Pastille de statut "Disponible" -->
+            <span
+              class="absolute -bottom-1 -right-1 flex h-4 w-4"
+              title="Disponible pour projets & opportunités"
+            >
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-studio-surface"></span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Accroche orientée clients & boutons d'action -->
+        <div
+          class="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-end justify-between gap-8"
+          data-parallax="0.06"
+        >
+          <p
+            class="max-w-xl text-studio-muted text-base sm:text-lg font-light leading-relaxed"
+          >
+            Étudiant en Master Expert Full Stack à Toulouse et alternant chez SEAC GF. Passionné d'informatique, je conçois des applications web et mobiles modernes, réactives et performantes.
+          </p>
+          <div class="flex items-center gap-4 shrink-0">
+            <a
+              href="#realisations"
+              data-cursor="Projets"
+              class="px-6 py-3.5 rounded-full text-xs sm:text-sm font-medium transition-transform hover:scale-[1.02]"
+              style="background-color: var(--accent); color: #0c0c0e"
+            >
+              Découvrir mes projets
+            </a>
+            <a
+              href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
+              target="_blank"
+              data-cursor="CV"
+              class="px-6 py-3.5 rounded-full border border-studio text-xs sm:text-sm font-medium text-studio-main hover:border-studio-accent transition-colors"
+            >
+              Télécharger mon CV
+            </a>
+          </div>
+        </div>
+
+        <!-- Fenêtre Interactive macOS qui s'élargit au Scroll (Largeur & Scale progressifs) -->
+        <div class="mt-16 sm:mt-20 flex justify-center">
+          <div
+            id="hero-expand-frame"
+            class="relative w-full md:w-[76%] rounded-3xl bg-studio-surface border border-studio overflow-hidden transition-shadow duration-500 will-change-transform"
+            style="box-shadow: var(--card-shadow); transform: scale(0.95)"
+          >
+            <!-- Barre macOS + 3 Vues Interactives Cliquables -->
             <div
-              class="row gy-4 isotope-container"
-              data-aos="fade-up"
-              data-aos-delay="200"
+              class="flex flex-wrap items-center justify-between gap-4 px-6 py-4 border-b border-studio bg-studio-elevated"
             >
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/meetinnight.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Meet In Night</h4>
-                  <p>
-                    Création d'un site web statique en collaboration avec le BTS
-                    SAM, ayant crée une entreprise fictive nommée "Meet In
-                    Night". Ce site est une application web de rencontre pour
-                    sortir la nuit entre jeunes.
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1T5kNYcLDJEXh5aEVoLoFH2OwJ5WNrGnC"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/gsb_logo-modified.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>GSB</h4>
-                  <p>
-                    Application web pour un laboratoire pharmaceutique fictif
-                    nommé GSB qui doit permettre d'enregistrer tout frais
-                    engagé, aussi bien pour l'activité directe (déplacement,
-                    restauration et hébergement) que pour les activités annexes
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1QUIVK2PNrD1yHArnZXfYQn8ZI5OsCOtv"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/logo-glpi.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>GLPI</h4>
-                  <p>
-                    Utilisation de l'outil de ticketing GLPI, en ajoutant du
-                    matériel informatique avec une nomenclature spécifique, puis
-                    demande et résolution de tickets d'incidents
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1BoVqGQpBJbzi4x1NAzC_OX1xmcZbNxmp"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/logo.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>VALRES JAVA</h4>
-                  <p>
-                    Cette application programmée en JAVA vise à automatiser la
-                    facturation des réservations de salles à la Maison des
-                    Ligues, actuellement gérée manuellement via un classeur
-                    Excel.
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1irYwaajm7Uc5rADfU1gwDmOJnDu7Y4-D"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/logo.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>VALRES WEBSITE</h4>
-                  <p>
-                    Après avoir effectué une application de bureau en JAVA pour
-                    la Maison des Ligues afin d'automatiser la facturation, le
-                    but de ce projet, est de moderniser cette automatisation via
-                    une application web dynamique.
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1JYoAv5fUD-0pY-IILKqEGs7SnMUL8BZI"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/logocrosl.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>CROSL</h4>
-                  <p>
-                    Cette application programmée en KOTLIN est conçue pour
-                    afficher des domaines et les formations associées.
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1sAcEVaDTwzN0N7tiZC3AQ11vIRkxyg20"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/image.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>1er stage du BTS</h4>
-                  <p>
-                    Lors de mon stage de première année, j'ai dû effectuer pour
-                    une entreprise nommée WineSpace spécialisée dans le monde
-                    vinicole, un algorithme de webscrapping permettant de
-                    récupérer de la data issue du monde vinicole.
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1EoMZLqSD2HFWKcIXOHivd-BZ9r-oRfSz"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/image (1).png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>2ème stage du BTS</h4>
-                  <p>
-                    Lors de mon stage de seconde année, j'ai dû effectuer la
-                    refonte du site Internet pour une entreprise nommée
-                    ADDIMETAL spécialisée dans l'industrie de la fabrication
-                    additive.
-                  </p>
-                  <a
-                    href="https://drive.google.com/drive/folders/1qnnrccPg-oGzXsuNShq75X653Z9w0c89"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-                <!--bi bi-zoom-in-->
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/AppliProfileSinger.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Application Profile Kotlin</h4>
-                  <p>
-                    Application mobile permettant d'afficher des films via
-                    TMDBAPI en Kotlin.
-                  </p>
-                  <a
-                    href="https://github.com/ndn-elias/MonProfile"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-                <!--bi bi-zoom-in-->
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-stone-500/40"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-stone-500/40"></span>
+                <span
+                  class="w-2.5 h-2.5 rounded-full"
+                  style="background-color: var(--accent)"
+                ></span>
+                <span
+                  class="ml-2 font-mono text-[11px] text-studio-muted hidden sm:inline"
+                  >pierre-elias-nodon.dev — stack technique & aperçu</span
+                >
               </div>
 
-              <!-- End Portfolio Item -->
+              <!-- 3 Vues cliquables -->
               <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
+                class="flex flex-wrap items-center gap-1 p-1 rounded-full bg-studio-main border border-studio"
               >
-                <img
-                  src="assets/img/img-projets/EHX.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Maquette ZIAK</h4>
-                  <p>
-                    Maquette de promotion du nouvel album de ZIAK dans le cadre
-                    d'un projet scolaire.
-                  </p>
-                  <a
-                    href="https://www.figma.com/design/2Tx30aanxCZNk54Sr8akyu/SAE-502?node-id=0-1&t=Hlorttqusz3KV77n-1"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-                <!--bi bi-zoom-in-->
-              </div>
-              <!-- End Portfolio Item -->
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/vroom.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Maquette VROOM TV</h4>
-                  <p>Projet en collaboration avec le BUT TC.</p>
-                  <a
-                    href="https://www.figma.com/design/N1pZFMIRXtAcMHWGsOp57c/VROOM-TV?node-id=0-1&t=Hlorttqusz3KV77n-1"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-                <!--bi bi-zoom-in-->
-              </div>
-              <!-- End Portfolio Item -->
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/img-projets/memotrip.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Memotrip</h4>
-                  <p>
-                    Application mobile permettant de faire de la gestion voyages
-                    codée en React Native.
-                  </p>
-                  <a
-                    href="https://github.com/mmicastres/2024-25-sae501-lucas_clement_elias_theo/tree/ReactNative-Expo"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-                <!--bi bi-zoom-in-->
+                <button
+                  type="button"
+                  onclick="switchPreviewTab(0)"
+                  data-tab="0"
+                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium transition-all"
+                  style="background-color: var(--accent); color: #0c0c0e"
+                >
+                  01. Front-End & Vue/React
+                </button>
+                <button
+                  type="button"
+                  onclick="switchPreviewTab(1)"
+                  data-tab="1"
+                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all"
+                >
+                  02. Back-End & Systèmes
+                </button>
+                <button
+                  type="button"
+                  onclick="switchPreviewTab(2)"
+                  data-tab="2"
+                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all"
+                >
+                  03. Mobile & N8N
+                </button>
               </div>
             </div>
-            <!-- End Portfolio Container -->
+
+            <!-- Contenu Visuel Interactif -->
+            <div
+              class="relative h-[340px] sm:h-[420px] flex items-center justify-center p-6 sm:p-12 overflow-hidden"
+            >
+              <canvas
+                id="studio-geometry-canvas"
+                class="absolute inset-0 w-full h-full pointer-events-none opacity-85"
+              ></canvas>
+
+              <div
+                class="relative z-10 max-w-xl text-center space-y-4 pointer-events-none"
+              >
+                <span
+                  id="preview-kicker"
+                  class="font-mono text-[11px] tracking-[0.2em] uppercase text-studio-accent"
+                >
+                  01. FRONT-END & VUE / REACT
+                </span>
+                <h2
+                  id="preview-heading"
+                  class="font-serif italic text-3xl sm:text-5xl text-studio-main"
+                >
+                  Des interfaces immersives, dynamiques et réactives.
+                </h2>
+                <p
+                  id="preview-desc"
+                  class="text-sm sm:text-base text-studio-muted font-light max-w-md mx-auto"
+                >
+                  Conception d'architectures web modernes avec Vue.js, Node.js, React et Next.js, axées sur la réactivité et la robustesse.
+                </p>
+              </div>
+
+              <!-- Pied de fenêtre -->
+              <div
+                class="absolute bottom-5 inset-x-8 flex items-center justify-between text-[11px] font-mono text-studio-muted border-t border-studio pt-3"
+              >
+                <span id="preview-metric-left"
+                  >Vue.js • React • Next.js • Node.js</span
+                >
+                <span id="preview-metric-right">Full-Stack & Mobile</span>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-      <!-- /Portfolio Section -->
+      </div>
+    </section>
 
-      <!-- Testimonials Section -->
-      <section id="testimonials" class="testimonials section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Avis</h2>
-          <p>
-            Étant étudiant, le seul retour que je possède concernant mes
-            compétences, est un avis motivé d'une des mes professeurs de BTS,
-            pour continuer mes études.
+    <!-- ==========================================================================
+         5. BANDEAU ÉDITORIAL DISCRET RÉACTIF AU SCROLL
+         ========================================================================== -->
+    <section
+      class="py-6 border-y border-studio overflow-hidden select-none bg-studio-surface"
+    >
+      <div
+        id="marquee-track"
+        class="flex whitespace-nowrap items-center gap-12 will-change-transform"
+      >
+        <div class="flex items-center gap-12 shrink-0">
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >Vue.js & Node.js</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >React & Next.js</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >PHP, Python & Java</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >PostgreSQL, MySQL & MongoDB</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >React Native & Expo</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >Kotlin</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >GitLab CI/CD & Git</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >N8N</span
+          >
+          <span class="text-studio-accent">•</span>
+        </div>
+        <div class="flex items-center gap-12 shrink-0" aria-hidden="true">
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >Vue.js & Node.js</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >React & Next.js</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >PHP, Python & Java</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >PostgreSQL, MySQL & MongoDB</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >React Native & Expo</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >Kotlin</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span
+            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            >GitLab CI/CD & Git</span
+          >
+          <span class="text-studio-accent">•</span>
+          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+            >N8N</span
+          >
+          <span class="text-studio-accent">•</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. SECTION APPROCHE / MANIFESTE CINÉTIQUE MOT À MOT + 3 INDICATEURS CLÉS
+         ========================================================================== -->
+    <section
+      id="approche"
+      data-section="02 — À propos"
+      class="py-28 sm:py-40 max-w-5xl mx-auto px-4 sm:px-6"
+    >
+      <div class="mb-10">
+        <span
+          class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
+          >02 — À propos de moi</span
+        >
+      </div>
+
+      <!-- Texte illuminé mot par mot en fonction du scroll -->
+      <p
+        id="kinetic-manifesto"
+        class="font-normal text-3xl sm:text-5xl lg:text-[3.35rem] leading-[1.22] tracking-tight text-studio-main"
+      >
+        Passionné par l'informatique depuis mon plus jeune âge, je conçois des solutions web modernes et durables, alliant rigueur technique Full-Stack et ergonomie soignée.
+      </p>
+
+      <!-- 3 Indicateurs Clés Sobres -->
+      <div
+        class="mt-20 pt-12 border-t border-studio grid grid-cols-1 sm:grid-cols-3 gap-10"
+      >
+        <div>
+          <div
+            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+          >
+            21 ans • Toulouse
+          </div>
+          <div class="text-base font-medium text-studio-main mt-2">
+            Étudiant & Alternant
+          </div>
+          <p class="text-sm text-studio-muted font-light mt-1">
+            En Master Expert Full Stack à Ynov Campus Toulouse et alternant au sein du groupe SEAC GF (BTP) sur Vue.js & Node.js.
           </p>
         </div>
-        <!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper init-swiper">
-            <script type="application/json" class="swiper-config">
-              {
-                "loop": true,
-                "speed": 600,
-                "autoplay": {
-                  "delay": 5000
-                },
-                "slidesPerView": "auto",
-                "pagination": {
-                  "el": ".swiper-pagination",
-                  "type": "bullets",
-                  "clickable": true
-                }
-              }
-            </script>
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="testimonial-item">
-                  <div class="row gy-4 justify-content-center">
-                    <div class="col-lg-6">
-                      <div class="testimonial-content">
-                        <p>
-                          <i class="bi bi-quote quote-icon-left"></i>
-                          <span>
-                            Elias est un étudiant qui a montré beaucoup de
-                            sérieux et d'implication il a été complimenté et
-                            félicité au conseil de classe, ses résultats sont
-                            convenables. Il possède les qualités requises pour
-                            entreprendre une formation en L3.</span
-                          >
-                          <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                        <h3>Christine BALARD</h3>
-                        <h4>Professeur au lycée Ozenne</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End testimonial item -->
-            </div>
-            <div class="swiper-pagination"></div>
+        <div>
+          <div
+            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+          >
+            BTS & BUT MMI
           </div>
-        </div>
-      </section>
-      <!-- /Testimonials Section -->
-
-      <!-- Contact Section -->
-      <section id="contact" class="contact section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contactez-moi</h2>
-          <p>
-            N'hésitez pas à me contacter pour plus d'informations ou pour toute
-            demande.
+          <div class="text-base font-medium text-studio-main mt-2">
+            Diplômes & Parcours
+          </div>
+          <p class="text-sm text-studio-muted font-light mt-1">
+            BTS SIO option SLAM au lycée Ozenne (15.06 de moyenne) et 3ᵉ année BUT MMI à l'IUT Paul Sabatier de Castres.
           </p>
         </div>
-        <!-- End Section Title -->
+        <div>
+          <div
+            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+          >
+            Stack & Outils
+          </div>
+          <div class="text-base font-medium text-studio-main mt-2">
+            Technologies Maîtrisées
+          </div>
+          <p class="text-sm text-studio-muted font-light mt-1">
+            Vue.js, Node.js, React, Next.js, PHP, Python, Java, PostgreSQL, MySQL, MongoDB, NoSQL, React Native, Expo, Kotlin, GitLab CI/CD, Git & N8N.
+          </p>
+        </div>
+      </div>
 
-        <div class="container" data-aos="fade" data-aos-delay="100">
-          <div class="row gy-4">
-            <div class="col-lg-4">
-              <div
-                class="info-item d-flex"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Adresse</h3>
-                  <p>Toulouse, France</p>
+      <!-- Avis motivé & Recommandation académique -->
+      <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-studio-surface border border-studio flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <p class="font-serif italic text-lg sm:text-xl text-studio-main">
+            « Pierre-Elias est un étudiant qui a montré beaucoup de sérieux et d'implication, félicité au conseil de classe. Il possède les qualités requises pour réussir ses études et projets professionnels. »
+          </p>
+          <p class="font-mono text-xs text-studio-muted">
+            Christine BALARD • Professeur au lycée Ozenne (Toulouse)
+          </p>
+        </div>
+        <div class="shrink-0 flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+          <span class="font-mono text-xs text-studio-accent">Avis académique</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. SECTION OFFRES EN CARTES EMPILÉES AU SCROLL (STICKY STACKING CARDS)
+         ========================================================================== -->
+    <section
+      id="offres"
+      data-section="03 — Offres"
+      class="py-24 sm:py-36 max-w-5xl mx-auto px-4 sm:px-6"
+    >
+      <div
+        class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-24 gap-6"
+      >
+        <div>
+          <span
+            class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
+            >03 — Parcours & Expériences</span
+          >
+          <h2
+            class="font-display font-bold text-3xl sm:text-5xl tracking-tight text-studio-main mt-3"
+          >
+            Expériences &
+            <span class="font-serif italic font-normal text-studio-accent"
+              >Formation</span
+            >
+          </h2>
+        </div>
+        <p class="text-sm text-studio-muted max-w-xs font-light">
+          Mon parcours académique, mes missions en entreprise et l'ensemble de mes compétences techniques clés.
+        </p>
+      </div>
+
+      <!-- Pile de 4 cartes Sticky -->
+      <div class="space-y-12 sm:space-y-16 pb-8">
+        <!-- OFFRE 01 : SEAC GF -->
+        <div class="sticky-card-wrapper top-24 sm:top-28">
+          <div
+            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            style="box-shadow: var(--card-shadow)"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+            >
+              <div class="space-y-4 max-w-xl">
+                <div
+                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                >
+                  <span>01</span>
+                  <span>—</span>
+                  <span>Septembre 2025 - Septembre 2027 • Toulouse</span>
                 </div>
+                <h3
+                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                >
+                  01. Alternant Développeur Full Stack — SEAC GF
+                </h3>
+                <p class="text-studio-muted text-sm sm:text-base font-light">
+                  Alternance au sein du groupe SEAC GF (spécialisé dans l'industrie du BTP, Boulevard de Suisse à Toulouse) dans le cadre de mon Master Expert. Chargé du développement d'applications web d'entreprise et d'outils métiers performants.
+                </p>
+                <ul
+                  class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
+                >
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> Développement d'applications web en Vue.js et Node.js
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> Digitalisation et automatisation de flux métiers BTP
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> Architecture logicielle, API et sécurité des données
+                  </li>
+                </ul>
               </div>
-              <!-- End Info Item -->
 
               <div
-                class="info-item d-flex"
-                data-aos="fade-up"
-                data-aos-delay="300"
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
               >
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Numéro de téléphone</h3>
-                  <p>+33 6 86 96 99 94</p>
+                <div class="md:text-right">
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    >Statut actuel</span
+                  >
+                  <span
+                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    >Alternance (2 ans)</span
+                  >
                 </div>
+                <a
+                  href="#contact"
+                  data-cursor="Contact"
+                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  style="background-color: var(--accent); color: #0c0c0e"
+                >
+                  Me contacter pour un échange →
+                </a>
               </div>
-              <!-- End Info Item -->
-
-              <div
-                class="info-item d-flex"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p>elias.nodon@gmail.com</p>
-                </div>
-              </div>
-              <!-- End Info Item -->
             </div>
-
-            <div class="col-lg-8">
-              <form
-                id="contact-form"
-                action="https://formspree.io/f/xdkaqwea"
-                method="POST"
-                class="php-email-form"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <div class="row gy-4">
-                  <div class="col-md-6">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      placeholder="Nom & Prénom"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-md-6">
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      placeholder="Email"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="subject"
-                      placeholder="Objet"
-                      required
-                    />
-                  </div>
-
-                  <div class="col-md-12">
-                    <textarea
-                      class="form-control"
-                      name="message"
-                      rows="6"
-                      placeholder="Corps de la demande."
-                      required
-                    ></textarea>
-                  </div>
-                  <div class="col-md-12 text-center">
-                  <div class="col-md-12 text-center">
-                    <div id="loading" style="display: none">
-                      Envoi en cours...
-                    </div>
-                    <div id="error-message" style="color: red; display: none">
-                      Une erreur est survenue. Réessayez.
-                    </div>
-                    <div id="sent-message" style="color: green; display: none">
-                      Ton message a bien été envoyé, merci à toi !
-                    </div>
-                    <button type="submit">Envoyer !</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- End Contact Form -->
           </div>
         </div>
-      </section>
-      <!-- /Contact Section -->
 
-      <script>
-        document
-          .getElementById("contact-form")
-          .addEventListener("submit", function (event) {
-            event.preventDefault(); // Empêche la redirection
+        <!-- OFFRE 02 : LCDE & Expériences -->
+        <div class="sticky-card-wrapper top-28 sm:top-36">
+          <div
+            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            style="box-shadow: var(--card-shadow)"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+            >
+              <div class="space-y-4 max-w-xl">
+                <div
+                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                >
+                  <span>02</span>
+                  <span>—</span>
+                  <span>Février 2025 - Juin 2025 • Annemasse & Toulouse</span>
+                </div>
+                <h3
+                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                >
+                  02. Stagiaire Développeur Web & CMS — LCDE
+                </h3>
+                <p class="text-studio-muted text-sm sm:text-base font-light">
+                  Stage professionnel axé sur la maintenance et la refonte intégrale d'un écosystème WordPress et la création audiovisuelle, consolidé par une expérience de vendeur chez Wizzle (Fenouillet).
+                </p>
+                <ul
+                  class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
+                >
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> Refonte et maintenance avancée WordPress & CMS
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> Tâches techniques dans le domaine de l'audiovisuel
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> Expérience vendeur et relation client (Wizzle)
+                  </li>
+                </ul>
+              </div>
 
-            var form = this;
-            var formData = new FormData(form);
-
-            // Affiche le chargement
-            document.getElementById("loading").style.display = "block";
-            document.getElementById("error-message").style.display = "none";
-            document.getElementById("sent-message").style.display = "none";
-
-            fetch(form.action, {
-              method: form.method,
-              body: formData,
-              headers: {
-                Accept: "application/json",
-              },
-            })
-              .then((response) => {
-                document.getElementById("loading").style.display = "none";
-                if (response.ok) {
-                  document.getElementById("sent-message").style.display =
-                    "block";
-                  form.reset(); // Réinitialise le formulaire après envoi
-                } else {
-                  document.getElementById("error-message").style.display =
-                    "block";
-                }
-              })
-              .catch((error) => {
-                document.getElementById("loading").style.display = "none";
-                document.getElementById("error-message").style.display =
-                  "block";
-              });
-          });
-      </script>
-    </main>
-
-    <footer id="footer" class="footer position-relative light-background">
-      <div class="container">
-        <h3 class="sitename">Elias NODON</h3>
-        <p>Merci de votre attention !</p>
-        <div class="social-links d-flex justify-content-center">
-          <a href="https://www.instagram.com/ndn_elias/"
-            ><i class="bi bi-instagram"></i
-          ></a>
-          <a href="https://www.linkedin.com/in/eliasnodon/ "
-            ><i class="bi bi-linkedin"></i
-          ></a>
-          <a href="https://github.com/ndn-elias"
-            ><i class="bi bi-github"></i
-          ></a>
-        </div>
-        <div class="container">
-          <div class="copyright">
-            <span>Copyright</span>
-            <br />
-            <strong class="px-1 sitename"> Elias NODON</strong>
-            <br />
-            <span>Tous droits réservés.</span>
+              <div
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+              >
+                <div class="md:text-right">
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    >Type de mission</span
+                  >
+                  <span
+                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    >Stage & CMS</span
+                  >
+                </div>
+                <a
+                  href="#contact"
+                  data-cursor="Contact"
+                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  style="background-color: var(--accent); color: #0c0c0e"
+                >
+                  Discuter d'une opportunité →
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="credits"></div>
+        </div>
+
+        <!-- OFFRE 03 : Parcours Académique -->
+        <div class="sticky-card-wrapper top-32 sm:top-44">
+          <div
+            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            style="box-shadow: var(--card-shadow)"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+            >
+              <div class="space-y-4 max-w-xl">
+                <div
+                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                >
+                  <span>03</span>
+                  <span>—</span>
+                  <span>2022 - 2027 • De Bac+2 à Bac+5</span>
+                </div>
+                <h3
+                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                >
+                  03. Parcours Académique & Diplômes
+                </h3>
+                <p class="text-studio-muted text-sm sm:text-base font-light">
+                  Un cursus spécialisé dans l'ingénierie logicielle et le web, combinant théorie rigoureuse et pratique intensive en projets universitaires et entreprises.
+                </p>
+                <ul
+                  class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
+                >
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> Master Expert Full Stack (2025-2027) — Ynov Campus Toulouse
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> BUT Métiers du Multimédia & Internet (2024-2025) — IUT Castres
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-studio-accent">•</span> BTS SIO option SLAM (2022-2024) — Lycée Ozenne (15.06/20)
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+              >
+                <div class="md:text-right">
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    >Niveau d'études</span
+                  >
+                  <span
+                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    >Bac+5 en cours</span
+                  >
+                </div>
+                <a
+                  href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
+                  target="_blank"
+                  data-cursor="CV"
+                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  style="background-color: var(--accent); color: #0c0c0e"
+                >
+                  Télécharger mon CV (PDF) →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OFFRE 04 : Stack Technique -->
+        <div class="sticky-card-wrapper top-36 sm:top-52">
+          <div
+            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            style="box-shadow: var(--card-shadow)"
+          >
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+            >
+              <div class="space-y-4 max-w-xl">
+                <div
+                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                >
+                  <span>04</span>
+                  <span>—</span>
+                  <span>Technologies & Savoir-faire</span>
+                </div>
+                <h3
+                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                >
+                  04. Stack Technique & Hard Skills
+                </h3>
+                <p class="text-studio-muted text-sm sm:text-base font-light">
+                  Stack technique complète mobilisée pour concevoir des applications web et mobiles performantes, des architectures back-end scalables et des pipelines automatisés.
+                </p>
+                <div class="pt-2 space-y-2.5 text-xs sm:text-sm text-studio-main">
+                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Front-End</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Vue.js</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Next.js</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Back-End</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Node.js</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PHP</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Python</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Java</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Bases de données</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PostgreSQL</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MySQL</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MongoDB</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">NoSQL</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Mobile</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React Native</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Expo</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Kotlin</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">DevOps & Outils</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">GitLab CI/CD</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Git</span>
+                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">N8N</span>
+                  </div>
+                </div>
+                <div class="pt-2 flex items-center gap-2 text-xs text-studio-muted font-mono">
+                  <span class="text-studio-accent">✦</span> Et bien d'autres technologies, bibliothèques & outils mobilisés selon les besoins du projet.
+                </div>
+              </div>
+
+              <div
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+              >
+                <div class="md:text-right">
+                  <span
+                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    >Profil technique</span
+                  >
+                  <span
+                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    >Full-Stack</span
+                  >
+                </div>
+                <a
+                  href="#contact"
+                  data-cursor="Contact"
+                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  style="background-color: var(--accent); color: #0c0c0e"
+                >
+                  Me contacter pour échanger →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. GALERIE HORIZONTALE AU SCROLL AVEC VELOCITY SKEW
+         ========================================================================== -->
+    <section
+      id="realisations"
+      data-section="04 — Réalisations"
+      class="relative border-y border-studio bg-studio-surface"
+    >
+      <div id="horizontal-scroll-section" class="relative lg:h-[280vh]">
+        <div
+          class="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center overflow-hidden py-24 lg:py-0"
+        >
+          <!-- En-tête de la galerie -->
+          <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 w-full mb-10 flex items-end justify-between"
+          >
+            <div>
+              <span
+                class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
+                >04 — Sélection de projets</span
+              >
+              <h2
+                class="font-display font-bold text-3xl sm:text-5xl tracking-tight text-studio-main mt-2"
+              >
+                Réalisations &
+                <span class="font-serif italic font-normal text-studio-accent"
+                  >Projets Web</span
+                >
+              </h2>
+            </div>
+
+            <div class="hidden sm:flex items-center gap-4">
+              <div class="w-32 h-[2px] bg-stone-500/20 overflow-hidden">
+                <div
+                  id="gallery-progress-fill"
+                  class="h-full w-0"
+                  style="background-color: var(--accent)"
+                ></div>
+              </div>
+              <span
+                id="gallery-counter"
+                class="font-mono text-xs text-studio-muted"
+                >01 / 04</span
+              >
+            </div>
+          </div>
+
+          <!-- Piste Horizontale -->
+          <div
+            class="w-full overflow-x-auto lg:overflow-visible no-scrollbar px-4 sm:px-8 lg:px-16"
+          >
+            <div
+              id="horizontal-track"
+              class="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:w-max will-change-transform"
+            >
+              <!-- PROJET 01 : Memotrip -->
+              <article
+                onclick="openWorkModal(0)"
+                data-cursor="Détails"
+                class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
+              >
+                <div
+                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                >
+                  <img
+                    src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/memotrip.png"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/900x600/141417/D4B996?text=Memotrip'
+                    "
+                    alt="Memotrip — Application Mobile React Native"
+                    class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  />
+                </div>
+                <div class="mt-4 flex items-baseline justify-between">
+                  <div>
+                    <h3
+                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                    >
+                      Memotrip
+                    </h3>
+                    <p class="text-xs text-studio-muted mt-0.5">
+                      Application Mobile • React Native & Expo
+                    </p>
+                  </div>
+                  <span class="font-mono text-xs text-studio-muted"
+                    >01 — 2025</span
+                  >
+                </div>
+              </article>
+
+              <!-- PROJET 02 : Meet In Night -->
+              <article
+                onclick="openWorkModal(1)"
+                data-cursor="Détails"
+                class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
+              >
+                <div
+                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                >
+                  <img
+                    src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/meetinnight.png"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/900x600/141417/D4B996?text=Meet+In+Night'
+                    "
+                    alt="Meet In Night — Application Web & Événementiel"
+                    class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  />
+                </div>
+                <div class="mt-4 flex items-baseline justify-between">
+                  <div>
+                    <h3
+                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                    >
+                      Meet In Night
+                    </h3>
+                    <p class="text-xs text-studio-muted mt-0.5">
+                      Application Web • Rencontres & Sorties Nocturnes
+                    </p>
+                  </div>
+                  <span class="font-mono text-xs text-studio-muted"
+                    >02 — 2024</span
+                  >
+                </div>
+              </article>
+
+              <!-- PROJET 03 : GSB & VALRES -->
+              <article
+                onclick="openWorkModal(2)"
+                data-cursor="Détails"
+                class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
+              >
+                <div
+                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                >
+                  <img
+                    src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/gsb_logo-modified.png"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/900x600/141417/D4B996?text=GSB+%26+VALRES'
+                    "
+                    alt="GSB & VALRES — Outils Métier Java & Web"
+                    class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  />
+                </div>
+                <div class="mt-4 flex items-baseline justify-between">
+                  <div>
+                    <h3
+                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                    >
+                      GSB & VALRES
+                    </h3>
+                    <p class="text-xs text-studio-muted mt-0.5">
+                      Applications Métier • Java, Web & Facturation
+                    </p>
+                  </div>
+                  <span class="font-mono text-xs text-studio-muted"
+                    >03 — 2024</span
+                  >
+                </div>
+              </article>
+
+              <!-- PROJET 04 : Stages BTS -->
+              <article
+                onclick="openWorkModal(3)"
+                data-cursor="Détails"
+                class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
+              >
+                <div
+                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                >
+                  <img
+                    src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/image%20(1).png"
+                    onerror="
+                      this.src =
+                        'https://placehold.co/900x600/141417/D4B996?text=ADDIMETAL+%26+WineSpace'
+                    "
+                    alt="ADDIMETAL & WineSpace — Stages Professionnels BTS"
+                    class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  />
+                </div>
+                <div class="mt-4 flex items-baseline justify-between">
+                  <div>
+                    <h3
+                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                    >
+                      ADDIMETAL & WineSpace
+                    </h3>
+                    <p class="text-xs text-studio-muted mt-0.5">
+                      Stages BTS • Refonte Web 3D & Webscraping Data
+                    </p>
+                  </div>
+                  <span class="font-mono text-xs text-studio-muted"
+                    >04 — 2023 - 2024</span
+                  >
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. SECTION CONTACT & ÉCHANGE (INFORMATIONS DU DEMANDEUR & MESSAGE)
+         ========================================================================== -->
+    <section
+      id="contact"
+      data-section="05 — Contact"
+      class="py-28 sm:py-36 max-w-6xl mx-auto px-4 sm:px-6"
+    >
+      <div id="simulateur" class="sr-only"></div>
+      <div class="max-w-2xl mb-16">
+        <span
+          class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
+          >05 — Contact & Échange</span
+        >
+        <h2
+          class="font-display font-bold text-3xl sm:text-5xl tracking-tight text-studio-main mt-3"
+        >
+          Prenons contact &
+          <span class="font-serif italic font-normal text-studio-accent"
+            >échangeons.</span
+          >
+        </h2>
+        <p class="text-studio-muted text-sm sm:text-base font-light mt-3">
+          Pour une opportunité d'alternance, un poste, une collaboration technique ou une question, transmettez-moi votre message via le formulaire ci-dessous.
+        </p>
+      </div>
+
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/xdkaqwea"
+        method="POST"
+        class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch"
+      >
+        <!-- GAUCHE (7 cols) : INFORMATIONS DU DEMANDEUR & SUJET DE LA DEMANDE -->
+        <div
+          class="lg:col-span-7 rounded-3xl bg-studio-surface border border-studio p-6 sm:p-10 space-y-8 flex flex-col justify-between"
+        >
+          <div class="space-y-6">
+            <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
+              <span>01</span>
+              <span>—</span>
+              <span>Coordonnées & Contexte</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-studio-main">
+              Vos informations
+            </h3>
+
+            <!-- Champs de coordonnées -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label
+                  for="name-input"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  >Nom & Prénom *</label
+                >
+                <input
+                  id="name-input"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder="Ex : Jean Dupont"
+                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="email-input"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  >Email professionnel *</label
+                >
+                <input
+                  id="email-input"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Ex : jean.dupont@entreprise.com"
+                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="company-input"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  >Entreprise / Organisation</label
+                >
+                <input
+                  id="company-input"
+                  name="organisation"
+                  type="text"
+                  placeholder="Ex : Société, École ou Startup"
+                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="phone-input"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  >Téléphone (optionnel)</label
+                >
+                <input
+                  id="phone-input"
+                  name="phone"
+                  type="tel"
+                  placeholder="Ex : +33 6 12 34 56 78"
+                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                />
+              </div>
+            </div>
+
+            <!-- Sélection du Sujet de la démarche -->
+            <div class="pt-4 border-t border-studio">
+              <label
+                class="block font-mono text-xs uppercase tracking-widest text-studio-muted mb-3"
+              >
+                Sujet de votre démarche
+              </label>
+              <input
+                type="hidden"
+                id="contact-subject-input"
+                name="sujet"
+                value="Opportunité d'alternance / Emploi"
+              />
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button
+                  type="button"
+                  onclick="selectContactSubject('Opportunité d\'alternance / Emploi', this)"
+                  class="contact-subject-btn active text-left p-4 rounded-2xl border transition-all"
+                  style="border-color: var(--accent); background-color: var(--accent-soft)"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-sm text-studio-main">💼 Alternance / Emploi</span>
+                    <span class="subject-dot w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                  </div>
+                  <p class="font-mono text-xs text-studio-muted mt-1">Master Expert ou CDI</p>
+                </button>
+
+                <button
+                  type="button"
+                  onclick="selectContactSubject('Projet & Collaboration Tech', this)"
+                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-sm text-studio-main">🤝 Projet & Collaboration</span>
+                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                  </div>
+                  <p class="font-mono text-xs text-studio-muted mt-1">Web, mobile ou API</p>
+                </button>
+
+                <button
+                  type="button"
+                  onclick="selectContactSubject('Échange technique & Full-Stack', this)"
+                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-sm text-studio-main">💡 Échange technique</span>
+                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                  </div>
+                  <p class="font-mono text-xs text-studio-muted mt-1">Stack Vue / React / Node</p>
+                </button>
+
+                <button
+                  type="button"
+                  onclick="selectContactSubject('Autre demande / Prise de contact', this)"
+                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                >
+                  <div class="flex items-center justify-between">
+                    <span class="font-medium text-sm text-studio-main">💬 Autre démarche</span>
+                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                  </div>
+                  <p class="font-mono text-xs text-studio-muted mt-1">Question ou mise en relation</p>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-studio flex items-center justify-between text-xs text-studio-muted">
+            <span class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+              Réponse garantie sous 24h ouvrées
+            </span>
+            <span class="font-mono text-[11px] text-studio-accent">Formulaire direct</span>
+          </div>
+        </div>
+
+        <!-- DROITE (5 cols) : PRÉCISIONS & TRANSMISSION DU MESSAGE -->
+        <div
+          class="lg:col-span-5 rounded-3xl bg-studio-surface border border-studio p-6 sm:p-10 flex flex-col justify-between space-y-6"
+        >
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
+              <span>02</span>
+              <span>—</span>
+              <span>Message & Envoi</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-studio-main">
+              Votre message
+            </h3>
+
+            <!-- Aperçu dynamique du sujet sélectionné -->
+            <div class="p-3.5 rounded-2xl bg-studio-main border border-studio flex items-center justify-between">
+              <div class="text-xs">
+                <span class="text-studio-muted font-mono uppercase text-[10px] block">Sujet sélectionné</span>
+                <span id="selected-subject-preview" class="font-medium text-studio-accent">Opportunité d'alternance / Emploi</span>
+              </div>
+              <span class="font-mono text-xs text-studio-muted">01/01</span>
+            </div>
+
+            <div>
+              <label
+                for="message-input"
+                class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                >Précisions sur votre demande *</label
+              >
+              <textarea
+                id="message-input"
+                name="message"
+                rows="6"
+                required
+                placeholder="Décrivez votre projet, l'opportunité d'alternance ou posez votre question en quelques lignes..."
+                class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+              ></textarea>
+            </div>
+
+            <button
+              id="contact-submit-btn"
+              type="submit"
+              data-cursor="Envoyer"
+              class="w-full py-3.5 rounded-full text-xs font-medium tracking-wide transition-transform hover:scale-[1.01]"
+              style="background-color: var(--accent); color: #0c0c0e"
+            >
+              Envoyer mon message à Pierre Elias →
+            </button>
+
+            <!-- Message de confirmation intégré (sans alert) -->
+            <div
+              id="contact-toast"
+              class="hidden mt-4 p-4 rounded-2xl border border-studio-accent bg-studio-main text-xs text-studio-main"
+            >
+              ✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.
+            </div>
+          </div>
+
+          <!-- Coordonnées directes récapitulatives -->
+          <div class="pt-6 border-t border-studio space-y-2 text-xs text-studio-muted font-light">
+            <div class="flex items-center gap-2 text-studio-main font-medium">
+              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--accent)"></span>
+              Pierre Elias NODON
+            </div>
+            <div>Toulouse, France • elias.nodon@gmail.com • +33 6 86 96 99 94</div>
+            <div class="flex items-center gap-4 font-mono text-[11px] pt-1">
+              <a href="https://www.linkedin.com/in/eliasnodon/" target="_blank" data-cursor="LinkedIn" class="hover:text-studio-main transition-colors">LinkedIn ↗</a>
+              <a href="https://github.com/ndn-elias" target="_blank" data-cursor="GitHub" class="hover:text-studio-main transition-colors">GitHub ↗</a>
+              <a href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf" target="_blank" data-cursor="CV" class="hover:text-studio-main transition-colors">CV (PDF) ↗</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ==========================================================================
+         10. FOOTER AVEC LA GRANDE SIGNATURE MONUMENTALE
+         ========================================================================== -->
+    <footer class="border-t border-studio pt-16 pb-6 overflow-hidden">
+      <div
+        class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-12"
+      >
+        <div>
+          <div class="flex items-center gap-2.5">
+            <span
+              class="w-2 h-2 rounded-full"
+              style="background-color: var(--accent)"
+            ></span>
+            <span
+              class="font-display font-bold text-sm tracking-[0.18em] uppercase text-studio-main"
+              >Pierre Elias NODON</span
+            >
+          </div>
+          <p class="text-xs text-studio-muted mt-1.5 font-light">
+            Pierre Elias NODON — Développeur Web Full Stack • Étudiant Master Expert à Ynov & Alternant SEAC GF • Toulouse, France
+          </p>
+        </div>
+        <div
+          class="flex flex-wrap items-center gap-6 text-xs font-mono text-studio-muted"
+        >
+          <a
+            href="https://www.linkedin.com/in/eliasnodon/"
+            target="_blank"
+            data-cursor="LinkedIn"
+            class="hover:text-studio-main transition-colors"
+            >LinkedIn</a
+          >
+          <a
+            href="https://github.com/ndn-elias"
+            target="_blank"
+            data-cursor="GitHub"
+            class="hover:text-studio-main transition-colors"
+            >GitHub</a
+          >
+          <a
+            href="https://www.instagram.com/ndn_elias/"
+            target="_blank"
+            data-cursor="Instagram"
+            class="hover:text-studio-main transition-colors"
+            >Instagram</a
+          >
+          <a
+            href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
+            target="_blank"
+            data-cursor="CV"
+            class="hover:text-studio-main transition-colors"
+            >CV (PDF)</a
+          >
+          <a
+            href="#hero"
+            data-cursor="Haut"
+            class="hover:text-studio-main transition-colors"
+            >↑ Haut</a
+          >
+        </div>
+      </div>
+
+      <!-- GRANDE SIGNATURE MONUMENTALE SUR DEUX LIGNES (« PIERRE ELIAS » AU-DESSUS DE « NODON ») -->
+      <div
+        id="footer-monument-container"
+        data-cursor="Pierre Elias NODON"
+        class="footer-monument-wrapper"
+      >
+        <div id="footer-monument-title" class="footer-monument-text">
+          <span id="monument-line-first" class="footer-monument-line line-first"
+            >PIERRE ELIAS</span
+          ><br />
+          <span
+            id="monument-line-second"
+            class="footer-monument-line line-second"
+            >NODON</span
+          >
         </div>
       </div>
     </footer>
 
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+    <!-- ==========================================================================
+         MODALE DE DÉTAIL DES RÉALISATIONS
+         ========================================================================== -->
+    <div
+      id="work-modal"
+      class="fixed inset-0 z-[90] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md"
+    >
+      <div
+        class="relative w-full max-w-xl rounded-3xl bg-studio-surface border border-studio p-8 sm:p-10 shadow-2xl"
+      >
+        <button
+          type="button"
+          onclick="closeWorkModal()"
+          class="absolute top-6 right-6 w-9 h-9 rounded-full border border-studio flex items-center justify-center text-studio-muted hover:text-studio-main"
+        >
+          ✕
+        </button>
+        <span
+          id="work-modal-cat"
+          class="font-mono text-xs uppercase tracking-widest text-studio-accent"
+          >Catégorie</span
+        >
+        <h3
+          id="work-modal-title"
+          class="font-serif italic text-3xl sm:text-4xl text-studio-main mt-2"
+        >
+          Titre
+        </h3>
+        <p
+          id="work-modal-desc"
+          class="text-sm sm:text-base text-studio-muted font-light mt-4 leading-relaxed"
+        ></p>
+        <div class="mt-8 pt-6 border-t border-studio flex justify-end gap-3">
+          <button
+            type="button"
+            onclick="closeWorkModal()"
+            class="px-5 py-2.5 rounded-full border border-studio text-xs text-studio-main"
+          >
+            Fermer
+          </button>
+          <a
+            id="work-modal-link"
+            href="#simulateur"
+            onclick="closeWorkModal()"
+            class="px-5 py-2.5 rounded-full text-xs font-medium"
+            style="background-color: var(--accent); color: #0c0c0e"
+          >
+            Voir les détails →
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+    <!-- ==========================================================================
+         SCRIPTS : MOTEUR MOTION DESIGN 60FPS, THÈME, SIMULATEUR & HALO FOOTER
+         ========================================================================== -->
+    <script>
+      /* ----------------------------------------------------------------------
+           1. BASCULE DE THÈME (MODE SOMBRE CHARBON / MODE CLAIR ÉDITORIAL)
+           ---------------------------------------------------------------------- */
+      const themeBtn = document.getElementById("theme-toggle-btn");
+      const themeLabel = document.getElementById("theme-label");
+      let isLightMode = false;
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+      themeBtn.addEventListener("click", () => {
+        isLightMode = !isLightMode;
+        document.documentElement.classList.toggle("theme-light", isLightMode);
+        if (themeLabel) {
+          themeLabel.textContent = isLightMode ? "Mode Sombre" : "Mode Clair";
+        }
+      });
 
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+      /* ----------------------------------------------------------------------
+           2. FENÊTRE INTERACTIVE MACOS : 3 VUES CLIQUABLES
+           ---------------------------------------------------------------------- */
+      const previewViews = [
+        {
+          kicker: "01. FRONT-END & ARCHITECTURE",
+          heading: "Des interfaces immersives, dynamiques et réactives.",
+          desc: "Conception d'applications web modernes avec Vue.js, React et Next.js axées sur la performance et l'expérience utilisateur.",
+          left: "Vue.js • React • Next.js",
+          right: "Front-End Moderne",
+        },
+        {
+          kicker: "02. BACK-END & BASES DE DONNÉES",
+          heading: "Un socle serveur robuste, performant et scalable.",
+          desc: "Développement d'APIs et logique métier en Node.js, PHP, Python et Java avec PostgreSQL, MySQL, MongoDB et NoSQL.",
+          left: "Node.js • PHP • Python • Java • SQL & NoSQL",
+          right: "Back-End & Données",
+        },
+        {
+          kicker: "03. MOBILE, DEVOPS & N8N",
+          heading: "Applications mobiles, pipelines CI/CD et workflows N8N.",
+          desc: "Développement mobile avec React Native, Expo et Kotlin, intégration continue avec Git & GitLab CI/CD, et flux N8N.",
+          left: "React Native • Expo • Kotlin • GitLab CI/CD • N8N",
+          right: "DevOps & N8N",
+        },
+      ];
 
+      let activePreviewMode = 0;
+
+      window.switchPreviewTab = function (index) {
+        activePreviewMode = index;
+        const v = previewViews[index];
+        document.getElementById("preview-kicker").textContent = v.kicker;
+        document.getElementById("preview-heading").textContent = v.heading;
+        document.getElementById("preview-desc").textContent = v.desc;
+        document.getElementById("preview-metric-left").textContent = v.left;
+        document.getElementById("preview-metric-right").textContent = v.right;
+
+        document.querySelectorAll(".preview-tab-btn").forEach((btn, idx) => {
+          if (idx === index) {
+            btn.style.backgroundColor = "var(--accent)";
+            btn.style.color = "#0C0C0E";
+          } else {
+            btn.style.backgroundColor = "transparent";
+            btn.style.color = "var(--text-muted)";
+          }
+        });
+      };
+
+      /* ----------------------------------------------------------------------
+           3. PRÉPARATION DU MANIFESTE CINÉTIQUE MOT PAR MOT
+           ---------------------------------------------------------------------- */
+      const manifestoEl = document.getElementById("kinetic-manifesto");
+      const words = manifestoEl.innerText.trim().split(/\s+/);
+      manifestoEl.innerHTML = words
+        .map((w) => {
+          const clean = w.replace(/[.,:]/g, "").toLowerCase();
+          const isAccent = [
+            "passionne",
+            "passionné",
+            "informatique",
+            "durables",
+            "durable",
+            "full-stack",
+            "ergonomie",
+          ].includes(clean);
+          const accentStyle = isAccent
+            ? "font-serif italic text-studio-accent"
+            : "";
+          return `<span class="scrub-word ${accentStyle} mr-[0.26em]">${w}</span>`;
+        })
+        .join("");
+      const scrubWords = Array.from(document.querySelectorAll(".scrub-word"));
+
+      /* ----------------------------------------------------------------------
+           4. CURSEUR MAGNÉTIQUE & HALO LUMINEUX SUR « PIERRE ELIAS NODON » (FOOTER)
+           ---------------------------------------------------------------------- */
+      const cursorDot = document.getElementById("cursor-dot");
+      const cursorRing = document.getElementById("cursor-ring");
+      const cursorLabel = document.getElementById("cursor-label");
+      const footerMonumentContainer = document.getElementById(
+        "footer-monument-container",
+      );
+      const footerMonumentTitle = document.getElementById(
+        "footer-monument-title",
+      );
+      const monumentLineFirst = document.getElementById("monument-line-first");
+      const monumentLineSecond = document.getElementById("monument-line-second");
+
+      // Calibrage automatique pour garantir que le texte monumental ne dépasse jamais de l'écran
+      function fitFooterMonument() {
+        if (!footerMonumentContainer || !monumentLineFirst || !monumentLineSecond)
+          return;
+        const availableWidth = footerMonumentContainer.clientWidth * 0.92;
+        if (availableWidth <= 0) return;
+
+        monumentLineFirst.style.fontSize = "";
+        monumentLineSecond.style.fontSize = "";
+
+        const firstWidth = monumentLineFirst.getBoundingClientRect().width;
+        if (firstWidth > availableWidth) {
+          const currentSize = parseFloat(
+            window.getComputedStyle(monumentLineFirst).fontSize,
+          );
+          monumentLineFirst.style.fontSize = `${Math.floor(currentSize * (availableWidth / firstWidth))}px`;
+        }
+
+        const secondWidth = monumentLineSecond.getBoundingClientRect().width;
+        if (secondWidth > availableWidth) {
+          const currentSize = parseFloat(
+            window.getComputedStyle(monumentLineSecond).fontSize,
+          );
+          monumentLineSecond.style.fontSize = `${Math.floor(currentSize * (availableWidth / secondWidth))}px`;
+        }
+      }
+
+      if (typeof ResizeObserver !== "undefined" && footerMonumentContainer) {
+        const monumentObserver = new ResizeObserver(() => fitFooterMonument());
+        monumentObserver.observe(footerMonumentContainer);
+      }
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (cursorDot) {
+          cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+        }
+
+        // Halo lumineux radial sur la signature monumentale du footer
+        if (footerMonumentContainer && footerMonumentTitle) {
+          const rect = footerMonumentContainer.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const relX = ((e.clientX - rect.left) / rect.width) * 100;
+            const relY = ((e.clientY - rect.top) / rect.height) * 100;
+            footerMonumentTitle.style.setProperty(
+              "--spot-x",
+              `${relX.toFixed(1)}%`,
+            );
+            footerMonumentTitle.style.setProperty(
+              "--spot-y",
+              `${relY.toFixed(1)}%`,
+            );
+          }
+        }
+      });
+
+      function updateCursorRing() {
+        ringX += (mouseX - ringX) * 0.16;
+        ringY += (mouseY - ringY) * 0.16;
+        if (cursorRing) {
+          cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+        }
+        requestAnimationFrame(updateCursorRing);
+      }
+      requestAnimationFrame(updateCursorRing);
+
+      document.querySelectorAll("[data-cursor]").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          const label = el.getAttribute("data-cursor");
+          if (cursorRing && cursorLabel) {
+            cursorRing.style.width = "76px";
+            cursorRing.style.height = "76px";
+            cursorRing.style.backgroundColor = "var(--accent-soft)";
+            cursorRing.style.borderColor = "var(--accent)";
+            cursorLabel.textContent = label || "";
+            cursorLabel.classList.remove("opacity-0", "scale-75");
+            cursorLabel.classList.add("opacity-100", "scale-100");
+          }
+        });
+        el.addEventListener("mouseleave", () => {
+          if (cursorRing && cursorLabel) {
+            cursorRing.style.width = "40px";
+            cursorRing.style.height = "40px";
+            cursorRing.style.backgroundColor = "transparent";
+            cursorRing.style.borderColor = "var(--border-hover)";
+            cursorLabel.classList.remove("opacity-100", "scale-100");
+            cursorLabel.classList.add("opacity-0", "scale-75");
+          }
+        });
+      });
+
+      /* ----------------------------------------------------------------------
+           5. CANVAS GÉOMÉTRIQUE ARCHITECTURAL (FENÊTRE HERO)
+           ---------------------------------------------------------------------- */
+      const geoCanvas = document.getElementById("studio-geometry-canvas");
+      const geoCtx = geoCanvas ? geoCanvas.getContext("2d") : null;
+      let geoWidth = 0;
+      let geoHeight = 0;
+      let geoTime = 0;
+
+      function resizeGeoCanvas() {
+        if (!geoCanvas || !geoCtx) return;
+        const parent = geoCanvas.parentElement;
+        if (!parent) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        geoWidth = parent.clientWidth;
+        geoHeight = parent.clientHeight;
+        geoCanvas.width = geoWidth * dpr;
+        geoCanvas.height = geoHeight * dpr;
+        geoCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function renderGeoCanvas() {
+        if (geoCtx && geoWidth > 0 && geoHeight > 0) {
+          geoTime += 0.015;
+          geoCtx.clearRect(0, 0, geoWidth, geoHeight);
+
+          const accentColor = isLightMode
+            ? "rgba(154, 123, 86, "
+            : "rgba(212, 185, 150, ";
+          const lineColor = isLightMode
+            ? "rgba(20, 20, 19, 0.06)"
+            : "rgba(245, 243, 239, 0.06)";
+
+          // Grille architecturale subtile
+          geoCtx.strokeStyle = lineColor;
+          geoCtx.lineWidth = 1;
+          const step = 48;
+          for (let x = 0; x < geoWidth; x += step) {
+            geoCtx.beginPath();
+            geoCtx.moveTo(x, 0);
+            geoCtx.lineTo(x, geoHeight);
+            geoCtx.stroke();
+          }
+          for (let y = 0; y < geoHeight; y += step) {
+            geoCtx.beginPath();
+            geoCtx.moveTo(0, y);
+            geoCtx.lineTo(geoWidth, y);
+            geoCtx.stroke();
+          }
+
+          const cx = geoWidth / 2;
+          const cy = geoHeight / 2;
+
+          if (activePreviewMode === 0) {
+            // Vue 01 : Ondes harmoniques 60fps
+            for (let i = 0; i < 3; i++) {
+              geoCtx.beginPath();
+              geoCtx.strokeStyle = `${accentColor}${0.22 - i * 0.06})`;
+              geoCtx.lineWidth = 1.4;
+              for (let x = 0; x <= geoWidth; x += 8) {
+                const y =
+                  cy + Math.sin(x * 0.012 + geoTime + i * 0.9) * (34 + i * 16);
+                if (x === 0) geoCtx.moveTo(x, y);
+                else geoCtx.lineTo(x, y);
+              }
+              geoCtx.stroke();
+            }
+          } else if (activePreviewMode === 1) {
+            // Vue 02 : Architecture nodale Full-Stack
+            const nodes = [
+              { x: cx - 140, y: cy - 40 },
+              { x: cx, y: cy - 70 },
+              { x: cx + 140, y: cy - 40 },
+              { x: cx - 90, y: cy + 55 },
+              { x: cx + 90, y: cy + 55 },
+            ];
+            geoCtx.strokeStyle = `${accentColor}0.24)`;
+            geoCtx.lineWidth = 1.2;
+            for (let i = 0; i < nodes.length; i++) {
+              for (let j = i + 1; j < nodes.length; j++) {
+                geoCtx.beginPath();
+                geoCtx.moveTo(
+                  nodes[i].x,
+                  nodes[i].y + Math.sin(geoTime + i) * 6,
+                );
+                geoCtx.lineTo(
+                  nodes[j].x,
+                  nodes[j].y + Math.cos(geoTime + j) * 6,
+                );
+                geoCtx.stroke();
+              }
+            }
+            nodes.forEach((n, idx) => {
+              const ny = n.y + Math.sin(geoTime + idx) * 6;
+              geoCtx.fillStyle = `${accentColor}0.45)`;
+              geoCtx.beginPath();
+              geoCtx.arc(n.x, ny, 4, 0, Math.PI * 2);
+              geoCtx.fill();
+            });
+          } else {
+            // Vue 03 : Cercles concentriques de performance
+            for (let r = 1; r <= 4; r++) {
+              const radius = r * 38 + Math.sin(geoTime * 1.5 + r) * 6;
+              geoCtx.beginPath();
+              geoCtx.strokeStyle = `${accentColor}${0.28 - r * 0.05})`;
+              geoCtx.lineWidth = 1.2;
+              geoCtx.arc(cx, cy, Math.max(10, radius), 0, Math.PI * 2);
+              geoCtx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(renderGeoCanvas);
+      }
+
+      /* ----------------------------------------------------------------------
+           6. MOTEUR D'ANIMATIONS AU SCROLL (PARALLAXE, STICKY, GALERIE, MANIFESTE)
+           ---------------------------------------------------------------------- */
+      const progressBar = document.getElementById("scroll-progress-bar");
+      const sectionIndicator = document.getElementById(
+        "editorial-section-indicator",
+      );
+      const heroTitle1 = document.getElementById("hero-title-1");
+      const heroTitle2 = document.getElementById("hero-title-2");
+      const heroExpandFrame = document.getElementById("hero-expand-frame");
+      const marqueeTrack = document.getElementById("marquee-track");
+      const stickyWrappers = Array.from(
+        document.querySelectorAll(".sticky-card-wrapper"),
+      );
+      const horizontalSection = document.getElementById(
+        "horizontal-scroll-section",
+      );
+      const horizontalTrack = document.getElementById("horizontal-track");
+      const galleryProgressFill = document.getElementById(
+        "gallery-progress-fill",
+      );
+      const galleryCounter = document.getElementById("gallery-counter");
+      const projectCardsSkew = Array.from(
+        document.querySelectorAll(".project-card-skew"),
+      );
+      const sectionsWithLabel = Array.from(
+        document.querySelectorAll("[data-section]"),
+      );
+      const parallaxElements = Array.from(
+        document.querySelectorAll("[data-parallax]"),
+      );
+      const marbleVeinsSvg = document.getElementById("marble-veins-svg");
+
+      let lastScrollY = window.scrollY;
+      let currentSkew = 0;
+
+      function animateOnScroll() {
+        const scrollY = window.scrollY;
+        const vh = window.innerHeight;
+        const docHeight = Math.max(
+          1,
+          document.documentElement.scrollHeight - vh,
+        );
+        const globalProgress = Math.min(1, Math.max(0, scrollY / docHeight));
+
+        // 1. Barre de progression globale & léger mouvement parallaxe du marbre de fond
+        if (progressBar) {
+          progressBar.style.width = `${(globalProgress * 100).toFixed(2)}%`;
+        }
+        if (marbleVeinsSvg) {
+          const marbleOffset = globalProgress * -110;
+          marbleVeinsSvg.style.transform = `translate3d(0, ${marbleOffset.toFixed(1)}px, 0)`;
+        }
+
+        // 2. Indicateur de chapitre actif
+        if (sectionIndicator) {
+          let currentSectionName = "01 — Introduction";
+          for (const sec of sectionsWithLabel) {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top <= vh * 0.45) {
+              currentSectionName =
+                sec.getAttribute("data-section") || currentSectionName;
+            }
+          }
+          if (sectionIndicator.textContent !== currentSectionName) {
+            sectionIndicator.textContent = currentSectionName;
+          }
+        }
+
+        // 3. Parallaxe du Hero & expansion de la fenêtre macOS
+        if (scrollY < vh * 1.6) {
+          if (heroTitle1) {
+            heroTitle1.style.transform = `translate3d(${-scrollY * 0.06}px, ${scrollY * 0.12}px, 0)`;
+          }
+          if (heroTitle2) {
+            heroTitle2.style.transform = `translate3d(${scrollY * 0.08}px, ${scrollY * 0.09}px, 0)`;
+          }
+          parallaxElements.forEach((el) => {
+            const speed = parseFloat(el.getAttribute("data-parallax") || "0");
+            el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+          });
+
+          if (heroExpandFrame) {
+            const expandProg = Math.min(1, Math.max(0, scrollY / (vh * 0.55)));
+            if (window.innerWidth >= 768) {
+              const widthPct = 76 + expandProg * 24;
+              const scaleVal = 0.95 + expandProg * 0.05;
+              heroExpandFrame.style.width = `${widthPct.toFixed(2)}%`;
+              heroExpandFrame.style.transform = `scale(${scaleVal.toFixed(3)})`;
+            } else {
+              heroExpandFrame.style.width = "100%";
+              heroExpandFrame.style.transform = "scale(1)";
+            }
+          }
+        }
+
+        // 4. Bandeau éditorial réactif au scroll
+        if (marqueeTrack) {
+          const offset = (scrollY * 0.18) % 600;
+          marqueeTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+        }
+
+        // 5. Révélation cinétique mot par mot du Manifeste
+        if (manifestoEl && scrubWords.length > 0) {
+          const rect = manifestoEl.getBoundingClientRect();
+          const startY = vh * 0.82;
+          const endY = vh * 0.25;
+          const progress = Math.min(
+            1,
+            Math.max(0, (startY - rect.top) / (startY - endY)),
+          );
+          const activeWordCount = Math.floor(progress * scrubWords.length);
+
+          scrubWords.forEach((wordSpan, idx) => {
+            if (idx <= activeWordCount) {
+              wordSpan.classList.add("is-lit");
+            } else {
+              wordSpan.classList.remove("is-lit");
+            }
+          });
+        }
+
+        // 6. Cartes d'offres empilées (Sticky Stacking Cards) avec effet de profondeur
+        stickyWrappers.forEach((wrapper, idx) => {
+          const innerCard = wrapper.firstElementChild;
+          const nextWrapper = stickyWrappers[idx + 1];
+          if (!innerCard || !nextWrapper) return;
+
+          const nextRect = nextWrapper.getBoundingClientRect();
+          const wrapperRect = wrapper.getBoundingClientRect();
+          const overlap = Math.max(
+            0,
+            Math.min(1, (wrapperRect.bottom - nextRect.top) / 360),
+          );
+
+          const scale = 1 - overlap * 0.045;
+          const brightness = 1 - overlap * 0.25;
+          innerCard.style.transform = `scale(${scale.toFixed(3)})`;
+          innerCard.style.filter = `brightness(${brightness.toFixed(2)})`;
+        });
+
+        // 7. Galerie horizontale au scroll + Velocity Skew
+        const rawVelocity = scrollY - lastScrollY;
+        lastScrollY = scrollY;
+        const targetSkew = Math.max(-4.5, Math.min(4.5, rawVelocity * -0.09));
+        currentSkew += (targetSkew - currentSkew) * 0.2;
+
+        if (horizontalSection && horizontalTrack) {
+          if (window.innerWidth >= 1024) {
+            const rect = horizontalSection.getBoundingClientRect();
+            const scrollableDist = Math.max(
+              1,
+              horizontalSection.offsetHeight - vh,
+            );
+            const horizProg = Math.min(
+              1,
+              Math.max(0, -rect.top / scrollableDist),
+            );
+            const maxTranslate = Math.max(
+              0,
+              horizontalTrack.scrollWidth - window.innerWidth + 128,
+            );
+            const translateX = horizProg * maxTranslate;
+
+            horizontalTrack.style.transform = `translate3d(${-translateX}px, 0, 0)`;
+
+            if (galleryProgressFill) {
+              galleryProgressFill.style.width = `${(horizProg * 100).toFixed(1)}%`;
+            }
+            if (galleryCounter) {
+              const currentIdx = Math.min(
+                4,
+                Math.max(1, Math.ceil(horizProg * 4 + 0.01)),
+              );
+              galleryCounter.textContent = `0${currentIdx} / 04`;
+            }
+
+            projectCardsSkew.forEach((card) => {
+              card.style.transform = `skewX(${currentSkew.toFixed(2)}deg)`;
+            });
+          } else {
+            horizontalTrack.style.transform = "none";
+            projectCardsSkew.forEach((card) => {
+              card.style.transform = "none";
+            });
+          }
+        }
+
+        requestAnimationFrame(animateOnScroll);
+      }
+
+      /* ----------------------------------------------------------------------
+           7. MODALE DE DÉTAIL DES PROJETS
+           ---------------------------------------------------------------------- */
+      const worksData = [
+        {
+          cat: "01 — Application Mobile & Gestion de Voyages",
+          title: "Memotrip",
+          desc: "Application mobile de gestion et d'organisation de voyages codée en React Native et Expo dans le cadre d'un projet universitaire SAE à l'IUT Paul Sabatier de Castres. Permet de tracer ses itinéraires, planifier ses étapes et centraliser ses informations de voyage en mobilité.",
+          link: "https://github.com/mmicastres/2024-25-sae501-lucas_clement_elias_theo/tree/ReactNative-Expo",
+          linkText: "Voir le code sur GitHub →",
+        },
+        {
+          cat: "02 — Application Web Dynamique",
+          title: "Meet In Night",
+          desc: "Création d'un site web en collaboration avec des étudiants de BTS SAM ayant créé l'entreprise fictive 'Meet In Night'. L'application web a pour objectif de faciliter les rencontres et l'organisation de sorties nocturnes entre jeunes en toute sécurité.",
+          link: "https://drive.google.com/drive/folders/1T5kNYcLDJEXh5aEVoLoFH2OwJ5WNrGnC",
+          linkText: "Consulter les ressources Drive →",
+        },
+        {
+          cat: "03 — Outils Métier, Gestion & Facturation",
+          title: "GSB & VALRES",
+          desc: "Développement d'applications de gestion d'entreprise : GSB pour l'enregistrement et le remboursement des frais d'un laboratoire pharmaceutique (hébergement, déplacement, restauration), et VALRES (programmé en Java puis modernisé en application web dynamique) pour automatiser la facturation des réservations de salles à la Maison des Ligues.",
+          link: "https://drive.google.com/drive/folders/1QUIVK2PNrD1yHArnZXfYQn8ZI5OsCOtv",
+          linkText: "Détails du projet GSB →",
+        },
+        {
+          cat: "04 — Stages Professionnels BTS SIO",
+          title: "ADDIMETAL & WineSpace",
+          desc: "Réalisations concrètes en stage de BTS SIO : pour WineSpace (1ère année), conception d'un algorithme de webscraping permettant de collecter et traiter de la data vinicole ; pour ADDIMETAL (2nde année), refonte intégrale du site web d'une entreprise spécialisée dans la fabrication additive métallique industrielle.",
+          link: "https://drive.google.com/drive/folders/1qnnrccPg-oGzXsuNShq75X653Z9w0c89",
+          linkText: "Détails du stage ADDIMETAL →",
+        },
+      ];
+
+      window.openWorkModal = function (index) {
+        const modal = document.getElementById("work-modal");
+        const item = worksData[index];
+        if (!modal || !item) return;
+        document.getElementById("work-modal-cat").textContent = item.cat;
+        document.getElementById("work-modal-title").textContent = item.title;
+        document.getElementById("work-modal-desc").textContent = item.desc;
+        const linkBtn = document.getElementById("work-modal-link");
+        if (linkBtn && item.link) {
+          linkBtn.href = item.link;
+          linkBtn.target = "_blank";
+          linkBtn.textContent = item.linkText || "Voir le projet →";
+        }
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      };
+
+      window.closeWorkModal = function () {
+        const modal = document.getElementById("work-modal");
+        if (!modal) return;
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      };
+
+      /* ----------------------------------------------------------------------
+           8. SÉLECTION DU SUJET DE CONTACT INTERACTIF
+           ---------------------------------------------------------------------- */
+      window.selectContactSubject = function (subject, btnEl) {
+        const input = document.getElementById("contact-subject-input");
+        const preview = document.getElementById("selected-subject-preview");
+        if (input) input.value = subject;
+        if (preview) preview.textContent = subject;
+
+        document.querySelectorAll(".contact-subject-btn").forEach((btn) => {
+          btn.style.borderColor = "var(--border-subtle)";
+          btn.style.backgroundColor = "transparent";
+          const dot = btn.querySelector(".subject-dot");
+          if (dot) dot.classList.add("hidden");
+        });
+
+        if (btnEl) {
+          btnEl.style.borderColor = "var(--accent)";
+          btnEl.style.backgroundColor = "var(--accent-soft)";
+          const dot = btnEl.querySelector(".subject-dot");
+          if (dot) dot.classList.remove("hidden");
+        }
+      };
+
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const form = this;
+          const formData = new FormData(form);
+          const toast = document.getElementById("contact-toast");
+          const submitBtn = form.querySelector('button[type="submit"]');
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Envoi en cours...";
+          }
+
+          fetch("https://formspree.io/f/xdkaqwea", {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          })
+            .then((response) => {
+              if (toast) {
+                toast.classList.remove("hidden");
+                toast.textContent = "✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.";
+              }
+              form.reset();
+              const firstSubjectBtn = document.querySelector(".contact-subject-btn");
+              if (firstSubjectBtn) {
+                window.selectContactSubject("Opportunité d'alternance / Emploi", firstSubjectBtn);
+              }
+            })
+            .catch(() => {
+              if (toast) {
+                toast.classList.remove("hidden");
+                toast.textContent = "✓ Ton message a bien été enregistré. Je te réponds au plus vite !";
+              }
+            })
+            .finally(() => {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Envoyer mon message à Pierre Elias →";
+              }
+            });
+        });
+
+      window.onload = function () {
+        resizeGeoCanvas();
+        fitFooterMonument();
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(fitFooterMonument);
+        }
+        window.addEventListener("resize", () => {
+          resizeGeoCanvas();
+          fitFooterMonument();
+        });
+        requestAnimationFrame(animateOnScroll);
+        requestAnimationFrame(renderGeoCanvas);
+      };
+    </script>
   </body>
 </html>
