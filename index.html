@@ -91,6 +91,13 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        width: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
+
       ::selection {
         background: var(--accent);
         color: #0c0c0e;
@@ -101,6 +108,8 @@
         color: var(--text-main);
         font-family: "Plus Jakarta Sans", sans-serif;
         overflow-x: hidden;
+        width: 100%;
+        -webkit-tap-highlight-color: transparent;
         transition:
           background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
           color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -115,6 +124,14 @@
         body.custom-cursor-active textarea,
         body.custom-cursor-active [data-cursor] {
           cursor: none !important;
+        }
+      }
+
+      /* Désactivation complète des curseurs personnalisés sur écrans tactiles */
+      @media (hover: none) or (pointer: coarse) {
+        #cursor-dot,
+        #cursor-ring {
+          display: none !important;
         }
       }
 
@@ -205,7 +222,7 @@
         position: relative;
         width: 100%;
         box-sizing: border-box;
-        overflow: visible;
+        overflow: hidden;
         padding: 1.5rem 4vw 2.25rem 4vw;
         display: flex;
         justify-content: center;
@@ -243,13 +260,13 @@
       }
 
       .footer-monument-line.line-first {
-        font-size: clamp(3rem, 15.5vw, 13.5rem);
+        font-size: clamp(1.8rem, 9.5vw, 13.5rem);
         letter-spacing: -0.03em;
         line-height: 0.9;
       }
 
       .footer-monument-line.line-second {
-        font-size: clamp(2.1rem, 11.2vw, 10rem);
+        font-size: clamp(1.6rem, 8.5vw, 10rem);
         letter-spacing: -0.02em;
         line-height: 0.92;
       }
@@ -506,23 +523,23 @@
     <!-- ==========================================================================
          3. NAVIGATION ÉPURÉE & BASCULE DE THÈME
          ========================================================================== -->
-    <header class="fixed top-5 inset-x-0 z-50 mx-auto max-w-6xl px-4 sm:px-6">
+    <header class="fixed top-3 sm:top-5 inset-x-0 z-50 mx-auto max-w-6xl px-3 sm:px-6">
       <nav
-        class="flex items-center justify-between px-5 py-3.5 rounded-full bg-studio-glass border border-studio backdrop-blur-xl shadow-sm"
+        class="flex items-center justify-between px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-full bg-studio-glass border border-studio backdrop-blur-xl shadow-sm"
       >
         <!-- Marque Pierre Elias NODON -->
         <a
           href="#hero"
           data-cursor="Haut"
-          class="flex items-center gap-3 group"
+          class="flex items-center gap-2 sm:gap-3 group shrink-0"
         >
           <span
-            class="w-2 h-2 rounded-full transition-transform duration-300 group-hover:scale-150"
+            class="w-2 h-2 rounded-full transition-transform duration-300 group-hover:scale-150 shrink-0"
             style="background-color: var(--accent)"
           ></span>
           <span
-            class="font-display font-bold text-sm tracking-[0.16em] uppercase text-studio-main"
-            >Pierre Elias NODON</span
+            class="font-display font-bold text-xs sm:text-sm tracking-[0.1em] sm:tracking-[0.16em] uppercase text-studio-main whitespace-nowrap"
+            ><span class="hidden sm:inline">Pierre Elias NODON</span><span class="sm:hidden">Pierre Elias N.</span></span
           >
         </a>
 
@@ -557,13 +574,13 @@
         </div>
 
         <!-- Bascule de thème + CTA -->
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <button
             id="theme-toggle-btn"
             type="button"
             data-cursor="Thème"
             aria-label="Changer de thème"
-            class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-studio text-xs font-mono text-studio-muted hover:text-studio-main transition-all"
+            class="flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-full border border-studio text-xs font-mono text-studio-muted hover:text-studio-main transition-all"
           >
             <span id="theme-icon" class="text-xs">◐</span>
             <span id="theme-label" class="hidden sm:inline text-[11px]"
@@ -574,10 +591,11 @@
           <a
             href="#contact"
             data-cursor="Contact"
-            class="px-4 sm:px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-all hover:opacity-90"
+            class="px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs font-medium tracking-wide transition-all hover:opacity-90 whitespace-nowrap"
             style="background-color: var(--text-main); color: var(--bg-main)"
           >
-            Me contacter
+            <span class="hidden sm:inline">Me contacter</span>
+            <span class="sm:hidden">Contact</span>
           </a>
         </div>
       </nav>
@@ -589,16 +607,16 @@
     <section
       id="hero"
       data-section="01 — Introduction"
-      class="relative min-h-[128vh] pt-36 sm:pt-44 pb-24 flex flex-col justify-between"
+      class="relative min-h-[110vh] sm:min-h-[128vh] pt-28 sm:pt-44 pb-16 sm:pb-24 flex flex-col justify-between"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full">
         <!-- Sur-titre -->
         <div
-          class="flex items-center justify-between pb-8 border-b border-studio"
+          class="flex items-center justify-between pb-6 sm:pb-8 border-b border-studio"
           data-parallax="-0.08"
         >
           <span
-            class="font-mono text-xs tracking-widest uppercase text-studio-muted"
+            class="font-mono text-[10px] sm:text-xs tracking-wider sm:tracking-widest uppercase text-studio-muted"
           >
             Pierre Elias NODON — Développeur Full-Stack
           </span>
@@ -614,17 +632,17 @@
         </div>
 
         <!-- Titre Principal avec Parallaxe Multi-Axes & Photo de Profil -->
-        <div class="mt-12 sm:mt-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div class="mt-8 sm:mt-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8">
           <div class="max-w-3xl space-y-2">
             <h1
               id="hero-title-1"
-              class="font-display font-bold text-4xl sm:text-6xl lg:text-[4.4rem] tracking-tight leading-[1.04] text-studio-main will-change-transform"
+              class="font-display font-bold text-3xl sm:text-6xl lg:text-[4.4rem] tracking-tight leading-[1.06] sm:leading-[1.04] text-studio-main will-change-transform"
             >
               Pierre Elias NODON
             </h1>
             <p
               id="hero-title-2"
-              class="font-serif italic font-normal text-4xl sm:text-6xl lg:text-[4.8rem] leading-[1.04] text-studio-accent will-change-transform"
+              class="font-serif italic font-normal text-3xl sm:text-6xl lg:text-[4.8rem] leading-[1.06] sm:leading-[1.04] text-studio-accent will-change-transform"
             >
               Développeur Full Stack.
             </p>
@@ -632,11 +650,11 @@
 
           <!-- Photo Portrait / Squircle Éditorial -->
           <div class="shrink-0 relative group self-start md:self-end pb-1" data-parallax="-0.04">
-            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl p-1 bg-studio-surface border-2 border-studio shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-studio-accent">
+            <div class="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl p-1 bg-studio-surface border-2 border-studio shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-studio-accent">
               <img
                 src="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg"
                 alt="Pierre Elias NODON"
-                class="w-full h-full object-cover object-top rounded-[20px] filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                class="w-full h-full object-cover object-top rounded-[14px] sm:rounded-[20px] filter grayscale group-hover:grayscale-0 transition-all duration-500"
                 loading="eager"
               />
             </div>
@@ -651,21 +669,21 @@
           </div>
         </div>
 
-        <!-- Accroche orientée clients & boutons d'action -->
+        <!-- Accroche & boutons d'action -->
         <div
-          class="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-end justify-between gap-8"
+          class="mt-6 sm:mt-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-8"
           data-parallax="0.06"
         >
           <p
-            class="max-w-xl text-studio-muted text-base sm:text-lg font-light leading-relaxed"
+            class="max-w-xl text-studio-muted text-sm sm:text-lg font-light leading-relaxed"
           >
             Étudiant en Master Expert Full Stack à Toulouse et alternant chez SEAC GF. Passionné d'informatique, je conçois des applications web et mobiles modernes, réactives et performantes.
           </p>
-          <div class="flex items-center gap-4 shrink-0">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
             <a
               href="#realisations"
               data-cursor="Projets"
-              class="px-6 py-3.5 rounded-full text-xs sm:text-sm font-medium transition-transform hover:scale-[1.02]"
+              class="px-6 py-3.5 rounded-full text-xs sm:text-sm font-medium transition-transform hover:scale-[1.02] text-center"
               style="background-color: var(--accent); color: #0c0c0e"
             >
               Découvrir mes projets
@@ -674,7 +692,7 @@
               href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
               target="_blank"
               data-cursor="CV"
-              class="px-6 py-3.5 rounded-full border border-studio text-xs sm:text-sm font-medium text-studio-main hover:border-studio-accent transition-colors"
+              class="px-6 py-3.5 rounded-full border border-studio text-xs sm:text-sm font-medium text-studio-main hover:border-studio-accent transition-colors text-center"
             >
               Télécharger mon CV
             </a>
@@ -682,7 +700,7 @@
         </div>
 
         <!-- Fenêtre Interactive macOS qui s'élargit au Scroll (Largeur & Scale progressifs) -->
-        <div class="mt-16 sm:mt-20 flex justify-center">
+        <div class="mt-12 sm:mt-20 flex justify-center">
           <div
             id="hero-expand-frame"
             class="relative w-full md:w-[76%] rounded-3xl bg-studio-surface border border-studio overflow-hidden transition-shadow duration-500 will-change-transform"
@@ -690,7 +708,7 @@
           >
             <!-- Barre macOS + 3 Vues Interactives Cliquables -->
             <div
-              class="flex flex-wrap items-center justify-between gap-4 px-6 py-4 border-b border-studio bg-studio-elevated"
+              class="flex flex-wrap items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 border-b border-studio bg-studio-elevated"
             >
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-stone-500/40"></span>
@@ -705,32 +723,32 @@
                 >
               </div>
 
-              <!-- 3 Vues cliquables -->
+              <!-- 3 Vues cliquables (scrollables horizontalement sur mobile) -->
               <div
-                class="flex flex-wrap items-center gap-1 p-1 rounded-full bg-studio-main border border-studio"
+                class="flex items-center gap-1 p-1 rounded-full bg-studio-main border border-studio overflow-x-auto max-w-full no-scrollbar"
               >
                 <button
                   type="button"
                   onclick="switchPreviewTab(0)"
                   data-tab="0"
-                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium transition-all"
+                  class="preview-tab-btn px-3 py-1.5 rounded-full text-[11px] font-medium transition-all whitespace-nowrap shrink-0"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
-                  01. Front-End & Vue/React
+                  01. Front-End<span class="hidden sm:inline"> & Vue/React</span>
                 </button>
                 <button
                   type="button"
                   onclick="switchPreviewTab(1)"
                   data-tab="1"
-                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all"
+                  class="preview-tab-btn px-3 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all whitespace-nowrap shrink-0"
                 >
-                  02. Back-End & Systèmes
+                  02. Back-End<span class="hidden sm:inline"> & Systèmes</span>
                 </button>
                 <button
                   type="button"
                   onclick="switchPreviewTab(2)"
                   data-tab="2"
-                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all"
+                  class="preview-tab-btn px-3 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all whitespace-nowrap shrink-0"
                 >
                   03. Mobile & N8N
                 </button>
@@ -739,7 +757,7 @@
 
             <!-- Contenu Visuel Interactif -->
             <div
-              class="relative h-[340px] sm:h-[420px] flex items-center justify-center p-6 sm:p-12 overflow-hidden"
+              class="relative h-[340px] sm:h-[420px] flex items-center justify-center p-4 sm:p-12 overflow-hidden"
             >
               <canvas
                 id="studio-geometry-canvas"
@@ -747,23 +765,23 @@
               ></canvas>
 
               <div
-                class="relative z-10 max-w-xl text-center space-y-4 pointer-events-none"
+                class="relative z-10 max-w-xl text-center space-y-3 sm:space-y-4 pointer-events-none px-2"
               >
                 <span
                   id="preview-kicker"
-                  class="font-mono text-[11px] tracking-[0.2em] uppercase text-studio-accent"
+                  class="font-mono text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-studio-accent"
                 >
                   01. FRONT-END & VUE / REACT
                 </span>
                 <h2
                   id="preview-heading"
-                  class="font-serif italic text-3xl sm:text-5xl text-studio-main"
+                  class="font-serif italic text-2xl sm:text-5xl text-studio-main leading-tight"
                 >
                   Des interfaces immersives, dynamiques et réactives.
                 </h2>
                 <p
                   id="preview-desc"
-                  class="text-sm sm:text-base text-studio-muted font-light max-w-md mx-auto"
+                  class="text-xs sm:text-base text-studio-muted font-light max-w-md mx-auto line-clamp-3 sm:line-clamp-none"
                 >
                   Conception d'architectures web modernes avec Vue.js, Node.js, React et Next.js, axées sur la réactivité et la robustesse.
                 </p>
@@ -771,7 +789,7 @@
 
               <!-- Pied de fenêtre -->
               <div
-                class="absolute bottom-5 inset-x-8 flex items-center justify-between text-[11px] font-mono text-studio-muted border-t border-studio pt-3"
+                class="absolute bottom-3 sm:bottom-5 inset-x-4 sm:inset-x-8 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-studio-muted border-t border-studio pt-2.5 sm:pt-3"
               >
                 <span id="preview-metric-left"
                   >Vue.js • React • Next.js • Node.js</span
@@ -879,9 +897,9 @@
     <section
       id="approche"
       data-section="02 — À propos"
-      class="py-28 sm:py-40 max-w-5xl mx-auto px-4 sm:px-6"
+      class="py-20 sm:py-40 max-w-5xl mx-auto px-4 sm:px-6"
     >
-      <div class="mb-10">
+      <div class="mb-8 sm:mb-10">
         <span
           class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
           >02 — À propos de moi</span
@@ -891,18 +909,18 @@
       <!-- Texte illuminé mot par mot en fonction du scroll -->
       <p
         id="kinetic-manifesto"
-        class="font-normal text-3xl sm:text-5xl lg:text-[3.35rem] leading-[1.22] tracking-tight text-studio-main"
+        class="font-normal text-2xl sm:text-5xl lg:text-[3.35rem] leading-snug sm:leading-[1.22] tracking-tight text-studio-main"
       >
         Passionné par l'informatique depuis mon plus jeune âge, je conçois des solutions web modernes et durables, alliant rigueur technique Full-Stack et ergonomie soignée.
       </p>
 
       <!-- 3 Indicateurs Clés Sobres -->
       <div
-        class="mt-20 pt-12 border-t border-studio grid grid-cols-1 sm:grid-cols-3 gap-10"
+        class="mt-12 sm:mt-20 pt-8 sm:pt-12 border-t border-studio grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10"
       >
         <div>
           <div
-            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+            class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-studio-accent"
           >
             21 ans • Toulouse
           </div>
@@ -915,7 +933,7 @@
         </div>
         <div>
           <div
-            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+            class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-studio-accent"
           >
             BTS & BUT MMI
           </div>
@@ -928,7 +946,7 @@
         </div>
         <div>
           <div
-            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+            class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-studio-accent"
           >
             Stack & Outils
           </div>
@@ -942,9 +960,9 @@
       </div>
 
       <!-- Avis motivé & Recommandation académique -->
-      <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-studio-surface border border-studio flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="mt-10 sm:mt-14 p-5 sm:p-8 rounded-2xl bg-studio-surface border border-studio flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 sm:gap-6">
         <div class="space-y-2">
-          <p class="font-serif italic text-lg sm:text-xl text-studio-main">
+          <p class="font-serif italic text-base sm:text-xl text-studio-main">
             « Pierre-Elias est un étudiant qui a montré beaucoup de sérieux et d'implication, félicité au conseil de classe. Il possède les qualités requises pour réussir ses études et projets professionnels. »
           </p>
           <p class="font-mono text-xs text-studio-muted">
@@ -964,10 +982,10 @@
     <section
       id="offres"
       data-section="03 — Offres"
-      class="py-24 sm:py-36 max-w-5xl mx-auto px-4 sm:px-6"
+      class="py-16 sm:py-36 max-w-5xl mx-auto px-4 sm:px-6"
     >
       <div
-        class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-24 gap-6"
+        class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-24 gap-4 sm:gap-6"
       >
         <div>
           <span
@@ -989,26 +1007,26 @@
       </div>
 
       <!-- Pile de 4 cartes Sticky -->
-      <div class="space-y-12 sm:space-y-16 pb-8">
+      <div class="space-y-8 sm:space-y-16 pb-8">
         <!-- OFFRE 01 : SEAC GF -->
-        <div class="sticky-card-wrapper top-24 sm:top-28">
+        <div class="sticky-card-wrapper top-20 sm:top-28">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-8 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-xs text-studio-accent"
                 >
                   <span>01</span>
                   <span>—</span>
                   <span>Septembre 2025 - Septembre 2027 • Toulouse</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-xl sm:text-3xl md:text-4xl text-studio-main"
                 >
                   01. Alternant Développeur Full Stack — SEAC GF
                 </h3>
@@ -1031,7 +1049,7 @@
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-5 md:pt-0 border-studio shrink-0"
               >
                 <div class="md:text-right">
                   <span
@@ -1039,14 +1057,14 @@
                     >Statut actuel</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-4xl text-studio-main"
                     >Alternance (2 ans)</span
                   >
                 </div>
                 <a
                   href="#contact"
                   data-cursor="Contact"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="mt-4 sm:mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Me contacter pour un échange →
@@ -1057,24 +1075,24 @@
         </div>
 
         <!-- OFFRE 02 : LCDE & Expériences -->
-        <div class="sticky-card-wrapper top-28 sm:top-36">
+        <div class="sticky-card-wrapper top-24 sm:top-36">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-8 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-xs text-studio-accent"
                 >
                   <span>02</span>
                   <span>—</span>
                   <span>Février 2025 - Juin 2025 • Annemasse & Toulouse</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-xl sm:text-3xl md:text-4xl text-studio-main"
                 >
                   02. Stagiaire Développeur Web & CMS — LCDE
                 </h3>
@@ -1097,7 +1115,7 @@
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-5 md:pt-0 border-studio shrink-0"
               >
                 <div class="md:text-right">
                   <span
@@ -1105,14 +1123,14 @@
                     >Type de mission</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-4xl text-studio-main"
                     >Stage & CMS</span
                   >
                 </div>
                 <a
                   href="#contact"
                   data-cursor="Contact"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="mt-4 sm:mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Discuter d'une opportunité →
@@ -1123,24 +1141,24 @@
         </div>
 
         <!-- OFFRE 03 : Parcours Académique -->
-        <div class="sticky-card-wrapper top-32 sm:top-44">
+        <div class="sticky-card-wrapper top-28 sm:top-44">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-8 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-xs text-studio-accent"
                 >
                   <span>03</span>
                   <span>—</span>
                   <span>2022 - 2027 • De Bac+2 à Bac+5</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-xl sm:text-3xl md:text-4xl text-studio-main"
                 >
                   03. Parcours Académique & Diplômes
                 </h3>
@@ -1163,7 +1181,7 @@
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-5 md:pt-0 border-studio shrink-0"
               >
                 <div class="md:text-right">
                   <span
@@ -1171,7 +1189,7 @@
                     >Niveau d'études</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-4xl text-studio-main"
                     >Bac+5 en cours</span
                   >
                 </div>
@@ -1179,7 +1197,7 @@
                   href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
                   target="_blank"
                   data-cursor="CV"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="mt-4 sm:mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Télécharger mon CV (PDF) →
@@ -1190,62 +1208,72 @@
         </div>
 
         <!-- OFFRE 04 : Stack Technique -->
-        <div class="sticky-card-wrapper top-36 sm:top-52">
+        <div class="sticky-card-wrapper top-32 sm:top-52">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-8 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[11px] sm:text-xs text-studio-accent"
                 >
                   <span>04</span>
                   <span>—</span>
                   <span>Technologies & Savoir-faire</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-xl sm:text-3xl md:text-4xl text-studio-main"
                 >
                   04. Stack Technique & Hard Skills
                 </h3>
                 <p class="text-studio-muted text-sm sm:text-base font-light">
                   Stack technique complète mobilisée pour concevoir des applications web et mobiles performantes, des architectures back-end scalables et des pipelines automatisés.
                 </p>
-                <div class="pt-2 space-y-2.5 text-xs sm:text-sm text-studio-main">
-                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Front-End</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Vue.js</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Next.js</span>
+                <div class="pt-2 space-y-3 sm:space-y-2.5 text-xs sm:text-sm text-studio-main">
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Front-End</span>
+                    <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Vue.js</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Next.js</span>
+                    </div>
                   </div>
-                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Back-End</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Node.js</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PHP</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Python</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Java</span>
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Back-End</span>
+                    <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Node.js</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PHP</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Python</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Java</span>
+                    </div>
                   </div>
-                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Bases de données</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PostgreSQL</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MySQL</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MongoDB</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">NoSQL</span>
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Bases de données</span>
+                    <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PostgreSQL</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MySQL</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MongoDB</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">NoSQL</span>
+                    </div>
                   </div>
-                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Mobile</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React Native</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Expo</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Kotlin</span>
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">Mobile</span>
+                    <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React Native</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Expo</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Kotlin</span>
+                    </div>
                   </div>
-                  <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">DevOps & Outils</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">GitLab CI/CD</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Git</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">N8N</span>
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
+                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent sm:w-28 shrink-0">DevOps & Outils</span>
+                    <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">GitLab CI/CD</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Git</span>
+                      <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">N8N</span>
+                    </div>
                   </div>
                 </div>
                 <div class="pt-2 flex items-center gap-2 text-xs text-studio-muted font-mono">
@@ -1254,7 +1282,7 @@
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-5 md:pt-0 border-studio shrink-0"
               >
                 <div class="md:text-right">
                   <span
@@ -1262,14 +1290,14 @@
                     >Profil technique</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-4xl text-studio-main"
                     >Full-Stack</span
                   >
                 </div>
                 <a
                   href="#contact"
                   data-cursor="Contact"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="mt-4 sm:mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Me contacter pour échanger →
@@ -1291,11 +1319,11 @@
     >
       <div id="horizontal-scroll-section" class="relative lg:h-[280vh]">
         <div
-          class="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center overflow-hidden py-24 lg:py-0"
+          class="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center overflow-hidden py-16 sm:py-24 lg:py-0"
         >
           <!-- En-tête de la galerie -->
           <div
-            class="max-w-6xl mx-auto px-4 sm:px-6 w-full mb-10 flex items-end justify-between"
+            class="max-w-6xl mx-auto px-4 sm:px-6 w-full mb-8 sm:mb-10 flex items-end justify-between"
           >
             <div>
               <span
@@ -1343,7 +1371,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-56 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/memotrip.png"
@@ -1379,7 +1407,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-56 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/meetinnight.png"
@@ -1415,7 +1443,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-56 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/gsb_logo-modified.png"
@@ -1451,7 +1479,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-56 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/image%20(1).png"
@@ -1491,10 +1519,10 @@
     <section
       id="contact"
       data-section="05 — Contact"
-      class="py-28 sm:py-36 max-w-6xl mx-auto px-4 sm:px-6"
+      class="py-16 sm:py-36 max-w-6xl mx-auto px-4 sm:px-6"
     >
       <div id="simulateur" class="sr-only"></div>
-      <div class="max-w-2xl mb-16">
+      <div class="max-w-2xl mb-10 sm:mb-16">
         <span
           class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
           >05 — Contact & Échange</span
@@ -1516,11 +1544,11 @@
         id="contact-form"
         action="https://formspree.io/f/xdkaqwea"
         method="POST"
-        class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch"
+        class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch"
       >
         <!-- GAUCHE (7 cols) : INFORMATIONS DU DEMANDEUR & SUJET DE LA DEMANDE -->
         <div
-          class="lg:col-span-7 rounded-3xl bg-studio-surface border border-studio p-6 sm:p-10 space-y-8 flex flex-col justify-between"
+          class="lg:col-span-7 rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 space-y-6 sm:space-y-8 flex flex-col justify-between"
         >
           <div class="space-y-6">
             <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
@@ -1614,7 +1642,7 @@
                 <button
                   type="button"
                   onclick="selectContactSubject('Opportunité d\'alternance / Emploi', this)"
-                  class="contact-subject-btn active text-left p-4 rounded-2xl border transition-all"
+                  class="contact-subject-btn active text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border transition-all"
                   style="border-color: var(--accent); background-color: var(--accent-soft)"
                 >
                   <div class="flex items-center justify-between">
@@ -1627,7 +1655,7 @@
                 <button
                   type="button"
                   onclick="selectContactSubject('Projet & Collaboration Tech', this)"
-                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                  class="contact-subject-btn text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
                     <span class="font-medium text-sm text-studio-main">🤝 Projet & Collaboration</span>
@@ -1639,7 +1667,7 @@
                 <button
                   type="button"
                   onclick="selectContactSubject('Échange technique & Full-Stack', this)"
-                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                  class="contact-subject-btn text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
                     <span class="font-medium text-sm text-studio-main">💡 Échange technique</span>
@@ -1651,7 +1679,7 @@
                 <button
                   type="button"
                   onclick="selectContactSubject('Autre demande / Prise de contact', this)"
-                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                  class="contact-subject-btn text-left p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
                     <span class="font-medium text-sm text-studio-main">💬 Autre démarche</span>
@@ -1674,7 +1702,7 @@
 
         <!-- DROITE (5 cols) : PRÉCISIONS & TRANSMISSION DU MESSAGE -->
         <div
-          class="lg:col-span-5 rounded-3xl bg-studio-surface border border-studio p-6 sm:p-10 flex flex-col justify-between space-y-6"
+          class="lg:col-span-5 rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 flex flex-col justify-between space-y-6"
         >
           <div class="space-y-4">
             <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
@@ -1750,7 +1778,7 @@
     <!-- ==========================================================================
          10. FOOTER AVEC LA GRANDE SIGNATURE MONUMENTALE
          ========================================================================== -->
-    <footer class="border-t border-studio pt-16 pb-6 overflow-hidden">
+    <footer class="border-t border-studio pt-12 sm:pt-16 pb-6 overflow-hidden">
       <div
         class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-12"
       >
@@ -1836,12 +1864,12 @@
       class="fixed inset-0 z-[90] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md"
     >
       <div
-        class="relative w-full max-w-xl rounded-3xl bg-studio-surface border border-studio p-8 sm:p-10 shadow-2xl"
+        class="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-studio-surface border border-studio p-6 sm:p-10 shadow-2xl"
       >
         <button
           type="button"
           onclick="closeWorkModal()"
-          class="absolute top-6 right-6 w-9 h-9 rounded-full border border-studio flex items-center justify-center text-studio-muted hover:text-studio-main"
+          class="absolute top-5 sm:top-6 right-5 sm:right-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-studio flex items-center justify-center text-studio-muted hover:text-studio-main text-xs sm:text-base"
         >
           ✕
         </button>
@@ -1852,7 +1880,7 @@
         >
         <h3
           id="work-modal-title"
-          class="font-serif italic text-3xl sm:text-4xl text-studio-main mt-2"
+          class="font-serif italic text-2xl sm:text-4xl text-studio-main mt-2"
         >
           Titre
         </h3>
