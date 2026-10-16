@@ -4,8 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pierre Elias NODON — Développeur Full Stack</title>
-    <meta name="description" content="Portfolio de Pierre Elias NODON — Développeur Full Stack, étudiant en Master Expert à Ynov Campus et alternant chez SEAC GF à Toulouse." />
-    <link rel="icon" href="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg" />
+    <meta
+      name="description"
+      content="Portfolio de Pierre Elias NODON — Développeur Full Stack, étudiant en Master Expert à Ynov Campus et alternant chez SEAC GF à Toulouse."
+    />
+    <link
+      rel="icon"
+      href="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg"
+    />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -96,11 +102,19 @@
         color: #0c0c0e;
       }
 
+      html {
+        max-width: 100%;
+        width: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
+
       body {
         background-color: var(--bg-main);
         color: var(--text-main);
         font-family: "Plus Jakarta Sans", sans-serif;
-        overflow-x: hidden;
+        max-width: 100%;
+        width: 100%;
+        position: relative;
         transition:
           background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
           color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -201,12 +215,20 @@
       /* ==========================================================================
            SIGNATURE MONUMENTALE « PIERRE ELIAS / NODON » DANS LE FOOTER (2 LIGNES ADAPTATIVES)
            ========================================================================== */
+      /* Ajustement responsive mobile pour éviter les cassures de texte */
+      @media (max-width: 640px) {
+        html {
+          font-size: 15px;
+        }
+      }
+
       .footer-monument-wrapper {
         position: relative;
         width: 100%;
+        max-width: 100%;
         box-sizing: border-box;
-        overflow: visible;
-        padding: 1.5rem 4vw 2.25rem 4vw;
+        overflow: hidden;
+        padding: 1rem 3vw 1.75rem 3vw;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -243,13 +265,13 @@
       }
 
       .footer-monument-line.line-first {
-        font-size: clamp(3rem, 15.5vw, 13.5rem);
+        font-size: clamp(2.2rem, 15vw, 13.5rem);
         letter-spacing: -0.03em;
         line-height: 0.9;
       }
 
       .footer-monument-line.line-second {
-        font-size: clamp(2.1rem, 11.2vw, 10rem);
+        font-size: clamp(1.5rem, 11vw, 10rem);
         letter-spacing: -0.02em;
         line-height: 0.92;
       }
@@ -506,22 +528,22 @@
     <!-- ==========================================================================
          3. NAVIGATION ÉPURÉE & BASCULE DE THÈME
          ========================================================================== -->
-    <header class="fixed top-5 inset-x-0 z-50 mx-auto max-w-6xl px-4 sm:px-6">
+    <header class="fixed top-3 sm:top-5 left-0 right-0 z-50 mx-auto max-w-6xl px-3 sm:px-6 w-full pointer-events-none">
       <nav
-        class="flex items-center justify-between px-5 py-3.5 rounded-full bg-studio-glass border border-studio backdrop-blur-xl shadow-sm"
+        class="pointer-events-auto flex items-center justify-between px-3.5 sm:px-5 py-2 sm:py-3.5 rounded-full bg-studio-glass border border-studio backdrop-blur-xl shadow-sm w-full"
       >
         <!-- Marque Pierre Elias NODON -->
         <a
           href="#hero"
           data-cursor="Haut"
-          class="flex items-center gap-3 group"
+          class="flex items-center gap-2 sm:gap-3 group shrink-0"
         >
           <span
             class="w-2 h-2 rounded-full transition-transform duration-300 group-hover:scale-150"
             style="background-color: var(--accent)"
           ></span>
           <span
-            class="font-display font-bold text-sm tracking-[0.16em] uppercase text-studio-main"
+            class="font-display font-bold text-xs sm:text-sm tracking-[0.12em] sm:tracking-[0.16em] uppercase text-studio-main whitespace-nowrap"
             >Pierre Elias NODON</span
           >
         </a>
@@ -557,13 +579,13 @@
         </div>
 
         <!-- Bascule de thème + CTA -->
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <button
             id="theme-toggle-btn"
             type="button"
             data-cursor="Thème"
             aria-label="Changer de thème"
-            class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-studio text-xs font-mono text-studio-muted hover:text-studio-main transition-all"
+            class="flex items-center justify-center gap-1.5 p-2 sm:px-3.5 sm:py-2 rounded-full border border-studio text-xs font-mono text-studio-muted hover:text-studio-main transition-all"
           >
             <span id="theme-icon" class="text-xs">◐</span>
             <span id="theme-label" class="hidden sm:inline text-[11px]"
@@ -574,10 +596,10 @@
           <a
             href="#contact"
             data-cursor="Contact"
-            class="px-4 sm:px-5 py-2 rounded-full text-xs font-medium tracking-wide transition-all hover:opacity-90"
+            class="px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium tracking-wide whitespace-nowrap transition-all hover:opacity-90"
             style="background-color: var(--text-main); color: var(--bg-main)"
           >
-            Me contacter
+            <span class="sm:hidden">Contact</span><span class="hidden sm:inline">Me contacter</span>
           </a>
         </div>
       </nav>
@@ -589,21 +611,21 @@
     <section
       id="hero"
       data-section="01 — Introduction"
-      class="relative min-h-[128vh] pt-36 sm:pt-44 pb-24 flex flex-col justify-between"
+      class="relative min-h-[128vh] pt-28 sm:pt-44 pb-16 sm:pb-24 flex flex-col justify-between overflow-hidden w-full max-w-full"
     >
       <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full">
         <!-- Sur-titre -->
         <div
-          class="flex items-center justify-between pb-8 border-b border-studio"
+          class="flex items-center justify-between pb-6 sm:pb-8 border-b border-studio gap-3"
           data-parallax="-0.08"
         >
           <span
-            class="font-mono text-xs tracking-widest uppercase text-studio-muted"
+            class="font-mono text-[10px] sm:text-xs tracking-wider sm:tracking-widest uppercase text-studio-muted truncate sm:overflow-visible"
           >
             Pierre Elias NODON — Développeur Full-Stack
           </span>
           <span
-            class="hidden sm:inline-flex items-center gap-2 font-mono text-xs text-studio-accent"
+            class="hidden sm:inline-flex items-center gap-2 font-mono text-xs text-studio-accent shrink-0"
           >
             <span
               class="w-1.5 h-1.5 rounded-full animate-pulse"
@@ -614,29 +636,36 @@
         </div>
 
         <!-- Titre Principal avec Parallaxe Multi-Axes & Photo de Profil -->
-        <div class="mt-12 sm:mt-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div class="max-w-3xl space-y-2">
+        <div
+          class="mt-10 sm:mt-16 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8"
+        >
+          <div class="max-w-3xl space-y-1.5 sm:space-y-2">
             <h1
               id="hero-title-1"
-              class="font-display font-bold text-4xl sm:text-6xl lg:text-[4.4rem] tracking-tight leading-[1.04] text-studio-main will-change-transform"
+              class="font-display font-bold text-3xl sm:text-6xl lg:text-[4.4rem] tracking-tight leading-[1.06] sm:leading-[1.04] text-studio-main will-change-transform"
             >
               Pierre Elias NODON
             </h1>
             <p
               id="hero-title-2"
-              class="font-serif italic font-normal text-4xl sm:text-6xl lg:text-[4.8rem] leading-[1.04] text-studio-accent will-change-transform"
+              class="font-serif italic font-normal text-3xl sm:text-6xl lg:text-[4.8rem] leading-[1.06] sm:leading-[1.04] text-studio-accent will-change-transform"
             >
               Développeur Full Stack.
             </p>
           </div>
 
           <!-- Photo Portrait / Squircle Éditorial -->
-          <div class="shrink-0 relative group self-start md:self-end pb-1" data-parallax="-0.04">
-            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl p-1 bg-studio-surface border-2 border-studio shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-studio-accent">
+          <div
+            class="shrink-0 relative group self-start md:self-end pb-1"
+            data-parallax="-0.04"
+          >
+            <div
+              class="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl p-1 bg-studio-surface border-2 border-studio shadow-2xl transition-all duration-300 group-hover:scale-105 group-hover:border-studio-accent"
+            >
               <img
                 src="https://ndn-elias.github.io/portfolio/assets/img/profile-img.jpg"
                 alt="Pierre Elias NODON"
-                class="w-full h-full object-cover object-top rounded-[20px] filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                class="w-full h-full object-cover object-top rounded-[18px] sm:rounded-[20px] filter grayscale group-hover:grayscale-0 transition-all duration-500"
                 loading="eager"
               />
             </div>
@@ -645,27 +674,33 @@
               class="absolute -bottom-1 -right-1 flex h-4 w-4"
               title="Disponible pour projets & opportunités"
             >
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-studio-surface"></span>
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-studio-surface"
+              ></span>
             </span>
           </div>
         </div>
 
         <!-- Accroche orientée clients & boutons d'action -->
         <div
-          class="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-end justify-between gap-8"
+          class="mt-8 sm:mt-10 flex flex-col sm:flex-row sm:items-end justify-between gap-6 sm:gap-8"
           data-parallax="0.06"
         >
           <p
-            class="max-w-xl text-studio-muted text-base sm:text-lg font-light leading-relaxed"
+            class="max-w-xl text-studio-muted text-sm sm:text-lg font-light leading-relaxed"
           >
-            Étudiant en Master Expert Full Stack à Toulouse et alternant chez SEAC GF. Passionné d'informatique, je conçois des applications web et mobiles modernes, réactives et performantes.
+            Étudiant en Master Expert Full Stack à Toulouse et alternant chez
+            SEAC GF. Passionné d'informatique, je conçois des applications web
+            et mobiles modernes, réactives et performantes.
           </p>
-          <div class="flex items-center gap-4 shrink-0">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
             <a
               href="#realisations"
               data-cursor="Projets"
-              class="px-6 py-3.5 rounded-full text-xs sm:text-sm font-medium transition-transform hover:scale-[1.02]"
+              class="px-5 sm:px-6 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-medium text-center transition-transform hover:scale-[1.02]"
               style="background-color: var(--accent); color: #0c0c0e"
             >
               Découvrir mes projets
@@ -674,7 +709,7 @@
               href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
               target="_blank"
               data-cursor="CV"
-              class="px-6 py-3.5 rounded-full border border-studio text-xs sm:text-sm font-medium text-studio-main hover:border-studio-accent transition-colors"
+              class="px-5 sm:px-6 py-3 sm:py-3.5 rounded-full border border-studio text-xs sm:text-sm font-medium text-studio-main text-center hover:border-studio-accent transition-colors"
             >
               Télécharger mon CV
             </a>
@@ -682,7 +717,7 @@
         </div>
 
         <!-- Fenêtre Interactive macOS qui s'élargit au Scroll (Largeur & Scale progressifs) -->
-        <div class="mt-16 sm:mt-20 flex justify-center">
+        <div class="mt-12 sm:mt-20 flex justify-center">
           <div
             id="hero-expand-frame"
             class="relative w-full md:w-[76%] rounded-3xl bg-studio-surface border border-studio overflow-hidden transition-shadow duration-500 will-change-transform"
@@ -690,9 +725,9 @@
           >
             <!-- Barre macOS + 3 Vues Interactives Cliquables -->
             <div
-              class="flex flex-wrap items-center justify-between gap-4 px-6 py-4 border-b border-studio bg-studio-elevated"
+              class="flex items-center justify-between gap-3 px-4 sm:px-6 py-3 sm:py-4 border-b border-studio bg-studio-elevated"
             >
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 shrink-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-stone-500/40"></span>
                 <span class="w-2.5 h-2.5 rounded-full bg-stone-500/40"></span>
                 <span
@@ -705,41 +740,41 @@
                 >
               </div>
 
-              <!-- 3 Vues cliquables -->
+              <!-- 3 Vues cliquables adaptées mobile pour tenir sur une ligne sans empilement -->
               <div
-                class="flex flex-wrap items-center gap-1 p-1 rounded-full bg-studio-main border border-studio"
+                class="flex items-center gap-1 p-1 rounded-2xl sm:rounded-full bg-studio-main border border-studio overflow-x-auto no-scrollbar"
               >
                 <button
                   type="button"
                   onclick="switchPreviewTab(0)"
                   data-tab="0"
-                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium transition-all"
+                  class="preview-tab-btn px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl sm:rounded-full text-[10px] sm:text-[11px] font-medium whitespace-nowrap transition-all"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
-                  01. Front-End & Vue/React
+                  <span class="sm:hidden">01. Front</span><span class="hidden sm:inline">01. Front-End & Vue/React</span>
                 </button>
                 <button
                   type="button"
                   onclick="switchPreviewTab(1)"
                   data-tab="1"
-                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all"
+                  class="preview-tab-btn px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl sm:rounded-full text-[10px] sm:text-[11px] font-medium text-studio-muted hover:text-studio-main whitespace-nowrap transition-all"
                 >
-                  02. Back-End & Systèmes
+                  <span class="sm:hidden">02. Back</span><span class="hidden sm:inline">02. Back-End & Systèmes</span>
                 </button>
                 <button
                   type="button"
                   onclick="switchPreviewTab(2)"
                   data-tab="2"
-                  class="preview-tab-btn px-3.5 py-1.5 rounded-full text-[11px] font-medium text-studio-muted hover:text-studio-main transition-all"
+                  class="preview-tab-btn px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl sm:rounded-full text-[10px] sm:text-[11px] font-medium text-studio-muted hover:text-studio-main whitespace-nowrap transition-all"
                 >
-                  03. Mobile & N8N
+                  <span class="sm:hidden">03. Mobile</span><span class="hidden sm:inline">03. Mobile & N8N</span>
                 </button>
               </div>
             </div>
 
             <!-- Contenu Visuel Interactif -->
             <div
-              class="relative h-[340px] sm:h-[420px] flex items-center justify-center p-6 sm:p-12 overflow-hidden"
+              class="relative h-[320px] sm:h-[420px] flex items-center justify-center p-4 sm:p-12 overflow-hidden"
             >
               <canvas
                 id="studio-geometry-canvas"
@@ -747,36 +782,37 @@
               ></canvas>
 
               <div
-                class="relative z-10 max-w-xl text-center space-y-4 pointer-events-none"
+                class="relative z-10 max-w-xl text-center space-y-3 sm:space-y-4 pointer-events-none px-2"
               >
                 <span
                   id="preview-kicker"
-                  class="font-mono text-[11px] tracking-[0.2em] uppercase text-studio-accent"
+                  class="font-mono text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-studio-accent"
                 >
                   01. FRONT-END & VUE / REACT
                 </span>
                 <h2
                   id="preview-heading"
-                  class="font-serif italic text-3xl sm:text-5xl text-studio-main"
+                  class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-studio-main"
                 >
                   Des interfaces immersives, dynamiques et réactives.
                 </h2>
                 <p
                   id="preview-desc"
-                  class="text-sm sm:text-base text-studio-muted font-light max-w-md mx-auto"
+                  class="text-xs sm:text-base text-studio-muted font-light max-w-md mx-auto"
                 >
-                  Conception d'architectures web modernes avec Vue.js, Node.js, React et Next.js, axées sur la réactivité et la robustesse.
+                  Conception d'architectures web modernes avec Vue.js, Node.js,
+                  React et Next.js, axées sur la réactivité et la robustesse.
                 </p>
               </div>
 
               <!-- Pied de fenêtre -->
               <div
-                class="absolute bottom-5 inset-x-8 flex items-center justify-between text-[11px] font-mono text-studio-muted border-t border-studio pt-3"
+                class="absolute bottom-4 sm:bottom-5 inset-x-4 sm:inset-x-8 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-studio-muted border-t border-studio pt-2.5 sm:pt-3 gap-2"
               >
-                <span id="preview-metric-left"
+                <span id="preview-metric-left" class="truncate mr-2"
                   >Vue.js • React • Next.js • Node.js</span
                 >
-                <span id="preview-metric-right">Full-Stack & Mobile</span>
+                <span id="preview-metric-right" class="shrink-0 whitespace-nowrap">Full-Stack & Mobile</span>
               </div>
             </div>
           </div>
@@ -788,84 +824,85 @@
          5. BANDEAU ÉDITORIAL DISCRET RÉACTIF AU SCROLL
          ========================================================================== -->
     <section
-      class="py-6 border-y border-studio overflow-hidden select-none bg-studio-surface"
+      class="py-3.5 sm:py-6 border-y border-studio overflow-hidden select-none bg-studio-surface w-full max-w-full relative"
+      style="isolation: isolate;"
     >
       <div
         id="marquee-track"
-        class="flex whitespace-nowrap items-center gap-12 will-change-transform"
+        class="flex whitespace-nowrap items-center gap-6 sm:gap-12 will-change-transform"
       >
-        <div class="flex items-center gap-12 shrink-0">
+        <div class="flex items-center gap-6 sm:gap-12 shrink-0">
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >Vue.js & Node.js</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >React & Next.js</span
           >
           <span class="text-studio-accent">•</span>
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >PHP, Python & Java</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >PostgreSQL, MySQL & MongoDB</span
           >
           <span class="text-studio-accent">•</span>
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >React Native & Expo</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >Kotlin</span
           >
           <span class="text-studio-accent">•</span>
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >GitLab CI/CD & Git</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >N8N</span
           >
           <span class="text-studio-accent">•</span>
         </div>
-        <div class="flex items-center gap-12 shrink-0" aria-hidden="true">
+        <div class="flex items-center gap-6 sm:gap-12 shrink-0" aria-hidden="true">
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >Vue.js & Node.js</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >React & Next.js</span
           >
           <span class="text-studio-accent">•</span>
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >PHP, Python & Java</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >PostgreSQL, MySQL & MongoDB</span
           >
           <span class="text-studio-accent">•</span>
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >React Native & Expo</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >Kotlin</span
           >
           <span class="text-studio-accent">•</span>
           <span
-            class="text-lg sm:text-xl font-light tracking-wide text-studio-main"
+            class="text-sm sm:text-xl font-light tracking-wide text-studio-main"
             >GitLab CI/CD & Git</span
           >
           <span class="text-studio-accent">•</span>
-          <span class="font-serif italic text-xl sm:text-2xl text-studio-accent"
+          <span class="font-serif italic text-base sm:text-2xl text-studio-accent"
             >N8N</span
           >
           <span class="text-studio-accent">•</span>
@@ -879,9 +916,9 @@
     <section
       id="approche"
       data-section="02 — À propos"
-      class="py-28 sm:py-40 max-w-5xl mx-auto px-4 sm:px-6"
+      class="py-16 sm:py-32 lg:py-40 max-w-5xl mx-auto px-4 sm:px-6"
     >
-      <div class="mb-10">
+      <div class="mb-6 sm:mb-10">
         <span
           class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
           >02 — À propos de moi</span
@@ -891,69 +928,85 @@
       <!-- Texte illuminé mot par mot en fonction du scroll -->
       <p
         id="kinetic-manifesto"
-        class="font-normal text-3xl sm:text-5xl lg:text-[3.35rem] leading-[1.22] tracking-tight text-studio-main"
+        class="font-normal text-2xl sm:text-4xl lg:text-[3.35rem] leading-[1.28] sm:leading-[1.22] tracking-tight text-studio-main"
       >
-        Passionné par l'informatique depuis mon plus jeune âge, je conçois des solutions web modernes et durables, alliant rigueur technique Full-Stack et ergonomie soignée.
+        Passionné par l'informatique depuis mon plus jeune âge, je conçois des
+        solutions web modernes et durables, alliant rigueur technique Full-Stack
+        et ergonomie soignée.
       </p>
 
       <!-- 3 Indicateurs Clés Sobres -->
       <div
-        class="mt-20 pt-12 border-t border-studio grid grid-cols-1 sm:grid-cols-3 gap-10"
+        class="mt-12 sm:mt-20 pt-8 sm:pt-12 border-t border-studio grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10"
       >
         <div>
           <div
-            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+            class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-studio-accent"
           >
-            21 ans • Toulouse
+            22 ans • Toulouse
           </div>
-          <div class="text-base font-medium text-studio-main mt-2">
+          <div class="text-sm sm:text-base font-medium text-studio-main mt-1 sm:mt-2">
             Étudiant & Alternant
           </div>
-          <p class="text-sm text-studio-muted font-light mt-1">
-            En Master Expert Full Stack à Ynov Campus Toulouse et alternant au sein du groupe SEAC GF (BTP) sur Vue.js & Node.js.
+          <p class="text-xs sm:text-sm text-studio-muted font-light mt-1">
+            En Master Expert Full Stack à Ynov Campus Toulouse et alternant au
+            sein du groupe SEAC GF (BTP) sur Vue.js & Node.js.
           </p>
         </div>
         <div>
           <div
-            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+            class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-studio-accent"
           >
             BTS & BUT MMI
           </div>
-          <div class="text-base font-medium text-studio-main mt-2">
+          <div class="text-sm sm:text-base font-medium text-studio-main mt-1 sm:mt-2">
             Diplômes & Parcours
           </div>
-          <p class="text-sm text-studio-muted font-light mt-1">
-            BTS SIO option SLAM au lycée Ozenne (15.06 de moyenne) et 3ᵉ année BUT MMI à l'IUT Paul Sabatier de Castres.
+          <p class="text-xs sm:text-sm text-studio-muted font-light mt-1">
+            BTS SIO option SLAM au lycée Ozenne (15.06 de moyenne) et 3ᵉ année
+            BUT MMI à l'IUT Paul Sabatier de Castres.
           </p>
         </div>
         <div>
           <div
-            class="font-serif italic text-4xl sm:text-5xl text-studio-accent"
+            class="font-serif italic text-2xl sm:text-4xl lg:text-5xl text-studio-accent"
           >
             Stack & Outils
           </div>
-          <div class="text-base font-medium text-studio-main mt-2">
+          <div class="text-sm sm:text-base font-medium text-studio-main mt-1 sm:mt-2">
             Technologies Maîtrisées
           </div>
-          <p class="text-sm text-studio-muted font-light mt-1">
-            Vue.js, Node.js, React, Next.js, PHP, Python, Java, PostgreSQL, MySQL, MongoDB, NoSQL, React Native, Expo, Kotlin, GitLab CI/CD, Git & N8N.
+          <p class="text-xs sm:text-sm text-studio-muted font-light mt-1">
+            Vue.js, Node.js, React, Next.js, PHP, Python, Java, PostgreSQL,
+            MySQL, MongoDB, NoSQL, React Native, Expo, Kotlin, GitLab CI/CD, Git
+            & N8N et d'autres.
           </p>
         </div>
       </div>
 
       <!-- Avis motivé & Recommandation académique -->
-      <div class="mt-14 p-6 sm:p-8 rounded-2xl bg-studio-surface border border-studio flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div
+        class="mt-10 sm:mt-14 p-5 sm:p-8 rounded-2xl bg-studio-surface border border-studio flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6"
+      >
         <div class="space-y-2">
-          <p class="font-serif italic text-lg sm:text-xl text-studio-main">
-            « Pierre-Elias est un étudiant qui a montré beaucoup de sérieux et d'implication, félicité au conseil de classe. Il possède les qualités requises pour réussir ses études et projets professionnels. »
+          <p class="font-serif italic text-base sm:text-xl text-studio-main">
+            « Pierre-Elias est un étudiant qui a montré beaucoup de sérieux et
+            d'implication, félicité au conseil de classe. Il possède les
+            qualités requises pour réussir ses études et projets professionnels.
+            »
           </p>
-          <p class="font-mono text-xs text-studio-muted">
+          <p class="font-mono text-[11px] sm:text-xs text-studio-muted">
             Christine BALARD • Professeur au lycée Ozenne (Toulouse)
           </p>
         </div>
-        <div class="shrink-0 flex items-center gap-3">
-          <span class="w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
-          <span class="font-mono text-xs text-studio-accent">Avis académique</span>
+        <div class="shrink-0 flex items-center gap-2 sm:gap-3">
+          <span
+            class="w-2 h-2 rounded-full"
+            style="background-color: var(--accent)"
+          ></span>
+          <span class="font-mono text-[11px] sm:text-xs text-studio-accent"
+            >Avis académique</span
+          >
         </div>
       </div>
     </section>
@@ -964,10 +1017,10 @@
     <section
       id="offres"
       data-section="03 — Offres"
-      class="py-24 sm:py-36 max-w-5xl mx-auto px-4 sm:px-6"
+      class="py-12 sm:py-20 lg:py-36 max-w-5xl mx-auto px-4 sm:px-6"
     >
       <div
-        class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-24 gap-6"
+        class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-20 gap-4 sm:gap-6"
       >
         <div>
           <span
@@ -975,7 +1028,7 @@
             >03 — Parcours & Expériences</span
           >
           <h2
-            class="font-display font-bold text-3xl sm:text-5xl tracking-tight text-studio-main mt-3"
+            class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-studio-main mt-2 sm:mt-3"
           >
             Expériences &
             <span class="font-serif italic font-normal text-studio-accent"
@@ -983,70 +1036,78 @@
             >
           </h2>
         </div>
-        <p class="text-sm text-studio-muted max-w-xs font-light">
-          Mon parcours académique, mes missions en entreprise et l'ensemble de mes compétences techniques clés.
+        <p class="text-xs sm:text-sm text-studio-muted max-w-xs font-light">
+          Mon parcours académique, mes missions en entreprise et l'ensemble de
+          mes compétences techniques clés.
         </p>
       </div>
 
       <!-- Pile de 4 cartes Sticky -->
-      <div class="space-y-12 sm:space-y-16 pb-8">
+      <div class="space-y-8 sm:space-y-16 pb-8">
         <!-- OFFRE 01 : SEAC GF -->
-        <div class="sticky-card-wrapper top-24 sm:top-28">
+        <div class="sticky-card-wrapper top-20 sm:top-28">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-xs text-studio-accent"
                 >
                   <span>01</span>
                   <span>—</span>
                   <span>Septembre 2025 - Septembre 2027 • Toulouse</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-lg sm:text-2xl lg:text-3xl text-studio-main"
                 >
                   01. Alternant Développeur Full Stack — SEAC GF
                 </h3>
-                <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Alternance au sein du groupe SEAC GF (spécialisé dans l'industrie du BTP, Boulevard de Suisse à Toulouse) dans le cadre de mon Master Expert. Chargé du développement d'applications web d'entreprise et d'outils métiers performants.
+                <p class="text-studio-muted text-xs sm:text-base font-light">
+                  Alternance au sein du groupe SEAC GF (spécialisé dans
+                  l'industrie du BTP, Boulevard de Suisse à Toulouse) dans le
+                  cadre de mon Master Expert. Chargé du développement
+                  d'applications web d'entreprise et d'outils métiers
+                  performants.
                 </p>
                 <ul
-                  class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
+                  class="pt-1.5 sm:pt-2 flex flex-col sm:flex-row sm:flex-wrap gap-y-1.5 sm:gap-x-6 sm:gap-y-2 text-xs sm:text-sm text-studio-main"
                 >
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Développement d'applications web en Vue.js et Node.js
+                    <span class="text-studio-accent">•</span> Développement
+                    d'applications web en Vue.js et Node.js
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Digitalisation et automatisation de flux métiers BTP
+                    <span class="text-studio-accent">•</span> Digitalisation et
+                    automatisation de flux métiers BTP
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Architecture logicielle, API et sécurité des données
+                    <span class="text-studio-accent">•</span> Modernisation
+                    d'écrans AS400 et solutions web réactives
                   </li>
                 </ul>
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between border-t md:border-t-0 pt-4 md:pt-0 border-studio shrink-0 gap-3 md:gap-0"
               >
                 <div class="md:text-right">
                   <span
-                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    class="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-studio-muted block"
                     >Statut actuel</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-studio-main"
                     >Alternance (2 ans)</span
                   >
                 </div>
                 <a
                   href="#contact"
                   data-cursor="Contact"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="w-full sm:w-auto mt-3 md:mt-6 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Me contacter pour un échange →
@@ -1057,62 +1118,66 @@
         </div>
 
         <!-- OFFRE 02 : LCDE & Expériences -->
-        <div class="sticky-card-wrapper top-28 sm:top-36">
+        <div class="sticky-card-wrapper top-24 sm:top-36">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-xs text-studio-accent"
                 >
                   <span>02</span>
                   <span>—</span>
                   <span>Février 2025 - Juin 2025 • Annemasse & Toulouse</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-lg sm:text-2xl lg:text-3xl text-studio-main"
                 >
                   02. Stagiaire Développeur Web & CMS — LCDE
                 </h3>
-                <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Stage professionnel axé sur la maintenance et la refonte intégrale d'un écosystème WordPress et la création audiovisuelle, consolidé par une expérience de vendeur chez Wizzle (Fenouillet).
+                <p class="text-studio-muted text-xs sm:text-base font-light">
+                  Stage professionnel axé sur la maintenance et la refonte
+                  intégrale d'un écosystème WordPress et la création
+                  audiovisuelle.
                 </p>
                 <ul
-                  class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
+                  class="pt-1.5 sm:pt-2 flex flex-col sm:flex-row sm:flex-wrap gap-y-1.5 sm:gap-x-6 sm:gap-y-2 text-xs sm:text-sm text-studio-main"
                 >
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Refonte et maintenance avancée WordPress & CMS
+                    <span class="text-studio-accent">•</span> Refonte et
+                    maintenance avancée WordPress & CMS
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Tâches techniques dans le domaine de l'audiovisuel
+                    <span class="text-studio-accent">•</span> Tâches techniques
+                    dans le domaine audiovisuel
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Expérience vendeur et relation client (Wizzle)
+                    <span class="text-studio-accent">•</span> Automatisations de flux de travail
                   </li>
                 </ul>
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between border-t md:border-t-0 pt-4 md:pt-0 border-studio shrink-0 gap-3 md:gap-0"
               >
                 <div class="md:text-right">
                   <span
-                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    class="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-studio-muted block"
                     >Type de mission</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-studio-main"
                     >Stage & CMS</span
                   >
                 </div>
                 <a
                   href="#contact"
                   data-cursor="Contact"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="w-full sm:w-auto mt-3 md:mt-6 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Discuter d'une opportunité →
@@ -1123,55 +1188,60 @@
         </div>
 
         <!-- OFFRE 03 : Parcours Académique -->
-        <div class="sticky-card-wrapper top-32 sm:top-44">
+        <div class="sticky-card-wrapper top-28 sm:top-44">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-xs text-studio-accent"
                 >
                   <span>03</span>
                   <span>—</span>
                   <span>2022 - 2027 • De Bac+2 à Bac+5</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-lg sm:text-2xl lg:text-3xl text-studio-main"
                 >
                   03. Parcours Académique & Diplômes
                 </h3>
-                <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Un cursus spécialisé dans l'ingénierie logicielle et le web, combinant théorie rigoureuse et pratique intensive en projets universitaires et entreprises.
+                <p class="text-studio-muted text-xs sm:text-base font-light">
+                  Un cursus spécialisé dans l'ingénierie logicielle et le web,
+                  combinant théorie rigoureuse et pratique intensive en projets
+                  universitaires et entreprises.
                 </p>
                 <ul
-                  class="pt-2 flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-studio-main"
+                  class="pt-1.5 sm:pt-2 flex flex-col sm:flex-row sm:flex-wrap gap-y-1.5 sm:gap-x-6 sm:gap-y-2 text-xs sm:text-sm text-studio-main"
                 >
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> Master Expert Full Stack (2025-2027) — Ynov Campus Toulouse
+                    <span class="text-studio-accent">•</span> Master Expert
+                    Full Stack (2025-2027) — Ynov Campus Toulouse
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> BUT Métiers du Multimédia & Internet (2024-2025) — IUT Castres
+                    <span class="text-studio-accent">•</span> BUT Métiers du
+                    Multimédia & Internet (2024-2025) — IUT Castres
                   </li>
                   <li class="flex items-center gap-2">
-                    <span class="text-studio-accent">•</span> BTS SIO option SLAM (2022-2024) — Lycée Ozenne (15.06/20)
+                    <span class="text-studio-accent">•</span> BTS SIO option
+                    SLAM (2022-2024) — Lycée Ozenne
                   </li>
                 </ul>
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between border-t md:border-t-0 pt-4 md:pt-0 border-studio shrink-0 gap-3 md:gap-0"
               >
                 <div class="md:text-right">
                   <span
-                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    class="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-studio-muted block"
                     >Niveau d'études</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-studio-main"
                     >Bac+5 en cours</span
                   >
                 </div>
@@ -1179,7 +1249,7 @@
                   href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf"
                   target="_blank"
                   data-cursor="CV"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="w-full sm:w-auto mt-3 md:mt-6 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Télécharger mon CV (PDF) →
@@ -1190,86 +1260,159 @@
         </div>
 
         <!-- OFFRE 04 : Stack Technique -->
-        <div class="sticky-card-wrapper top-36 sm:top-52">
+        <div class="sticky-card-wrapper top-32 sm:top-52">
           <div
-            class="rounded-3xl bg-studio-surface border border-studio p-8 sm:p-12 transition-all"
+            class="rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 md:p-12 transition-all"
             style="box-shadow: var(--card-shadow)"
           >
             <div
-              class="flex flex-col md:flex-row md:items-center justify-between gap-8"
+              class="flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8"
             >
-              <div class="space-y-4 max-w-xl">
+              <div class="space-y-3 sm:space-y-4 max-w-xl">
                 <div
-                  class="flex items-center gap-3 font-mono text-xs text-studio-accent"
+                  class="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-xs text-studio-accent"
                 >
                   <span>04</span>
                   <span>—</span>
                   <span>Technologies & Savoir-faire</span>
                 </div>
                 <h3
-                  class="font-display font-bold text-2xl sm:text-4xl text-studio-main"
+                  class="font-display font-bold text-lg sm:text-2xl lg:text-3xl text-studio-main"
                 >
                   04. Stack Technique & Hard Skills
                 </h3>
-                <p class="text-studio-muted text-sm sm:text-base font-light">
-                  Stack technique complète mobilisée pour concevoir des applications web et mobiles performantes, des architectures back-end scalables et des pipelines automatisés.
+                <p class="text-studio-muted text-xs sm:text-base font-light">
+                  Stack technique complète mobilisée pour concevoir des
+                  applications web et mobiles performantes, des architectures
+                  back-end scalables et des pipelines automatisés.
                 </p>
-                <div class="pt-2 space-y-2.5 text-xs sm:text-sm text-studio-main">
+                <div
+                  class="pt-2 space-y-2 text-xs sm:text-sm text-studio-main"
+                >
                   <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Front-End</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Vue.js</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Next.js</span>
+                    <span
+                      class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-studio-accent w-20 sm:w-28 shrink-0"
+                      >Front-End</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Vue.js</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >React</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Next.js</span
+                    >
                   </div>
                   <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Back-End</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Node.js</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PHP</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Python</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Java</span>
+                    <span
+                      class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-studio-accent w-20 sm:w-28 shrink-0"
+                      >Back-End</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Node.js</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >PHP</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Python</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Java</span
+                    >
                   </div>
                   <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Bases de données</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">PostgreSQL</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MySQL</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">MongoDB</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">NoSQL</span>
+                    <span
+                      class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-studio-accent w-20 sm:w-28 shrink-0"
+                      ><span class="hidden sm:inline">Bases de données</span><span class="sm:hidden">Données</span></span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >PostgreSQL</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >MySQL</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >MongoDB</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >NoSQL</span
+                    >
                   </div>
                   <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">Mobile</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">React Native</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Expo</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Kotlin</span>
+                    <span
+                      class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-studio-accent w-20 sm:w-28 shrink-0"
+                      >Mobile</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >React Native</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Expo</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Kotlin</span
+                    >
                   </div>
                   <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    <span class="font-mono text-[11px] uppercase tracking-wider text-studio-accent w-28 shrink-0">DevOps & Outils</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">GitLab CI/CD</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">Git</span>
-                    <span class="px-2.5 py-1 rounded-full border border-studio bg-studio-main text-xs font-mono">N8N</span>
+                    <span
+                      class="font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-studio-accent w-20 sm:w-28 shrink-0"
+                      ><span class="hidden sm:inline">DevOps & Outils</span><span class="sm:hidden">DevOps</span></span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >GitLab CI/CD</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >Git</span
+                    >
+                    <span
+                      class="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full border border-studio bg-studio-main text-[11px] sm:text-xs font-mono whitespace-nowrap"
+                      >N8N</span
+                    >
                   </div>
                 </div>
-                <div class="pt-2 flex items-center gap-2 text-xs text-studio-muted font-mono">
-                  <span class="text-studio-accent">✦</span> Et bien d'autres technologies, bibliothèques & outils mobilisés selon les besoins du projet.
+                <div
+                  class="pt-2 flex items-center gap-2 text-[11px] sm:text-xs text-studio-muted font-mono"
+                >
+                  <span class="text-studio-accent">✦</span> Et bien d'autres
+                  technologies mobilisées selon les besoins du projet.
                 </div>
               </div>
 
               <div
-                class="flex flex-col md:items-end justify-between border-t md:border-t-0 pt-6 md:pt-0 border-studio shrink-0"
+                class="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end justify-between border-t md:border-t-0 pt-4 md:pt-0 border-studio shrink-0 gap-3 md:gap-0"
               >
                 <div class="md:text-right">
                   <span
-                    class="font-mono text-[11px] uppercase tracking-widest text-studio-muted block"
+                    class="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-studio-muted block"
                     >Profil technique</span
                   >
                   <span
-                    class="font-serif italic text-3xl sm:text-4xl text-studio-main"
+                    class="font-serif italic text-2xl sm:text-3xl lg:text-4xl text-studio-main"
                     >Full-Stack</span
                   >
                 </div>
                 <a
                   href="#contact"
                   data-cursor="Contact"
-                  class="mt-6 px-6 py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
+                  class="w-full sm:w-auto mt-3 md:mt-6 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs font-medium transition-transform hover:scale-105 inline-block text-center"
                   style="background-color: var(--accent); color: #0c0c0e"
                 >
                   Me contacter pour échanger →
@@ -1287,15 +1430,15 @@
     <section
       id="realisations"
       data-section="04 — Réalisations"
-      class="relative border-y border-studio bg-studio-surface"
+      class="relative border-y border-studio bg-studio-surface w-full max-w-full"
     >
       <div id="horizontal-scroll-section" class="relative lg:h-[280vh]">
         <div
-          class="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center overflow-hidden py-24 lg:py-0"
+          class="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center overflow-hidden py-12 sm:py-16 lg:py-0"
         >
           <!-- En-tête de la galerie -->
           <div
-            class="max-w-6xl mx-auto px-4 sm:px-6 w-full mb-10 flex items-end justify-between"
+            class="max-w-6xl mx-auto px-4 sm:px-6 w-full mb-8 sm:mb-10 flex items-end justify-between"
           >
             <div>
               <span
@@ -1303,7 +1446,7 @@
                 >04 — Sélection de projets</span
               >
               <h2
-                class="font-display font-bold text-3xl sm:text-5xl tracking-tight text-studio-main mt-2"
+                class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-studio-main mt-2"
               >
                 Réalisations &
                 <span class="font-serif italic font-normal text-studio-accent"
@@ -1334,7 +1477,7 @@
           >
             <div
               id="horizontal-track"
-              class="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:w-max will-change-transform"
+              class="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12 lg:w-max will-change-transform"
             >
               <!-- PROJET 01 : Memotrip -->
               <article
@@ -1343,7 +1486,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-60 sm:h-72 lg:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/memotrip.png"
@@ -1355,18 +1498,18 @@
                     class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
                   />
                 </div>
-                <div class="mt-4 flex items-baseline justify-between">
-                  <div>
+                <div class="mt-3 sm:mt-4 flex items-baseline justify-between gap-3">
+                  <div class="min-w-0">
                     <h3
-                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                      class="text-lg sm:text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors truncate"
                     >
                       Memotrip
                     </h3>
-                    <p class="text-xs text-studio-muted mt-0.5">
+                    <p class="text-[11px] sm:text-xs text-studio-muted mt-0.5 truncate">
                       Application Mobile • React Native & Expo
                     </p>
                   </div>
-                  <span class="font-mono text-xs text-studio-muted"
+                  <span class="font-mono text-[10px] sm:text-xs text-studio-muted shrink-0 whitespace-nowrap"
                     >01 — 2025</span
                   >
                 </div>
@@ -1379,7 +1522,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-60 sm:h-72 lg:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/meetinnight.png"
@@ -1391,18 +1534,18 @@
                     class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
                   />
                 </div>
-                <div class="mt-4 flex items-baseline justify-between">
-                  <div>
+                <div class="mt-3 sm:mt-4 flex items-baseline justify-between gap-3">
+                  <div class="min-w-0">
                     <h3
-                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                      class="text-lg sm:text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors truncate"
                     >
                       Meet In Night
                     </h3>
-                    <p class="text-xs text-studio-muted mt-0.5">
+                    <p class="text-[11px] sm:text-xs text-studio-muted mt-0.5 truncate">
                       Application Web • Rencontres & Sorties Nocturnes
                     </p>
                   </div>
-                  <span class="font-mono text-xs text-studio-muted"
+                  <span class="font-mono text-[10px] sm:text-xs text-studio-muted shrink-0 whitespace-nowrap"
                     >02 — 2024</span
                   >
                 </div>
@@ -1415,7 +1558,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-60 sm:h-72 lg:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/gsb_logo-modified.png"
@@ -1427,18 +1570,18 @@
                     class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
                   />
                 </div>
-                <div class="mt-4 flex items-baseline justify-between">
-                  <div>
+                <div class="mt-3 sm:mt-4 flex items-baseline justify-between gap-3">
+                  <div class="min-w-0">
                     <h3
-                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                      class="text-lg sm:text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors truncate"
                     >
                       GSB & VALRES
                     </h3>
-                    <p class="text-xs text-studio-muted mt-0.5">
+                    <p class="text-[11px] sm:text-xs text-studio-muted mt-0.5 truncate">
                       Applications Métier • Java, Web & Facturation
                     </p>
                   </div>
-                  <span class="font-mono text-xs text-studio-muted"
+                  <span class="font-mono text-[10px] sm:text-xs text-studio-muted shrink-0 whitespace-nowrap"
                     >03 — 2024</span
                   >
                 </div>
@@ -1451,7 +1594,7 @@
                 class="project-card-skew group w-full lg:w-[540px] shrink-0 cursor-pointer"
               >
                 <div
-                  class="relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
+                  class="relative h-60 sm:h-72 lg:h-80 rounded-2xl overflow-hidden border border-studio bg-studio-elevated"
                 >
                   <img
                     src="https://ndn-elias.github.io/portfolio/assets/img/img-projets/image%20(1).png"
@@ -1463,18 +1606,18 @@
                     class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700 opacity-90"
                   />
                 </div>
-                <div class="mt-4 flex items-baseline justify-between">
-                  <div>
+                <div class="mt-3 sm:mt-4 flex items-baseline justify-between gap-3">
+                  <div class="min-w-0">
                     <h3
-                      class="text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors"
+                      class="text-lg sm:text-xl font-medium text-studio-main group-hover:text-studio-accent transition-colors truncate"
                     >
                       ADDIMETAL & WineSpace
                     </h3>
-                    <p class="text-xs text-studio-muted mt-0.5">
+                    <p class="text-[11px] sm:text-xs text-studio-muted mt-0.5 truncate">
                       Stages BTS • Refonte Web 3D & Webscraping Data
                     </p>
                   </div>
-                  <span class="font-mono text-xs text-studio-muted"
+                  <span class="font-mono text-[10px] sm:text-xs text-studio-muted shrink-0 whitespace-nowrap"
                     >04 — 2023 - 2024</span
                   >
                 </div>
@@ -1491,24 +1634,26 @@
     <section
       id="contact"
       data-section="05 — Contact"
-      class="py-28 sm:py-36 max-w-6xl mx-auto px-4 sm:px-6"
+      class="py-12 sm:py-20 lg:py-36 max-w-6xl mx-auto px-4 sm:px-6"
     >
       <div id="simulateur" class="sr-only"></div>
-      <div class="max-w-2xl mb-16">
+      <div class="max-w-2xl mb-10 sm:mb-16">
         <span
           class="font-mono text-xs uppercase tracking-[0.2em] text-studio-accent"
           >05 — Contact & Échange</span
         >
         <h2
-          class="font-display font-bold text-3xl sm:text-5xl tracking-tight text-studio-main mt-3"
+          class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-studio-main mt-2 sm:mt-3"
         >
           Prenons contact &
           <span class="font-serif italic font-normal text-studio-accent"
             >échangeons.</span
           >
         </h2>
-        <p class="text-studio-muted text-sm sm:text-base font-light mt-3">
-          Pour une opportunité d'alternance, un poste, une collaboration technique ou une question, transmettez-moi votre message via le formulaire ci-dessous.
+        <p class="text-studio-muted text-xs sm:text-sm md:text-base font-light mt-2 sm:mt-3">
+          Pour une opportunité d'alternance, un poste, une collaboration
+          technique ou une question, transmettez-moi votre message via le
+          formulaire ci-dessous.
         </p>
       </div>
 
@@ -1516,28 +1661,30 @@
         id="contact-form"
         action="https://formspree.io/f/xdkaqwea"
         method="POST"
-        class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch"
+        class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch"
       >
         <!-- GAUCHE (7 cols) : INFORMATIONS DU DEMANDEUR & SUJET DE LA DEMANDE -->
         <div
-          class="lg:col-span-7 rounded-3xl bg-studio-surface border border-studio p-6 sm:p-10 space-y-8 flex flex-col justify-between"
+          class="lg:col-span-7 rounded-3xl bg-studio-surface border border-studio p-5 sm:p-8 md:p-10 space-y-6 sm:space-y-8 flex flex-col justify-between"
         >
-          <div class="space-y-6">
-            <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
+          <div class="space-y-5 sm:space-y-6">
+            <div
+              class="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-xs text-studio-accent"
+            >
               <span>01</span>
               <span>—</span>
               <span>Coordonnées & Contexte</span>
             </div>
-            <h3 class="font-display font-bold text-xl text-studio-main">
+            <h3 class="font-display font-bold text-lg sm:text-xl text-studio-main">
               Vos informations
             </h3>
 
             <!-- Champs de coordonnées -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
               <div>
                 <label
                   for="name-input"
-                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1"
                   >Nom & Prénom *</label
                 >
                 <input
@@ -1546,14 +1693,14 @@
                   type="text"
                   required
                   placeholder="Ex : Jean Dupont"
-                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                  class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-studio-main border border-studio text-xs sm:text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
                 />
               </div>
 
               <div>
                 <label
                   for="email-input"
-                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1"
                   >Email professionnel *</label
                 >
                 <input
@@ -1562,14 +1709,14 @@
                   type="email"
                   required
                   placeholder="Ex : jean.dupont@entreprise.com"
-                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                  class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-studio-main border border-studio text-xs sm:text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
                 />
               </div>
 
               <div>
                 <label
                   for="company-input"
-                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1"
                   >Entreprise / Organisation</label
                 >
                 <input
@@ -1577,14 +1724,14 @@
                   name="organisation"
                   type="text"
                   placeholder="Ex : Société, École ou Startup"
-                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                  class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-studio-main border border-studio text-xs sm:text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
                 />
               </div>
 
               <div>
                 <label
                   for="phone-input"
-                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                  class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1"
                   >Téléphone (optionnel)</label
                 >
                 <input
@@ -1592,15 +1739,15 @@
                   name="phone"
                   type="tel"
                   placeholder="Ex : +33 6 12 34 56 78"
-                  class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                  class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-studio-main border border-studio text-xs sm:text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
                 />
               </div>
             </div>
 
             <!-- Sélection du Sujet de la démarche -->
-            <div class="pt-4 border-t border-studio">
+            <div class="pt-3.5 sm:pt-4 border-t border-studio">
               <label
-                class="block font-mono text-xs uppercase tracking-widest text-studio-muted mb-3"
+                class="block font-mono text-[10px] sm:text-xs uppercase tracking-widest text-studio-muted mb-2.5 sm:mb-3"
               >
                 Sujet de votre démarche
               </label>
@@ -1610,104 +1757,167 @@
                 name="sujet"
                 value="Opportunité d'alternance / Emploi"
               />
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 <button
                   type="button"
-                  onclick="selectContactSubject('Opportunité d\'alternance / Emploi', this)"
-                  class="contact-subject-btn active text-left p-4 rounded-2xl border transition-all"
-                  style="border-color: var(--accent); background-color: var(--accent-soft)"
+                  onclick="
+                    selectContactSubject(
+                      'Opportunité d\'alternance / Emploi',
+                      this,
+                    )
+                  "
+                  class="contact-subject-btn active text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all"
+                  style="
+                    border-color: var(--accent);
+                    background-color: var(--accent-soft);
+                  "
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">💼 Alternance / Emploi</span>
-                    <span class="subject-dot w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-xs sm:text-sm text-studio-main whitespace-nowrap"
+                      >💼 Alternance / Emploi</span
+                    >
+                    <span
+                      class="subject-dot w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Master Expert ou CDI</p>
+                  <p class="font-mono text-[10px] sm:text-xs text-studio-muted mt-0.5 sm:mt-1">
+                    Master Expert ou CDI
+                  </p>
                 </button>
 
                 <button
                   type="button"
-                  onclick="selectContactSubject('Projet & Collaboration Tech', this)"
-                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                  onclick="
+                    selectContactSubject('Projet & Collaboration Tech', this)
+                  "
+                  class="contact-subject-btn text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">🤝 Projet & Collaboration</span>
-                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-xs sm:text-sm text-studio-main whitespace-nowrap"
+                      >🤝 Projet & Collaboration</span
+                    >
+                    <span
+                      class="subject-dot hidden w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Web, mobile ou API</p>
+                  <p class="font-mono text-[10px] sm:text-xs text-studio-muted mt-0.5 sm:mt-1">
+                    Web, mobile ou API
+                  </p>
                 </button>
 
                 <button
                   type="button"
-                  onclick="selectContactSubject('Échange technique & Full-Stack', this)"
-                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                  onclick="
+                    selectContactSubject('Échange technique & Full-Stack', this)
+                  "
+                  class="contact-subject-btn text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">💡 Échange technique</span>
-                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-xs sm:text-sm text-studio-main whitespace-nowrap"
+                      >💡 Échange technique</span
+                    >
+                    <span
+                      class="subject-dot hidden w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Stack Vue / React / Node</p>
+                  <p class="font-mono text-[10px] sm:text-xs text-studio-muted mt-0.5 sm:mt-1">
+                    Stack Vue / React / Node
+                  </p>
                 </button>
 
                 <button
                   type="button"
-                  onclick="selectContactSubject('Autre demande / Prise de contact', this)"
-                  class="contact-subject-btn text-left p-4 rounded-2xl border border-studio hover:border-studio-accent transition-all"
+                  onclick="
+                    selectContactSubject(
+                      'Autre demande / Prise de contact',
+                      this,
+                    )
+                  "
+                  class="contact-subject-btn text-left p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-studio hover:border-studio-accent transition-all"
                 >
                   <div class="flex items-center justify-between">
-                    <span class="font-medium text-sm text-studio-main">💬 Autre démarche</span>
-                    <span class="subject-dot hidden w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
+                    <span class="font-medium text-xs sm:text-sm text-studio-main whitespace-nowrap"
+                      >💬 Autre démarche</span
+                    >
+                    <span
+                      class="subject-dot hidden w-2 h-2 rounded-full"
+                      style="background-color: var(--accent)"
+                    ></span>
                   </div>
-                  <p class="font-mono text-xs text-studio-muted mt-1">Question ou mise en relation</p>
+                  <p class="font-mono text-[10px] sm:text-xs text-studio-muted mt-0.5 sm:mt-1">
+                    Question ou mise en relation
+                  </p>
                 </button>
               </div>
             </div>
           </div>
 
-          <div class="pt-4 border-t border-studio flex items-center justify-between text-xs text-studio-muted">
-            <span class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full" style="background-color: var(--accent)"></span>
-              Réponse garantie sous 24h ouvrées
+          <div
+            class="pt-3.5 sm:pt-4 border-t border-studio flex items-center justify-between text-[10px] sm:text-xs text-studio-muted gap-2"
+          >
+            <span class="flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+              <span
+                class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full shrink-0"
+                style="background-color: var(--accent)"
+              ></span>
+              <span class="hidden sm:inline">Réponse garantie sous 24h ouvrées</span><span class="sm:hidden">Réponse garantie sous 24h</span>
             </span>
-            <span class="font-mono text-[11px] text-studio-accent">Formulaire direct</span>
+            <span class="font-mono text-[10px] sm:text-[11px] text-studio-accent shrink-0 whitespace-nowrap"
+              >Formulaire direct</span
+            >
           </div>
         </div>
 
         <!-- DROITE (5 cols) : PRÉCISIONS & TRANSMISSION DU MESSAGE -->
         <div
-          class="lg:col-span-5 rounded-3xl bg-studio-surface border border-studio p-6 sm:p-10 flex flex-col justify-between space-y-6"
+          class="lg:col-span-5 rounded-3xl bg-studio-surface border border-studio p-5 sm:p-8 md:p-10 flex flex-col justify-between space-y-5 sm:space-y-6"
         >
           <div class="space-y-4">
-            <div class="flex items-center gap-3 font-mono text-xs text-studio-accent">
+            <div
+              class="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-xs text-studio-accent"
+            >
               <span>02</span>
               <span>—</span>
               <span>Message & Envoi</span>
             </div>
-            <h3 class="font-display font-bold text-xl text-studio-main">
+            <h3 class="font-display font-bold text-lg sm:text-xl text-studio-main">
               Votre message
             </h3>
 
             <!-- Aperçu dynamique du sujet sélectionné -->
-            <div class="p-3.5 rounded-2xl bg-studio-main border border-studio flex items-center justify-between">
-              <div class="text-xs">
-                <span class="text-studio-muted font-mono uppercase text-[10px] block">Sujet sélectionné</span>
-                <span id="selected-subject-preview" class="font-medium text-studio-accent">Opportunité d'alternance / Emploi</span>
+            <div
+              class="p-3 rounded-xl sm:rounded-2xl bg-studio-main border border-studio flex items-center justify-between gap-2"
+            >
+              <div class="text-xs min-w-0">
+                <span
+                  class="text-studio-muted font-mono uppercase text-[9px] sm:text-[10px] block"
+                  >Sujet sélectionné</span
+                >
+                <span
+                  id="selected-subject-preview"
+                  class="font-medium text-[11px] sm:text-xs text-studio-accent truncate block"
+                  >Opportunité d'alternance / Emploi</span
+                >
               </div>
-              <span class="font-mono text-xs text-studio-muted">01/01</span>
+              <span class="font-mono text-[10px] sm:text-xs text-studio-muted shrink-0">01/01</span>
             </div>
 
             <div>
               <label
                 for="message-input"
-                class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1.5"
+                class="block font-mono text-[10px] uppercase tracking-widest text-studio-muted mb-1"
                 >Précisions sur votre demande *</label
               >
               <textarea
                 id="message-input"
                 name="message"
-                rows="6"
+                rows="7"
                 required
                 placeholder="Décrivez votre projet, l'opportunité d'alternance ou posez votre question en quelques lignes..."
-                class="w-full px-4 py-3 rounded-xl bg-studio-main border border-studio text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
+                class="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-studio-main border border-studio text-xs sm:text-sm text-studio-main focus:outline-none focus:border-studio-accent transition-colors"
               ></textarea>
             </div>
 
@@ -1715,10 +1925,10 @@
               id="contact-submit-btn"
               type="submit"
               data-cursor="Envoyer"
-              class="w-full py-3.5 rounded-full text-xs font-medium tracking-wide transition-transform hover:scale-[1.01]"
+              class="w-full py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-transform hover:scale-[1.01]"
               style="background-color: var(--accent); color: #0c0c0e"
             >
-              Envoyer mon message à Pierre Elias →
+              <span class="sm:hidden">Envoyer mon message →</span><span class="hidden sm:inline">Envoyer mon message à Pierre Elias →</span>
             </button>
 
             <!-- Message de confirmation intégré (sans alert) -->
@@ -1726,21 +1936,8 @@
               id="contact-toast"
               class="hidden mt-4 p-4 rounded-2xl border border-studio-accent bg-studio-main text-xs text-studio-main"
             >
-              ✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.
-            </div>
-          </div>
-
-          <!-- Coordonnées directes récapitulatives -->
-          <div class="pt-6 border-t border-studio space-y-2 text-xs text-studio-muted font-light">
-            <div class="flex items-center gap-2 text-studio-main font-medium">
-              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--accent)"></span>
-              Pierre Elias NODON
-            </div>
-            <div>Toulouse, France • elias.nodon@gmail.com • +33 6 86 96 99 94</div>
-            <div class="flex items-center gap-4 font-mono text-[11px] pt-1">
-              <a href="https://www.linkedin.com/in/eliasnodon/" target="_blank" data-cursor="LinkedIn" class="hover:text-studio-main transition-colors">LinkedIn ↗</a>
-              <a href="https://github.com/ndn-elias" target="_blank" data-cursor="GitHub" class="hover:text-studio-main transition-colors">GitHub ↗</a>
-              <a href="https://ndn-elias.github.io/portfolio/CV%20Alternance.pdf" target="_blank" data-cursor="CV" class="hover:text-studio-main transition-colors">CV (PDF) ↗</a>
+              ✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je
+              te réponds sous 24h.
             </div>
           </div>
         </div>
@@ -1750,9 +1947,9 @@
     <!-- ==========================================================================
          10. FOOTER AVEC LA GRANDE SIGNATURE MONUMENTALE
          ========================================================================== -->
-    <footer class="border-t border-studio pt-16 pb-6 overflow-hidden">
+    <footer class="border-t border-studio pt-12 sm:pt-16 pb-6 overflow-hidden">
       <div
-        class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-12"
+        class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 sm:pb-12"
       >
         <div>
           <div class="flex items-center gap-2.5">
@@ -1761,16 +1958,17 @@
               style="background-color: var(--accent)"
             ></span>
             <span
-              class="font-display font-bold text-sm tracking-[0.18em] uppercase text-studio-main"
+              class="font-display font-bold text-xs sm:text-sm tracking-[0.14em] sm:tracking-[0.18em] uppercase text-studio-main whitespace-nowrap"
               >Pierre Elias NODON</span
             >
           </div>
-          <p class="text-xs text-studio-muted mt-1.5 font-light">
-            Pierre Elias NODON — Développeur Web Full Stack • Étudiant Master Expert à Ynov & Alternant SEAC GF • Toulouse, France
+          <p class="text-[11px] sm:text-xs text-studio-muted mt-1 sm:mt-1.5 font-light">
+            Pierre Elias NODON — Développeur Web Full Stack • Étudiant Master
+            Expert à Ynov & Alternant SEAC GF • Toulouse, France
           </p>
         </div>
         <div
-          class="flex flex-wrap items-center gap-6 text-xs font-mono text-studio-muted"
+          class="flex flex-wrap items-center gap-3.5 sm:gap-6 text-[11px] sm:text-xs font-mono text-studio-muted"
         >
           <a
             href="https://www.linkedin.com/in/eliasnodon/"
@@ -1836,35 +2034,35 @@
       class="fixed inset-0 z-[90] hidden items-center justify-center p-4 bg-black/75 backdrop-blur-md"
     >
       <div
-        class="relative w-full max-w-xl rounded-3xl bg-studio-surface border border-studio p-8 sm:p-10 shadow-2xl"
+        class="relative w-full max-w-xl rounded-3xl bg-studio-surface border border-studio p-5 sm:p-10 shadow-2xl"
       >
         <button
           type="button"
           onclick="closeWorkModal()"
-          class="absolute top-6 right-6 w-9 h-9 rounded-full border border-studio flex items-center justify-center text-studio-muted hover:text-studio-main"
+          class="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-studio flex items-center justify-center text-xs text-studio-muted hover:text-studio-main"
         >
           ✕
         </button>
         <span
           id="work-modal-cat"
-          class="font-mono text-xs uppercase tracking-widest text-studio-accent"
+          class="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-studio-accent"
           >Catégorie</span
         >
         <h3
           id="work-modal-title"
-          class="font-serif italic text-3xl sm:text-4xl text-studio-main mt-2"
+          class="font-serif italic text-2xl sm:text-4xl text-studio-main mt-1.5 sm:mt-2"
         >
           Titre
         </h3>
         <p
           id="work-modal-desc"
-          class="text-sm sm:text-base text-studio-muted font-light mt-4 leading-relaxed"
+          class="text-xs sm:text-base text-studio-muted font-light mt-3 sm:mt-4 leading-relaxed"
         ></p>
-        <div class="mt-8 pt-6 border-t border-studio flex justify-end gap-3">
+        <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-studio flex items-center justify-end gap-2.5 sm:gap-3">
           <button
             type="button"
             onclick="closeWorkModal()"
-            class="px-5 py-2.5 rounded-full border border-studio text-xs text-studio-main"
+            class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-studio text-xs text-studio-main"
           >
             Fermer
           </button>
@@ -1872,7 +2070,7 @@
             id="work-modal-link"
             href="#simulateur"
             onclick="closeWorkModal()"
-            class="px-5 py-2.5 rounded-full text-xs font-medium"
+            class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-medium"
             style="background-color: var(--accent); color: #0c0c0e"
           >
             Voir les détails →
@@ -1987,11 +2185,17 @@
         "footer-monument-title",
       );
       const monumentLineFirst = document.getElementById("monument-line-first");
-      const monumentLineSecond = document.getElementById("monument-line-second");
+      const monumentLineSecond = document.getElementById(
+        "monument-line-second",
+      );
 
       // Calibrage automatique pour garantir que le texte monumental ne dépasse jamais de l'écran
       function fitFooterMonument() {
-        if (!footerMonumentContainer || !monumentLineFirst || !monumentLineSecond)
+        if (
+          !footerMonumentContainer ||
+          !monumentLineFirst ||
+          !monumentLineSecond
+        )
           return;
         const availableWidth = footerMonumentContainer.clientWidth * 0.92;
         if (availableWidth <= 0) return;
@@ -2234,11 +2438,47 @@
       );
       const marbleVeinsSvg = document.getElementById("marble-veins-svg");
 
+      // Clones et état pour le bandeau éditorial défilant en boucle infinie (Marquee)
+      if (marqueeTrack && marqueeTrack.firstElementChild) {
+        while (marqueeTrack.children.length < 4) {
+          const clone = marqueeTrack.firstElementChild.cloneNode(true);
+          clone.setAttribute("aria-hidden", "true");
+          marqueeTrack.appendChild(clone);
+        }
+      }
+
+      let marqueePos = 0;
+      let marqueeScrollVel = 0;
+      let marqueeLoopWidth = 0;
+      let lastAnimTime = performance.now();
+
+      function updateMarqueeLoopWidth() {
+        if (!marqueeTrack || marqueeTrack.children.length < 2) return;
+        const r1 = marqueeTrack.children[0].getBoundingClientRect();
+        const r2 = marqueeTrack.children[1].getBoundingClientRect();
+        const dist = r2.left - r1.left;
+        if (dist > 0) {
+          marqueeLoopWidth = dist;
+        } else if (marqueeTrack.children[0].offsetWidth > 0) {
+          marqueeLoopWidth = marqueeTrack.children[0].offsetWidth + 48;
+        }
+      }
+      updateMarqueeLoopWidth();
+
       let lastScrollY = window.scrollY;
       let currentSkew = 0;
 
-      function animateOnScroll() {
-        const scrollY = window.scrollY;
+      function animateOnScroll(timestamp) {
+        const now =
+          typeof timestamp === "number" ? timestamp : performance.now();
+        const deltaMs = lastAnimTime
+          ? Math.min(50, Math.max(5, now - lastAnimTime))
+          : 16.667;
+        lastAnimTime = now;
+        const timeScale = deltaMs / 16.667;
+
+        const scrollY = Math.max(0, window.scrollY);
+        const rawVelocity = scrollY - lastScrollY;
         const vh = window.innerHeight;
         const docHeight = Math.max(
           1,
@@ -2270,22 +2510,25 @@
           }
         }
 
-        // 3. Parallaxe du Hero & expansion de la fenêtre macOS
+        // 3. Parallaxe du Hero & expansion de la fenêtre macOS (uniquement translation verticale sur mobile pour éliminer toute dérive horizontale)
         if (scrollY < vh * 1.6) {
+          const isDesktop = window.innerWidth >= 768;
           if (heroTitle1) {
-            heroTitle1.style.transform = `translate3d(${-scrollY * 0.06}px, ${scrollY * 0.12}px, 0)`;
+            const x1 = isDesktop ? -scrollY * 0.06 : 0;
+            heroTitle1.style.transform = `translate3d(${x1.toFixed(1)}px, ${(scrollY * 0.12).toFixed(1)}px, 0)`;
           }
           if (heroTitle2) {
-            heroTitle2.style.transform = `translate3d(${scrollY * 0.08}px, ${scrollY * 0.09}px, 0)`;
+            const x2 = isDesktop ? scrollY * 0.08 : 0;
+            heroTitle2.style.transform = `translate3d(${x2.toFixed(1)}px, ${(scrollY * 0.09).toFixed(1)}px, 0)`;
           }
           parallaxElements.forEach((el) => {
             const speed = parseFloat(el.getAttribute("data-parallax") || "0");
-            el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+            el.style.transform = `translate3d(0, ${(scrollY * speed).toFixed(1)}px, 0)`;
           });
 
           if (heroExpandFrame) {
             const expandProg = Math.min(1, Math.max(0, scrollY / (vh * 0.55)));
-            if (window.innerWidth >= 768) {
+            if (isDesktop) {
               const widthPct = 76 + expandProg * 24;
               const scaleVal = 0.95 + expandProg * 0.05;
               heroExpandFrame.style.width = `${widthPct.toFixed(2)}%`;
@@ -2297,10 +2540,41 @@
           }
         }
 
-        // 4. Bandeau éditorial réactif au scroll
+        // 4. Bandeau éditorial réactif au scroll & défilement continu autonome au repos
         if (marqueeTrack) {
-          const offset = (scrollY * 0.18) % 600;
-          marqueeTrack.style.transform = `translate3d(${-offset}px, 0, 0)`;
+          if (marqueeLoopWidth <= 0) {
+            updateMarqueeLoopWidth();
+          }
+
+          // Défilement autonome continu à vitesse lente et élégante (~40px/s)
+          const baseSpeed = 0.65;
+
+          // Accélération/réaction proportionnelle et fluide lors du scroll
+          const targetScrollVel = Math.max(
+            -25,
+            Math.min(25, rawVelocity * 0.25),
+          );
+          marqueeScrollVel +=
+            (targetScrollVel - marqueeScrollVel) *
+            Math.min(1, 0.14 * timeScale);
+
+          marqueePos += baseSpeed * timeScale + marqueeScrollVel * timeScale;
+
+          if (marqueeLoopWidth > 0) {
+            const normalizedPos =
+              ((marqueePos % marqueeLoopWidth) + marqueeLoopWidth) %
+              marqueeLoopWidth;
+            marqueeTrack.style.transform = `translate3d(${-normalizedPos.toFixed(2)}px, 0, 0)`;
+
+            // Évite le dépassement numérique sur de très longues sessions
+            if (marqueePos >= marqueeLoopWidth * 1000) {
+              marqueePos = marqueePos % marqueeLoopWidth;
+            } else if (marqueePos <= -marqueeLoopWidth * 1000) {
+              marqueePos =
+                ((marqueePos % marqueeLoopWidth) + marqueeLoopWidth) %
+                marqueeLoopWidth;
+            }
+          }
         }
 
         // 5. Révélation cinétique mot par mot du Manifeste
@@ -2343,8 +2617,6 @@
         });
 
         // 7. Galerie horizontale au scroll + Velocity Skew
-        const rawVelocity = scrollY - lastScrollY;
-        lastScrollY = scrollY;
         const targetSkew = Math.max(-4.5, Math.min(4.5, rawVelocity * -0.09));
         currentSkew += (targetSkew - currentSkew) * 0.2;
 
@@ -2389,6 +2661,7 @@
           }
         }
 
+        lastScrollY = scrollY;
         requestAnimationFrame(animateOnScroll);
       }
 
@@ -2498,18 +2771,25 @@
             .then((response) => {
               if (toast) {
                 toast.classList.remove("hidden");
-                toast.textContent = "✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.";
+                toast.textContent =
+                  "✓ Merci ! Ton message a bien été envoyé à Pierre Elias NODON. Je te réponds sous 24h.";
               }
               form.reset();
-              const firstSubjectBtn = document.querySelector(".contact-subject-btn");
+              const firstSubjectBtn = document.querySelector(
+                ".contact-subject-btn",
+              );
               if (firstSubjectBtn) {
-                window.selectContactSubject("Opportunité d'alternance / Emploi", firstSubjectBtn);
+                window.selectContactSubject(
+                  "Opportunité d'alternance / Emploi",
+                  firstSubjectBtn,
+                );
               }
             })
             .catch(() => {
               if (toast) {
                 toast.classList.remove("hidden");
-                toast.textContent = "✓ Ton message a bien été enregistré. Je te réponds au plus vite !";
+                toast.textContent =
+                  "✓ Ton message a bien été enregistré. Je te réponds au plus vite !";
               }
             })
             .finally(() => {
@@ -2523,12 +2803,17 @@
       window.onload = function () {
         resizeGeoCanvas();
         fitFooterMonument();
+        updateMarqueeLoopWidth();
         if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(fitFooterMonument);
+          document.fonts.ready.then(() => {
+            fitFooterMonument();
+            updateMarqueeLoopWidth();
+          });
         }
         window.addEventListener("resize", () => {
           resizeGeoCanvas();
           fitFooterMonument();
+          updateMarqueeLoopWidth();
         });
         requestAnimationFrame(animateOnScroll);
         requestAnimationFrame(renderGeoCanvas);
